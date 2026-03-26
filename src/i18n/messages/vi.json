@@ -1,0 +1,9 @@
+{
+  "HomePage": {
+    "title": "Chat frontend da san sang da ngon ngu",
+    "description": "next-intl da duoc cau hinh voi tieng Anh va tieng Viet.",
+    "languageLabel": "Ngon ngu",
+    "english": "English",
+    "vietnamese": "Tieng Viet"
+  }
+}

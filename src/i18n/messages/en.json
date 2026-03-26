@@ -1,0 +1,9 @@
+{
+  "HomePage": {
+    "title": "Chat frontend is ready for i18n",
+    "description": "next-intl has been configured with English and Vietnamese.",
+    "languageLabel": "Language",
+    "english": "English",
+    "vietnamese": "Vietnamese"
+  }
+}
