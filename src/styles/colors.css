@@ -1,0 +1,49 @@
+@theme inline {
+  --font-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+  --color-background: var(--bg-lowest);
+  --color-foreground: var(--text-strong);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-pressed: var(--primary-pressed);
+  --color-primary-glow: var(--primary-glow);
+
+  --color-surface-lowest: var(--bg-lowest);
+  --color-surface-low: var(--surface-low);
+  --color-surface-high: var(--surface-high);
+  --color-outline-variant: var(--outline-variant);
+
+  --color-online: var(--emerald-online);
+  --color-online-ring: var(--emerald-online-ring);
+}
+
+:root {
+  --bg-lowest: #0f172a;
+  --bg-main: #111827;
+  --surface-low: #1e293b;
+  --surface-high: #334155;
+  --surface-glass: rgb(15 23 42 / 50%);
+
+  --text-strong: #e2e8f0;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-inverse: #f8fafc;
+
+  --primary: #4f46e5;
+  --primary-hover: #6366f1;
+  --primary-pressed: #4338ca;
+  --primary-glow: rgb(79 70 229 / 20%);
+
+  --emerald-online: #10b981;
+  --emerald-online-ring: #34d399;
+
+  --outline-variant: rgb(148 163 184 / 50%);
+
+  --gradient-main: linear-gradient(160deg, #0f172a 0%, #111827 46%, #1e293b 100%);
+  --gradient-surface: linear-gradient(
+    180deg,
+    rgb(51 65 85 / 32%) 0%,
+    rgb(30 41 59 / 82%) 100%
+  );
+}
