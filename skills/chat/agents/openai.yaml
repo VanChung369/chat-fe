@@ -1,0 +1,6 @@
+interface:
+  display_name: "Chat Frontend"
+  short_description: "Implement chat frontend features with repo-safe patterns"
+  default_prompt: "Use $chat to deliver a chat frontend feature or bug fix in this repo with existing routes, Redux slices, socket flows, API types, and focused validation."
+policy:
+  allow_implicit_invocation: true
