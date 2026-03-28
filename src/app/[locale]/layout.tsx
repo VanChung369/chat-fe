@@ -7,7 +7,7 @@ export default function LocaleLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense>
       <I18nProvider>{children}</I18nProvider>
     </Suspense>
   );
