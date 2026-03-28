@@ -1,12 +1,11 @@
-import { type ReactNode, Suspense } from "react";
 import I18nProvider from "@/providers/I18nProvider";
+import { Suspense } from "react";
 
-type Props = Readonly<{
-  children: ReactNode;
-  params: Promise<{ locale: string }>;
-}>;
-
-export default async function LocaleLayout({ children }: Props) {
+export default function LocaleLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <Suspense>
       <I18nProvider>{children}</I18nProvider>
