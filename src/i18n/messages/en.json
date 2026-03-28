@@ -5,5 +5,40 @@
     "languageLabel": "Language",
     "english": "English",
     "vietnamese": "Vietnamese"
+  },
+  "AuthSignup": {
+    "title": "Create your account",
+    "description": "Start chatting with your team in a few seconds.",
+    "fields": {
+      "fullName": "Full name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password"
+    },
+    "placeholders": {
+      "fullName": "Jane Doe",
+      "email": "you@example.com",
+      "password": "At least 8 characters",
+      "confirmPassword": "Re-enter your password"
+    },
+    "errors": {
+      "fullNameRequired": "Full name is required.",
+      "fullNameMin": "Full name must have at least 2 characters.",
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Please enter a valid email address.",
+      "passwordRequired": "Password is required.",
+      "passwordMin": "Password must have at least 8 characters.",
+      "confirmPasswordRequired": "Please confirm your password.",
+      "passwordMismatch": "Passwords do not match."
+    },
+    "actions": {
+      "submit": "Create account",
+      "submitting": "Creating account..."
+    },
+    "feedback": {
+      "success": "Signup form submitted for {email}."
+    },
+    "loginPrompt": "Already have an account?",
+    "loginLink": "Log in"
   }
 }

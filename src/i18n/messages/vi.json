@@ -5,5 +5,40 @@
     "languageLabel": "Ngon ngu",
     "english": "English",
     "vietnamese": "Tieng Viet"
+  },
+  "AuthSignup": {
+    "title": "Tao tai khoan",
+    "description": "Bat dau nhan tin voi doi nhom chi trong vai giay.",
+    "fields": {
+      "fullName": "Ho va ten",
+      "email": "Email",
+      "password": "Mat khau",
+      "confirmPassword": "Xac nhan mat khau"
+    },
+    "placeholders": {
+      "fullName": "Nguyen Van A",
+      "email": "ban@example.com",
+      "password": "Toi thieu 8 ky tu",
+      "confirmPassword": "Nhap lai mat khau"
+    },
+    "errors": {
+      "fullNameRequired": "Vui long nhap ho va ten.",
+      "fullNameMin": "Ho va ten phai co it nhat 2 ky tu.",
+      "emailRequired": "Vui long nhap email.",
+      "emailInvalid": "Email khong hop le.",
+      "passwordRequired": "Vui long nhap mat khau.",
+      "passwordMin": "Mat khau phai co it nhat 8 ky tu.",
+      "confirmPasswordRequired": "Vui long xac nhan mat khau.",
+      "passwordMismatch": "Mat khau xac nhan khong khop."
+    },
+    "actions": {
+      "submit": "Tao tai khoan",
+      "submitting": "Dang tao tai khoan..."
+    },
+    "feedback": {
+      "success": "Da gui form dang ky cho {email}."
+    },
+    "loginPrompt": "Ban da co tai khoan?",
+    "loginLink": "Dang nhap"
   }
 }
