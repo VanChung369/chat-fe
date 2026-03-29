@@ -1,21 +1,65 @@
 "use client";
 
-import { useState } from "react";
-import type { SubmitHandler } from "react-hook-form";
+import { useMemo, useState } from "react";
+import type { Resolver, SubmitHandler } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Form, FormInput, FormSubmitButton } from "@/shared/components";
-
-type SignUpFormValues = {
-  fullName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+import { createSignUpSchema, type SignUpFormValues } from "./schema";
 
 const SignUpForm = () => {
   const t = useTranslations("AuthSignup");
   const [submittedEmail, setSubmittedEmail] = useState<string>("");
+  const signUpSchema = useMemo(
+    () =>
+      createSignUpSchema({
+        usernameRequired: t("errors.usernameRequired"),
+        usernameMin: t("errors.usernameMin"),
+        usernameMax: t("errors.usernameMax"),
+        firstNameRequired: t("errors.firstNameRequired"),
+        firstNameMin: t("errors.firstNameMin"),
+        firstNameMax: t("errors.firstNameMax"),
+        lastNameRequired: t("errors.lastNameRequired"),
+        lastNameMin: t("errors.lastNameMin"),
+        lastNameMax: t("errors.lastNameMax"),
+        emailRequired: t("errors.emailRequired"),
+        emailInvalid: t("errors.emailInvalid"),
+        passwordRequired: t("errors.passwordRequired"),
+        passwordMin: t("errors.passwordMin"),
+        passwordMax: t("errors.passwordMax"),
+      }),
+    [t]
+  );
+  const resolver = useMemo<Resolver<SignUpFormValues>>(
+    () => async (values) => {
+      const result = signUpSchema.safeParse(values);
+
+      if (result.success) {
+        return { values: result.data, errors: {} };
+      }
+
+      const errors = result.error.issues.reduce<Record<string, { type: string; message: string }>>(
+        (acc, issue) => {
+          const fieldName = issue.path[0];
+
+          if (typeof fieldName !== "string" || acc[fieldName]) {
+            return acc;
+          }
+
+          acc[fieldName] = {
+            type: issue.code,
+            message: issue.message,
+          };
+
+          return acc;
+        },
+        {}
+      );
+
+      return { values: {}, errors };
+    },
+    [signUpSchema]
+  );
 
   const onSubmit: SubmitHandler<SignUpFormValues> = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 350));
@@ -35,26 +79,42 @@ const SignUpForm = () => {
         options={{
           mode: "onBlur",
           reValidateMode: "onBlur",
+          resolver,
           defaultValues: {
-            fullName: "",
+            username: "",
+            firstName: "",
+            lastName: "",
             email: "",
             password: "",
-            confirmPassword: "",
           },
         }}
       >
-        {(methods) => (
+        {() => (
           <>
             <FormInput<SignUpFormValues>
-              autoComplete="name"
-              label={t("fields.fullName")}
+              autoComplete="username"
+              label={t("fields.username")}
               labelClassName="text-zinc-200"
-              name="fullName"
-              placeholder={t("placeholders.fullName")}
-              rules={{
-                required: t("errors.fullNameRequired"),
-                minLength: { value: 2, message: t("errors.fullNameMin") },
-              }}
+              name="username"
+              placeholder={t("placeholders.username")}
+              className="border-zinc-600 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-500 focus:border-indigo-400 focus:ring-indigo-500/30"
+            />
+
+            <FormInput<SignUpFormValues>
+              autoComplete="given-name"
+              label={t("fields.firstName")}
+              labelClassName="text-zinc-200"
+              name="firstName"
+              placeholder={t("placeholders.firstName")}
+              className="border-zinc-600 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-500 focus:border-indigo-400 focus:ring-indigo-500/30"
+            />
+
+            <FormInput<SignUpFormValues>
+              autoComplete="family-name"
+              label={t("fields.lastName")}
+              labelClassName="text-zinc-200"
+              name="lastName"
+              placeholder={t("placeholders.lastName")}
               className="border-zinc-600 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-500 focus:border-indigo-400 focus:ring-indigo-500/30"
             />
 
@@ -64,10 +124,6 @@ const SignUpForm = () => {
               labelClassName="text-zinc-200"
               name="email"
               placeholder={t("placeholders.email")}
-              rules={{
-                required: t("errors.emailRequired"),
-                pattern: { value: /^\S+@\S+\.\S+$/, message: t("errors.emailInvalid") },
-              }}
               className="border-zinc-600 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-500 focus:border-indigo-400 focus:ring-indigo-500/30"
               type="email"
             />
@@ -78,25 +134,6 @@ const SignUpForm = () => {
               labelClassName="text-zinc-200"
               name="password"
               placeholder={t("placeholders.password")}
-              rules={{
-                required: t("errors.passwordRequired"),
-                minLength: { value: 8, message: t("errors.passwordMin") },
-              }}
-              className="border-zinc-600 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-500 focus:border-indigo-400 focus:ring-indigo-500/30"
-              type="password"
-            />
-
-            <FormInput<SignUpFormValues>
-              autoComplete="new-password"
-              label={t("fields.confirmPassword")}
-              labelClassName="text-zinc-200"
-              name="confirmPassword"
-              placeholder={t("placeholders.confirmPassword")}
-              rules={{
-                required: t("errors.confirmPasswordRequired"),
-                validate: (value) =>
-                  value === methods.getValues("password") || t("errors.passwordMismatch"),
-              }}
               className="border-zinc-600 bg-zinc-950/60 text-zinc-100 placeholder:text-zinc-500 focus:border-indigo-400 focus:ring-indigo-500/30"
               type="password"
             />

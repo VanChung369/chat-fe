@@ -64,6 +64,7 @@ Do not use this skill for backend-only implementation, infrastructure setup, or 
 - Use Redux Toolkit slices in `src/store/*` for shared feature state.
 - Treat Redux Toolkit as the default global state solution in this repo; only introduce Zustand for isolated local UI state when explicitly requested.
 - Preserve current styling approach by matching existing module scss and styled utility usage.
+- Build responsive UI mobile-first and compose class names via `cn(...)` when conditions or variants are involved; prefer breakpoint classes directly in class strings (for example: `cn("grid grid-cols-1 gap-3 md:grid-cols-2 lg:gap-4", isStacked && "md:grid-cols-1")`).
 
 ## Task Routing Guide
 

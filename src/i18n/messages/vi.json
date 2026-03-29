@@ -10,26 +10,34 @@
     "title": "Tao tai khoan",
     "description": "Bat dau nhan tin voi doi nhom chi trong vai giay.",
     "fields": {
-      "fullName": "Ho va ten",
+      "username": "Ten dang nhap",
+      "firstName": "Ten",
+      "lastName": "Ho",
       "email": "Email",
-      "password": "Mat khau",
-      "confirmPassword": "Xac nhan mat khau"
+      "password": "Mat khau"
     },
     "placeholders": {
-      "fullName": "Nguyen Van A",
+      "username": "nguyenvana",
+      "firstName": "Van A",
+      "lastName": "Nguyen",
       "email": "ban@example.com",
-      "password": "Toi thieu 8 ky tu",
-      "confirmPassword": "Nhap lai mat khau"
+      "password": "Tu 6 den 128 ky tu"
     },
     "errors": {
-      "fullNameRequired": "Vui long nhap ho va ten.",
-      "fullNameMin": "Ho va ten phai co it nhat 2 ky tu.",
+      "usernameRequired": "Vui long nhap ten dang nhap.",
+      "usernameMin": "Ten dang nhap phai co it nhat 3 ky tu.",
+      "usernameMax": "Ten dang nhap toi da 16 ky tu.",
+      "firstNameRequired": "Vui long nhap ten.",
+      "firstNameMin": "Ten phai co it nhat 2 ky tu.",
+      "firstNameMax": "Ten toi da 32 ky tu.",
+      "lastNameRequired": "Vui long nhap ho.",
+      "lastNameMin": "Ho phai co it nhat 2 ky tu.",
+      "lastNameMax": "Ho toi da 32 ky tu.",
       "emailRequired": "Vui long nhap email.",
       "emailInvalid": "Email khong hop le.",
       "passwordRequired": "Vui long nhap mat khau.",
-      "passwordMin": "Mat khau phai co it nhat 8 ky tu.",
-      "confirmPasswordRequired": "Vui long xac nhan mat khau.",
-      "passwordMismatch": "Mat khau xac nhan khong khop."
+      "passwordMin": "Mat khau phai co it nhat 6 ky tu.",
+      "passwordMax": "Mat khau toi da 128 ky tu."
     },
     "actions": {
       "submit": "Tao tai khoan",

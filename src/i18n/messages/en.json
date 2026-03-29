@@ -10,26 +10,34 @@
     "title": "Create your account",
     "description": "Start chatting with your team in a few seconds.",
     "fields": {
-      "fullName": "Full name",
+      "username": "Username",
+      "firstName": "First name",
+      "lastName": "Last name",
       "email": "Email",
-      "password": "Password",
-      "confirmPassword": "Confirm password"
+      "password": "Password"
     },
     "placeholders": {
-      "fullName": "Jane Doe",
+      "username": "janedoe",
+      "firstName": "Jane",
+      "lastName": "Doe",
       "email": "you@example.com",
-      "password": "At least 8 characters",
-      "confirmPassword": "Re-enter your password"
+      "password": "6 to 128 characters"
     },
     "errors": {
-      "fullNameRequired": "Full name is required.",
-      "fullNameMin": "Full name must have at least 2 characters.",
+      "usernameRequired": "Username is required.",
+      "usernameMin": "Username must have at least 3 characters.",
+      "usernameMax": "Username must have at most 16 characters.",
+      "firstNameRequired": "First name is required.",
+      "firstNameMin": "First name must have at least 2 characters.",
+      "firstNameMax": "First name must have at most 32 characters.",
+      "lastNameRequired": "Last name is required.",
+      "lastNameMin": "Last name must have at least 2 characters.",
+      "lastNameMax": "Last name must have at most 32 characters.",
       "emailRequired": "Email is required.",
       "emailInvalid": "Please enter a valid email address.",
       "passwordRequired": "Password is required.",
-      "passwordMin": "Password must have at least 8 characters.",
-      "confirmPasswordRequired": "Please confirm your password.",
-      "passwordMismatch": "Passwords do not match."
+      "passwordMin": "Password must have at least 6 characters.",
+      "passwordMax": "Password must have at most 128 characters."
     },
     "actions": {
       "submit": "Create account",

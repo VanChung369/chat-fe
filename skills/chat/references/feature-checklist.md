@@ -24,6 +24,7 @@ Use this checklist before finalizing any feature implemented with this skill.
 - Exercise the main happy path manually when no automated test exists.
 - Exercise one failure path (validation/network/permission).
 - Confirm no obvious regressions in auth, routing, and realtime updates.
+- Check responsive behavior at mobile and at least one larger breakpoint (`md` or `lg`) for touched screens.
 
 ## 4) Delivery Quality
 
