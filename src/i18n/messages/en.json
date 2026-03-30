@@ -79,5 +79,8 @@
       "submitting": "Verifying...",
       "resend": "Resend code"
     }
+  },
+  "Common": {
+    "unexpectedError": "An unexpected error occurred. Please try again."
   }
 }

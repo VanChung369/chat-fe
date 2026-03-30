@@ -1,9 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
-import VerifyForm from "@/features/auth/VerifyForm";
+import VerifyForm from "@/features/auth/verify/VerifyForm";
 
 interface VerifyPageProps {
-  searchParams: { email?: string };
+  searchParams: Promise<{ email?: string }>;
 }
 
 export async function generateMetadata({ searchParams }: VerifyPageProps) {
@@ -13,16 +13,12 @@ export async function generateMetadata({ searchParams }: VerifyPageProps) {
   };
 }
 
-export default function VerifyPage({ searchParams }: VerifyPageProps) {
-  const email = searchParams.email;
+export default async function VerifyPage({ searchParams }: VerifyPageProps) {
+  const { email } = await searchParams;
 
   if (!email) {
     redirect("/signup");
   }
 
-  return (
-    <div className="flex min-h-[calc(100vh-16rem)] items-center justify-center">
-      <VerifyForm email={email as string} />
-    </div>
-  );
+  return <VerifyForm email={email} />;
 }

@@ -79,5 +79,8 @@
       "submitting": "Đang xác thực...",
       "resend": "Gửi lại mã"
     }
+  },
+  "Common": {
+    "unexpectedError": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
   }
 }

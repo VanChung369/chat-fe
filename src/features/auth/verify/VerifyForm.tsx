@@ -6,9 +6,9 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler, type UseFormProps } from "react-hook-form";
 import { Form, FormInput, FormSubmitButton } from "@/shared/components/form";
-import { createVerifySchema, type VerifyFormValues } from "./schema/verifySchema";
+import { createVerifySchema, type VerifyFormValues } from "../schema/verifySchema";
 import { ShieldCheck } from "lucide-react";
-import { authApi } from "./api/auth-api";
+import { authApi } from "../api/auth-api";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 
@@ -50,12 +50,10 @@ const VerifyForm = ({ email }: VerifyFormProps) => {
   };
 
   return (
-    <section className="w-full max-w-md p-6 text-center">
+    <section className="w-full max-w-lg p-6">
       <header className="animate-fade-in-up mb-8 space-y-2">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-50">{t("title")}</h1>
-        <p className="text-sm text-zinc-400">
-          {t("description", { email })}
-        </p>
+        <p className="text-sm text-zinc-400">{t("description", { email })}</p>
       </header>
 
       <Form<VerifyFormValues> className="space-y-6" onSubmit={onSubmit} options={options}>
@@ -66,7 +64,7 @@ const VerifyForm = ({ email }: VerifyFormProps) => {
                 label={t("fields.code")}
                 name="code"
                 placeholder={t("placeholders.code")}
-                className="bg-surface-input/50 text-center tracking-[0.5em] text-lg font-bold"
+                className="bg-surface-input/50 text-center text-lg font-bold tracking-[0.5em]"
                 startIcon={<ShieldCheck size={20} />}
                 maxLength={6}
               />

@@ -1,4 +1,4 @@
-import PublicLayout from "@/shared/layouts/public";
+import { PublicLayout } from "@/shared/layouts";
 
 export default function AuthLayout({
   children,
@@ -7,4 +7,3 @@ export default function AuthLayout({
 }>) {
   return <PublicLayout>{children}</PublicLayout>;
 }
-

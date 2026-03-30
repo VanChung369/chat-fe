@@ -5,9 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Form, FormInput, FormInputPassword, FormSubmitButton } from "@/shared/components/form";
-import { createSignUpSchema, type SignUpFormValues } from "./schema";
+import { createSignUpSchema, type SignUpFormValues } from "../schema";
 import { Lock, Mail, ShieldCheck, User } from "lucide-react";
-import { authApi } from "./api/auth-api";
+import { authApi } from "../api/auth-api";
 import { useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
 
@@ -17,6 +17,7 @@ import { toast } from "sonner";
  */
 const SignUpForm = () => {
   const t = useTranslations("AuthSignup");
+  const tCommon = useTranslations("Common");
   const router = useRouter();
 
   const options: UseFormProps<SignUpFormValues> = {
@@ -35,16 +36,15 @@ const SignUpForm = () => {
 
   const onSubmit: SubmitHandler<SignUpFormValues> = async (values) => {
     try {
-      // Remove confirmPassword as backend doesn't need it
       const { confirmPassword, ...registerData } = values;
       await authApi.signUp(registerData);
-      
+
       toast.success(t("feedback.success", { email: values.email }));
       // Redirect to verification page with email in query
       router.push(`/verify?email=${encodeURIComponent(values.email)}`);
     } catch (error: any) {
       console.error("Registration Error:", error);
-      toast.error(error.message || "An unexpected error occurred. Please try again.");
+      toast.error(error.message || tCommon("unexpectedError"));
     }
   };
 

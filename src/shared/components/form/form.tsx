@@ -6,6 +6,7 @@ import {
   FormProvider,
   useForm,
   useFormContext,
+  useFormState,
   type FieldValues,
   type SubmitHandler,
   type UseFormProps,
@@ -44,9 +45,10 @@ function FormContent<T extends FieldValues>({
 }) {
   const { formState } = useFormContext<T>();
 
-  // Touch the proxy to subscribe to errors and submission count for reactivity
+  // Touch the proxy to subscribe to errors, submission status, and other fields for reactivity
   void formState.errors;
   void formState.submitCount;
+  void formState.isSubmitting;
   void formState.isValid;
   void formState.isDirty;
 
@@ -99,8 +101,8 @@ export function FormSubmitButton({
   disabled,
   ...props
 }: FormSubmitButtonProps) {
-  const { formState } = useFormContext();
-  const isPending = formState.isSubmitting;
+  const formContext = useFormContext();
+  const { isSubmitting: isPending } = useFormState({ control: formContext.control });
 
   return (
     <button

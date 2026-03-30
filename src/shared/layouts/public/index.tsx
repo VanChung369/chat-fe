@@ -34,10 +34,10 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
           </div>
 
           <div className="space-y-4">
-            <h2 className="animate-fade-in-up text-2xl leading-tight font-extrabold tracking-tight text-white delay-100">
+            <h2 className="animate-fade-in-up text-2xl leading-tight font-extrabold tracking-tight text-slate-200 delay-100">
               {t("title")}
             </h2>
-            <p className="animate-fade-in-up text-muted/90 mx-auto max-w-lg text-lg leading-relaxed font-medium delay-200">
+            <p className="animate-fade-in-up mx-auto max-w-lg text-lg leading-relaxed font-medium text-slate-300 delay-200">
               {t("description")}
             </p>
           </div>
@@ -49,7 +49,7 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
           <div className="text-primary size-8">
             <ChatIcon className="h-full w-full" />
           </div>
-          <span className="text-xl font-bold tracking-tight text-white">{t("chatApp")}</span>
+          <span className="text-xl font-bold tracking-tight text-slate-800">{t("chatApp")}</span>
         </div>
 
         <div className="w-full max-w-lg">{children}</div>
