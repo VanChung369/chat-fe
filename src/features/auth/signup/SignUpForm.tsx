@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Form, FormInput, FormInputPassword, FormSubmitButton } from "@/shared/components/form";
-import { AppRoutes } from "@/shared/constants";
+import { AppRoutes, pathWithQuery } from "@/shared/constants";
 import { createSignUpSchema, type SignUpFormValues } from "../schema";
 import { Lock, Mail, ShieldCheck, User } from "lucide-react";
 import { authApi } from "../api/auth-api";
@@ -42,7 +42,7 @@ const SignUpForm = () => {
 
       toast.success(t("feedback.success", { email: values.email }));
       // Redirect to verification page with email in query
-      router.push(`${AppRoutes.verify}?email=${encodeURIComponent(values.email)}`);
+      router.push(pathWithQuery(AppRoutes.verify, { email: values.email }));
     } catch (error: any) {
       console.error("Registration Error:", error);
       toast.error(error.message || tCommon("unexpectedError"));

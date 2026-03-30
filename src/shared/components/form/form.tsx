@@ -78,7 +78,7 @@ export function Form<T extends FieldValues>({
         {...props}
       >
         {isRenderProp<T>(children) ? (
-          <FormContent children={children} methods={methods} />
+          <FormContent methods={methods}>{children}</FormContent>
         ) : (
           children
         )}
