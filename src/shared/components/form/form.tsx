@@ -1,11 +1,7 @@
 "use client";
 
 import { cn } from "@/shared/utils/cn";
-import {
-  type ButtonHTMLAttributes,
-  type FormHTMLAttributes,
-  type ReactNode,
-} from "react";
+import { type ButtonHTMLAttributes, type FormHTMLAttributes, type ReactNode } from "react";
 import {
   FormProvider,
   useForm,
