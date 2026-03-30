@@ -41,7 +41,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html
       lang={locale}
       className={`${beVietnamPro.variable} h-full antialiased`}
-      suppressHydrationWarning={true}
+      suppressHydrationWarning
     >
       <body className="font-display min-h-full antialiased">
         <Suspense>

@@ -60,5 +60,24 @@
     },
     "loginPrompt": "Already have an account?",
     "loginLink": "Log in"
+  },
+  "AuthVerify": {
+    "title": "Email Verification",
+    "description": "We've sent a 6-digit verification code to {email}.",
+    "fields": {
+      "code": "VERIFICATION CODE"
+    },
+    "placeholders": {
+      "code": "123456"
+    },
+    "errors": {
+      "codeRequired": "Verification code is required.",
+      "codeLength": "Verification code must be 6 digits."
+    },
+    "actions": {
+      "submit": "Verify",
+      "submitting": "Verifying...",
+      "resend": "Resend code"
+    }
   }
 }

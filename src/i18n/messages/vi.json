@@ -1,6 +1,6 @@
 {
   "HomePage": {
-    "title": "Trang chủ ứng dụng Chat đa ngôn ngữ",
+    "title": "Trang chủ ứng dụng chat đa ngôn ngữ",
     "description": "next-intl đã được cấu hình với tiếng Anh và tiếng Việt.",
     "languageLabel": "Ngôn ngữ",
     "english": "English",
@@ -15,7 +15,6 @@
   "AuthSignup": {
     "title": "Tạo tài khoản",
     "description": "Bắt đầu nhắn tin với đội nhóm chỉ trong vài giây.",
-
     "fields": {
       "username": "TÊN ĐĂNG NHẬP",
       "firstName": "TÊN",
@@ -43,7 +42,7 @@
       "lastNameMin": "Họ phải có ít nhất 2 ký tự.",
       "lastNameMax": "Họ tối đa 32 ký tự.",
       "emailRequired": "Vui lòng nhập email.",
-      "emailInvalid": "Hộp thư email không hợp lệ.",
+      "emailInvalid": "Địa chỉ email không hợp lệ.",
       "passwordRequired": "Vui lòng nhập mật khẩu.",
       "passwordMin": "Mật khẩu phải có ít nhất 6 ký tự.",
       "passwordMax": "Mật khẩu tối đa 128 ký tự.",
@@ -53,13 +52,32 @@
       "confirmPasswordMismatch": "Mật khẩu không khớp."
     },
     "actions": {
-      "submit": "Tao tai khoan",
-      "submitting": "Dang tao tai khoan..."
+      "submit": "Tạo tài khoản",
+      "submitting": "Đang tạo tài khoản..."
     },
     "feedback": {
-      "success": "Da gui form dang ky cho {email}."
+      "success": "Đã gửi form đăng ký cho {email}."
     },
-    "loginPrompt": "Ban da co tai khoan?",
-    "loginLink": "Dang nhap"
+    "loginPrompt": "Bạn đã có tài khoản?",
+    "loginLink": "Đăng nhập"
+  },
+  "AuthVerify": {
+    "title": "Xác thực email",
+    "description": "Chúng tôi đã gửi mã xác thực 6 chữ số đến {email}.",
+    "fields": {
+      "code": "MÃ XÁC THỰC"
+    },
+    "placeholders": {
+      "code": "123456"
+    },
+    "errors": {
+      "codeRequired": "Vui lòng nhập mã xác thực.",
+      "codeLength": "Mã xác thực phải gồm 6 chữ số."
+    },
+    "actions": {
+      "submit": "Xác thực",
+      "submitting": "Đang xác thực...",
+      "resend": "Gửi lại mã"
+    }
   }
 }
