@@ -31,8 +31,10 @@ type FormProps<T extends FieldValues> = Omit<
   children: ReactNode | ((methods: UseFormReturn<T>) => ReactNode);
 };
 
-interface FormInputProps<T extends FieldValues>
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "name"> {
+interface FormInputProps<T extends FieldValues> extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "name"
+> {
   name: Path<T>;
   label?: string;
   rules?: RegisterOptions<T, Path<T>>;
@@ -50,7 +52,7 @@ function isRenderProp<T extends FieldValues>(
 }
 
 /**
- * A wrapper component that ensures render prop children correctly subscribe 
+ * A wrapper component that ensures render prop children correctly subscribe
  * to formState changes for re-renders.
  */
 function FormContent<T extends FieldValues>({
@@ -61,7 +63,7 @@ function FormContent<T extends FieldValues>({
   methods: UseFormReturn<T>;
 }) {
   const { formState } = useFormContext<T>();
-  
+
   // Touch the proxy to subscribe to errors and submission count for reactivity
   void formState.errors;
   void formState.submitCount;
@@ -117,7 +119,7 @@ export function FormInput<T extends FieldValues>({
   ...props
 }: FormInputProps<T>) {
   const { control, register } = useFormContext<T>();
-  
+
   // useFormState(control, name) ensures only this input re-renders
   // when its specific error state changes.
   const { errors } = useFormState({
@@ -127,7 +129,7 @@ export function FormInput<T extends FieldValues>({
 
   // Support for nested error paths (e.g. "profile.email")
   const error = name.split(".").reduce((acc: any, key) => acc?.[key], errors);
-  
+
   const inputId = id || (name as string);
   const errorId = `${inputId}-error`;
 
@@ -136,7 +138,7 @@ export function FormInput<T extends FieldValues>({
       {label && (
         <label
           className={cn(
-            "text-sm font-medium leading-none text-zinc-300 peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+            "text-sm leading-none font-medium text-zinc-300 peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
             labelClassName
           )}
           htmlFor={inputId}
@@ -151,18 +153,19 @@ export function FormInput<T extends FieldValues>({
         aria-invalid={!!error}
         aria-describedby={error ? errorId : undefined}
         className={cn(
-          "flex h-10 w-full rounded-md border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 ring-offset-zinc-950 placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all",
+          "border-outline-variant bg-surface-input flex h-10 w-full rounded-md border px-3 py-2 text-sm text-zinc-100 ring-offset-zinc-950 transition-all placeholder:text-zinc-500 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
           className,
           error ? "border-red-500 focus-visible:ring-red-400" : ""
         )}
         {...props}
       />
+
       {error && typeof error.message === "string" ? (
         <p
           id={errorId}
           role="alert"
           className={cn(
-            "text-xs font-medium text-red-500 animate-in fade-in slide-in-from-top-0.5 duration-200",
+            "animate-in fade-in slide-in-from-top-0.5 text-xs font-medium text-red-500 duration-200",
             errorClassName
           )}
         >
@@ -190,7 +193,7 @@ export function FormSubmitButton({
   return (
     <button
       className={cn(
-        "inline-flex h-10 items-center justify-center rounded-md bg-indigo-500 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-indigo-400 shadow-lg active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100",
+        "inline-flex h-10 items-center justify-center rounded-md bg-indigo-500 px-4 py-2 text-sm font-semibold text-white shadow-lg transition-all hover:bg-indigo-400 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100",
         className
       )}
       disabled={disabled || isPending}

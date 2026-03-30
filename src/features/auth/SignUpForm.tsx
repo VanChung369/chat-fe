@@ -34,7 +34,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <section className="w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-900/80 p-6 shadow-2xl shadow-black/40 backdrop-blur-md">
+    <section className="w-full max-w-md rounded-2xl border border-outline-variant bg-background/80 p-6 shadow-2xl shadow-black/40 backdrop-blur-md">
       <header className="mb-6 space-y-2">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-50">{t("title")}</h1>
         <p className="text-sm text-zinc-400">{t("description")}</p>
@@ -48,7 +48,7 @@ const SignUpForm = () => {
               label={t("fields.username")}
               name="username"
               placeholder={t("placeholders.username")}
-              className="bg-zinc-950/50"
+              className="bg-surface-input/50"
             />
 
             <FormInput<SignUpFormValues>
@@ -56,7 +56,7 @@ const SignUpForm = () => {
               label={t("fields.firstName")}
               name="firstName"
               placeholder={t("placeholders.firstName")}
-              className="bg-zinc-950/50"
+              className="bg-surface-input/50"
             />
 
             <FormInput<SignUpFormValues>
@@ -64,7 +64,7 @@ const SignUpForm = () => {
               label={t("fields.lastName")}
               name="lastName"
               placeholder={t("placeholders.lastName")}
-              className="bg-zinc-950/50"
+              className="bg-surface-input/50"
             />
 
             <FormInput<SignUpFormValues>
@@ -72,7 +72,7 @@ const SignUpForm = () => {
               label={t("fields.email")}
               name="email"
               placeholder={t("placeholders.email")}
-              className="bg-zinc-950/50"
+              className="bg-surface-input/50"
               type="email"
             />
 
@@ -81,7 +81,7 @@ const SignUpForm = () => {
               label={t("fields.password")}
               name="password"
               placeholder={t("placeholders.password")}
-              className="bg-zinc-950/50"
+              className="bg-surface-input/50"
               type="password"
             />
 
