@@ -43,7 +43,7 @@ const SignUpForm = () => {
 
       <Form<SignUpFormValues> className="space-y-4" onSubmit={onSubmit} options={options}>
         {() => (
-          <div className="grid grid-cols-12 gap-4">
+          <div className="grid grid-cols-12 gap-6">
             <div className="animate-fade-in-up col-span-12 delay-300">
               <FormInput<SignUpFormValues>
                 autoComplete="username"
