@@ -4,7 +4,7 @@ import type { SubmitHandler, UseFormProps } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Form, FormInput, FormSubmitButton } from "@/shared/components";
+import { Form, FormInput, FormSubmitButton } from "@/shared/components/form";
 import { createSignUpSchema, type SignUpFormValues } from "./schema";
 
 /**
@@ -34,7 +34,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <section className="w-full max-w-md rounded-2xl border border-outline-variant bg-background/80 p-6 shadow-2xl shadow-black/40 backdrop-blur-md">
+    <section className="border-outline-variant bg-background/80 w-full max-w-md rounded-2xl border p-6 shadow-2xl shadow-black/40 backdrop-blur-md">
       <header className="mb-6 space-y-2">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-50">{t("title")}</h1>
         <p className="text-sm text-zinc-400">{t("description")}</p>
