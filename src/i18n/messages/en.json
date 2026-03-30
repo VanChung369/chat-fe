@@ -16,18 +16,20 @@
     "title": "Create your account",
     "description": "Start chatting with your team in a few seconds.",
     "fields": {
-      "username": "Username",
-      "firstName": "First name",
-      "lastName": "Last name",
-      "email": "Email",
-      "password": "Password"
+      "username": "USER NAME",
+      "firstName": "FIRST NAME",
+      "lastName": "LAST NAME",
+      "email": "EMAIL ADDRESS",
+      "password": "PASSWORD",
+      "confirmPassword": "CONFIRM"
     },
     "placeholders": {
-      "username": "janedoe",
-      "firstName": "Jane",
-      "lastName": "Doe",
-      "email": "you@example.com",
-      "password": "6 to 128 characters"
+      "username": "Enter your full name",
+      "firstName": "Enter your first name",
+      "lastName": "Enter your last name",
+      "email": "name@example.com",
+      "password": "••••••••",
+      "confirmPassword": "••••••••"
     },
     "errors": {
       "usernameRequired": "Username is required.",
@@ -43,7 +45,11 @@
       "emailInvalid": "Please enter a valid email address.",
       "passwordRequired": "Password is required.",
       "passwordMin": "Password must have at least 6 characters.",
-      "passwordMax": "Password must have at most 128 characters."
+      "passwordMax": "Password must have at most 128 characters.",
+      "confirmPasswordRequired": "Confirm password is required.",
+      "confirmPasswordMin": "Confirm password must have at least 6 characters.",
+      "confirmPasswordMax": "Confirm password must have at most 128 characters.",
+      "confirmPasswordMismatch": "Passwords do not match."
     },
     "actions": {
       "submit": "Create account",

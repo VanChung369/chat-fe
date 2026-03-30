@@ -34,10 +34,10 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
           </div>
 
           <div className="space-y-4">
-            <h2 className="animate-fade-in-up text-2xl leading-tight font-extrabold tracking-tight text-white delay-200">
+            <h2 className="animate-fade-in-up text-2xl leading-tight font-extrabold tracking-tight text-white delay-100">
               {t("title")}
             </h2>
-            <p className="animate-fade-in-up text-muted/90 mx-auto max-w-lg text-lg leading-relaxed font-medium delay-400">
+            <p className="animate-fade-in-up text-muted/90 mx-auto max-w-lg text-lg leading-relaxed font-medium delay-200">
               {t("description")}
             </p>
           </div>
@@ -52,9 +52,9 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
           <span className="text-xl font-bold tracking-tight text-white">{t("chatApp")}</span>
         </div>
 
-        <div className="animate-fade-in-up w-full max-w-[440px] delay-400">{children}</div>
+        <div className="w-full max-w-lg">{children}</div>
 
-        <footer className="animate-fade-in-up absolute bottom-8 w-full text-center text-xs font-medium text-zinc-500 delay-600">
+        <footer className="animate-fade-in-up absolute bottom-8 w-full text-center text-xs font-medium text-zinc-500 delay-1000">
           {t("copyright", { year: new Date().getFullYear() })}
         </footer>
       </div>
