@@ -40,6 +40,9 @@
 - Module SCSS in component folders for local layout styling.
 - Shared styled utilities from `src/utils/styles/*` for reusable primitives.
 - Match current labels and button copy style for auth and chat actions.
+- Apply responsive styles mobile-first (`base`, then `sm:`, `md:`, `lg:`).
+- Use `cn(...)` to compose conditional responsive class sets instead of manual string concatenation.
+- Keep breakpoint intent explicit in one place when possible (example: `cn("flex flex-col gap-3 md:flex-row md:items-center", isCompact && "md:gap-2")`).
 
 ## Toast and Feedback
 

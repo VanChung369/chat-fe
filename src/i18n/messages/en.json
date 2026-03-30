@@ -5,5 +5,54 @@
     "languageLabel": "Language",
     "english": "English",
     "vietnamese": "Vietnamese"
+  },
+  "AuthLayout": {
+    "chatApp": "ChatApp",
+    "title": "Connect with your team instantly.",
+    "description": "Secure, fast, and reliable messaging for the modern workplace. Join thousands of users relying on ChatApp.",
+    "copyright": "© {year} ChatApp Inc. All rights reserved."
+  },
+  "AuthSignup": {
+    "title": "Create your account",
+    "description": "Start chatting with your team in a few seconds.",
+    "fields": {
+      "username": "Username",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "password": "Password"
+    },
+    "placeholders": {
+      "username": "janedoe",
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "you@example.com",
+      "password": "6 to 128 characters"
+    },
+    "errors": {
+      "usernameRequired": "Username is required.",
+      "usernameMin": "Username must have at least 3 characters.",
+      "usernameMax": "Username must have at most 16 characters.",
+      "firstNameRequired": "First name is required.",
+      "firstNameMin": "First name must have at least 2 characters.",
+      "firstNameMax": "First name must have at most 32 characters.",
+      "lastNameRequired": "Last name is required.",
+      "lastNameMin": "Last name must have at least 2 characters.",
+      "lastNameMax": "Last name must have at most 32 characters.",
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Please enter a valid email address.",
+      "passwordRequired": "Password is required.",
+      "passwordMin": "Password must have at least 6 characters.",
+      "passwordMax": "Password must have at most 128 characters."
+    },
+    "actions": {
+      "submit": "Create account",
+      "submitting": "Creating account..."
+    },
+    "feedback": {
+      "success": "Signup form submitted for {email}."
+    },
+    "loginPrompt": "Already have an account?",
+    "loginLink": "Log in"
   }
 }

@@ -1,50 +1,57 @@
 @theme inline {
-  --font-sans: var(--font-inter), "Inter", "Segoe UI", "Helvetica Neue", Arial,
-    sans-serif;
+  --font-sans: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  --font-display: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
 
-  --color-background: var(--bg-lowest);
+  --color-background: var(--bg-dark);
+  --color-background-dark: var(--bg-dark);
+  --color-background-light: var(--background-light);
+  --color-auth-overlay: var(--gradient-auth-overlay);
+
   --color-foreground: var(--text-strong);
+  --color-muted: var(--text-muted);
+  --color-body: var(--text-body);
+  --color-inverse: var(--text-inverse);
 
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-primary-pressed: var(--primary-pressed);
   --color-primary-glow: var(--primary-glow);
 
-  --color-surface-lowest: var(--bg-lowest);
-  --color-surface-low: var(--surface-low);
-  --color-surface-high: var(--surface-high);
-  --color-outline-variant: var(--outline-variant);
+  --color-surface-lowest: var(--bg-dark);
+  --color-surface-low: var(--surface-dark);
+  --color-surface-input: var(--input-bg);
+  --color-outline-variant: var(--input-border);
 
   --color-online: var(--emerald-online);
   --color-online-ring: var(--emerald-online-ring);
 }
 
 :root {
-  --bg-lowest: #0f172a;
-  --bg-main: #111827;
-  --surface-low: #1e293b;
-  --surface-high: #334155;
-  --surface-glass: rgb(15 23 42 / 50%);
+  --background-light: #f6f6f8;
+  --bg-dark: #101622;
+  --surface-dark: #111722;
+  --input-bg: #192233;
+  --input-border: #324467;
 
   --text-strong: #e2e8f0;
   --text-body: #cbd5e1;
   --text-muted: #94a3b8;
-  --text-inverse: #f8fafc;
+  --text-inverse: #ffffff;
 
-  --primary: #4f46e5;
-  --primary-hover: #6366f1;
-  --primary-pressed: #4338ca;
-  --primary-glow: rgb(79 70 229 / 20%);
+  --primary: #135bec;
+  --primary-hover: #1e69ff;
+  --primary-pressed: #0d46bc;
+  --primary-glow: rgb(19 91 236 / 20%);
 
   --emerald-online: #10b981;
   --emerald-online-ring: #34d399;
 
-  --outline-variant: rgb(148 163 184 / 50%);
+  --gradient-main: linear-gradient(160deg, #101622 0%, #111722 46%, #192233 100%);
 
-  --gradient-main: linear-gradient(160deg, #0f172a 0%, #111827 46%, #1e293b 100%);
-  --gradient-surface: linear-gradient(
-    180deg,
-    rgb(51 65 85 / 32%) 0%,
-    rgb(30 41 59 / 82%) 100%
+  --gradient-auth-overlay: linear-gradient(
+    to bottom,
+    rgba(16, 22, 34, 0.4) 0%,
+    rgba(16, 22, 34, 0.95) 100%
   );
+  --glow-primary: radial-gradient(circle at center, rgba(19, 91, 236, 0.15) 0%, transparent 70%);
 }

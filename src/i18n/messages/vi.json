@@ -1,9 +1,59 @@
 {
   "HomePage": {
-    "title": "Chat frontend da san sang da ngon ngu",
-    "description": "next-intl da duoc cau hinh voi tieng Anh va tieng Viet.",
-    "languageLabel": "Ngon ngu",
+    "title": "Trang chủ ứng dụng Chat đa ngôn ngữ",
+    "description": "next-intl đã được cấu hình với tiếng Anh và tiếng Việt.",
+    "languageLabel": "Ngôn ngữ",
     "english": "English",
-    "vietnamese": "Tieng Viet"
+    "vietnamese": "Tiếng Việt"
+  },
+  "AuthLayout": {
+    "chatApp": "ChatApp",
+    "title": "Kết nối với đội ngũ của bạn ngay lập tức.",
+    "description": "Dịch vụ nhắn tin bảo mật, nhanh chóng và đáng tin cậy cho nơi làm việc hiện đại. Gia nhập cùng hàng ngàn người dùng tin tưởng ChatApp.",
+    "copyright": "© {year} ChatApp Inc. Bảo lưu mọi quyền."
+  },
+  "AuthSignup": {
+    "title": "Tạo tài khoản",
+    "description": "Bắt đầu nhắn tin với đội nhóm chỉ trong vài giây.",
+
+    "fields": {
+      "username": "Ten dang nhap",
+      "firstName": "Ten",
+      "lastName": "Ho",
+      "email": "Email",
+      "password": "Mat khau"
+    },
+    "placeholders": {
+      "username": "nguyenvana",
+      "firstName": "Van A",
+      "lastName": "Nguyen",
+      "email": "ban@example.com",
+      "password": "Tu 6 den 128 ky tu"
+    },
+    "errors": {
+      "usernameRequired": "Vui long nhap ten dang nhap.",
+      "usernameMin": "Ten dang nhap phai co it nhat 3 ky tu.",
+      "usernameMax": "Ten dang nhap toi da 16 ky tu.",
+      "firstNameRequired": "Vui long nhap ten.",
+      "firstNameMin": "Ten phai co it nhat 2 ky tu.",
+      "firstNameMax": "Ten toi da 32 ky tu.",
+      "lastNameRequired": "Vui long nhap ho.",
+      "lastNameMin": "Ho phai co it nhat 2 ky tu.",
+      "lastNameMax": "Ho toi da 32 ky tu.",
+      "emailRequired": "Vui long nhap email.",
+      "emailInvalid": "Email khong hop le.",
+      "passwordRequired": "Vui long nhap mat khau.",
+      "passwordMin": "Mat khau phai co it nhat 6 ky tu.",
+      "passwordMax": "Mat khau toi da 128 ky tu."
+    },
+    "actions": {
+      "submit": "Tao tai khoan",
+      "submitting": "Dang tao tai khoan..."
+    },
+    "feedback": {
+      "success": "Da gui form dang ky cho {email}."
+    },
+    "loginPrompt": "Ban da co tai khoan?",
+    "loginLink": "Dang nhap"
   }
 }

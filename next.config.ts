@@ -23,6 +23,20 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 30 * 60,
+    deviceSizes: [360, 640, 768, 1024, 1280, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    qualities: [75, 85, 95],
+  },
+
   async headers() {
     return [
       {

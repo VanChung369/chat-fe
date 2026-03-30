@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Be_Vietnam_Pro } from "next/font/google";
 import AppWithProviders from "@/providers/AppWithProviders";
 import { isValidLocale, routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
@@ -7,9 +7,10 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import "../../styles/globals.css";
 
-const inter = Inter({
+const beVietnamPro = Be_Vietnam_Pro({
   subsets: ["latin", "vietnamese"],
-  variable: "--font-inter",
+  weight: ["400", "700"],
+  variable: "--font-be-vietnam-pro",
   display: "swap",
 });
 
@@ -39,10 +40,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${inter.variable} h-full antialiased`}
+      className={`${beVietnamPro.variable} h-full antialiased`}
       suppressHydrationWarning={true}
     >
-      <body className="min-h-full">
+      <body className="font-display min-h-full antialiased">
         <Suspense>
           <AppWithProviders>{children}</AppWithProviders>
         </Suspense>
