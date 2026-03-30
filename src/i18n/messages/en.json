@@ -6,6 +6,12 @@
     "english": "English",
     "vietnamese": "Vietnamese"
   },
+  "AuthLayout": {
+    "chatApp": "ChatApp",
+    "title": "Connect with your team instantly.",
+    "description": "Secure, fast, and reliable messaging for the modern workplace. Join thousands of users relying on ChatApp.",
+    "copyright": "© {year} ChatApp Inc. All rights reserved."
+  },
   "AuthSignup": {
     "title": "Create your account",
     "description": "Start chatting with your team in a few seconds.",

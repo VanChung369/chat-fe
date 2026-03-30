@@ -1,14 +1,21 @@
 {
   "HomePage": {
-    "title": "Chat frontend da san sang da ngon ngu",
-    "description": "next-intl da duoc cau hinh voi tieng Anh va tieng Viet.",
-    "languageLabel": "Ngon ngu",
+    "title": "Trang chủ ứng dụng Chat đa ngôn ngữ",
+    "description": "next-intl đã được cấu hình với tiếng Anh và tiếng Việt.",
+    "languageLabel": "Ngôn ngữ",
     "english": "English",
-    "vietnamese": "Tieng Viet"
+    "vietnamese": "Tiếng Việt"
+  },
+  "AuthLayout": {
+    "chatApp": "ChatApp",
+    "title": "Kết nối với đội ngũ của bạn ngay lập tức.",
+    "description": "Dịch vụ nhắn tin bảo mật, nhanh chóng và đáng tin cậy cho nơi làm việc hiện đại. Gia nhập cùng hàng ngàn người dùng tin tưởng ChatApp.",
+    "copyright": "© {year} ChatApp Inc. Bảo lưu mọi quyền."
   },
   "AuthSignup": {
-    "title": "Tao tai khoan",
-    "description": "Bat dau nhan tin voi doi nhom chi trong vai giay.",
+    "title": "Tạo tài khoản",
+    "description": "Bắt đầu nhắn tin với đội nhóm chỉ trong vài giây.",
+
     "fields": {
       "username": "Ten dang nhap",
       "firstName": "Ten",
