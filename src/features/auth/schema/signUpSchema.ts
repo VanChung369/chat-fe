@@ -1,52 +1,35 @@
 import { z } from "zod";
 
-export type SignUpSchemaMessages = {
-  usernameRequired: string;
-  usernameMin: string;
-  usernameMax: string;
-  firstNameRequired: string;
-  firstNameMin: string;
-  firstNameMax: string;
-  lastNameRequired: string;
-  lastNameMin: string;
-  lastNameMax: string;
-  emailRequired: string;
-  emailInvalid: string;
-  passwordRequired: string;
-  passwordMin: string;
-  passwordMax: string;
-};
-
-export const createSignUpSchema = (messages: SignUpSchemaMessages) =>
+export const createSignUpSchema = (t: (key: string, ...args: any) => string) =>
   z.object({
     username: z
       .string()
       .trim()
-      .min(1, { message: messages.usernameRequired })
-      .min(3, { message: messages.usernameMin })
-      .max(16, { message: messages.usernameMax }),
+      .min(1, { message: t("errors.usernameRequired") })
+      .min(3, { message: t("errors.usernameMin") })
+      .max(16, { message: t("errors.usernameMax") }),
     firstName: z
       .string()
       .trim()
-      .min(1, { message: messages.firstNameRequired })
-      .min(2, { message: messages.firstNameMin })
-      .max(32, { message: messages.firstNameMax }),
+      .min(1, { message: t("errors.firstNameRequired") })
+      .min(2, { message: t("errors.firstNameMin") })
+      .max(32, { message: t("errors.firstNameMax") }),
     lastName: z
       .string()
       .trim()
-      .min(1, { message: messages.lastNameRequired })
-      .min(2, { message: messages.lastNameMin })
-      .max(32, { message: messages.lastNameMax }),
+      .min(1, { message: t("errors.lastNameRequired") })
+      .min(2, { message: t("errors.lastNameMin") })
+      .max(32, { message: t("errors.lastNameMax") }),
     email: z
       .string()
       .trim()
-      .min(1, { message: messages.emailRequired })
-      .email({ message: messages.emailInvalid }),
+      .min(1, { message: t("errors.emailRequired") })
+      .email({ message: t("errors.emailInvalid") }),
     password: z
       .string()
-      .min(1, { message: messages.passwordRequired })
-      .min(6, { message: messages.passwordMin })
-      .max(128, { message: messages.passwordMax }),
+      .min(1, { message: t("errors.passwordRequired") })
+      .min(6, { message: t("errors.passwordMin") })
+      .max(128, { message: t("errors.passwordMax") }),
   });
 
 export type SignUpFormValues = z.infer<ReturnType<typeof createSignUpSchema>>;
