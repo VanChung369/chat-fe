@@ -20,7 +20,7 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
             className="object-cover"
           />
 
-          <div className="absolute inset-0 bg-(--gradient-auth-overlay)" />
+          <div className="bg-auth-overlay absolute inset-0" />
         </div>
 
         <div className="relative z-10 max-w-2xl p-12 text-center">

@@ -5,6 +5,7 @@
   --color-background: var(--bg-dark);
   --color-background-dark: var(--bg-dark);
   --color-background-light: var(--background-light);
+  --color-auth-overlay: var(--gradient-auth-overlay);
 
   --color-foreground: var(--text-strong);
   --color-muted: var(--text-muted);
@@ -54,4 +55,3 @@
   );
   --glow-primary: radial-gradient(circle at center, rgba(19, 91, 236, 0.15) 0%, transparent 70%);
 }
-
