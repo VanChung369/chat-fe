@@ -6,6 +6,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler, type UseFormProps } from "react-hook-form";
 import { Form, FormInput, FormSubmitButton } from "@/shared/components/form";
+import { AppRoutes } from "@/shared/constants";
 import { createVerifySchema, type VerifyFormValues } from "../schema/verifySchema";
 import { ShieldCheck } from "lucide-react";
 import { authApi } from "../api/auth-api";
@@ -33,7 +34,7 @@ const VerifyForm = ({ email }: VerifyFormProps) => {
       await authApi.verifyEmail(email, values.code);
       toast.success("Account verified successfully!");
       // Successful verification -> Login
-      router.push("/login?verified=true");
+      router.push(`${AppRoutes.login}?verified=true`);
     } catch (error: any) {
       console.error("Verification Error:", error);
       toast.error(error.message || "Invalid or expired code.");
