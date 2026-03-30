@@ -52,7 +52,7 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
           <span className="text-xl font-bold tracking-tight text-white">{t("chatApp")}</span>
         </div>
 
-        <div className="animate-fade-in-up w-full max-w-[440px] delay-400">{children}</div>
+        <div className="animate-fade-in-up w-full max-w-lg delay-400">{children}</div>
 
         <footer className="animate-fade-in-up absolute bottom-8 w-full text-center text-xs font-medium text-zinc-500 delay-600">
           {t("copyright", { year: new Date().getFullYear() })}

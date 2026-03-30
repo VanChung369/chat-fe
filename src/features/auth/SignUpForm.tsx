@@ -4,8 +4,9 @@ import type { SubmitHandler, UseFormProps } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Form, FormInput, FormSubmitButton } from "@/shared/components/form";
+import { Form, FormInput, FormInputPassword, FormSubmitButton } from "@/shared/components/form";
 import { createSignUpSchema, type SignUpFormValues } from "./schema";
+import { Lock, Mail, ShieldCheck, User } from "lucide-react";
 
 /**
  * SignUpForm handles user registration with automatic validation
@@ -13,9 +14,8 @@ import { createSignUpSchema, type SignUpFormValues } from "./schema";
  */
 const SignUpForm = () => {
   const t = useTranslations("AuthSignup");
-
   const options: UseFormProps<SignUpFormValues> = {
-    mode: "onBlur",
+    mode: "onChange",
     reValidateMode: "onChange",
     resolver: zodResolver(createSignUpSchema(t)),
     defaultValues: {
@@ -24,6 +24,7 @@ const SignUpForm = () => {
       lastName: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
   };
 
@@ -34,7 +35,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <section className="border-outline-variant bg-background/80 w-full max-w-md rounded-2xl border p-6 shadow-2xl shadow-black/40 backdrop-blur-md">
+    <section className="w-full max-w-lg p-6">
       <header className="mb-6 space-y-2">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-50">{t("title")}</h1>
         <p className="text-sm text-zinc-400">{t("description")}</p>
@@ -42,53 +43,76 @@ const SignUpForm = () => {
 
       <Form<SignUpFormValues> className="space-y-4" onSubmit={onSubmit} options={options}>
         {() => (
-          <>
-            <FormInput<SignUpFormValues>
-              autoComplete="username"
-              label={t("fields.username")}
-              name="username"
-              placeholder={t("placeholders.username")}
-              className="bg-surface-input/50"
-            />
+          <div className="grid grid-cols-12 gap-4">
+            <div className="col-span-12">
+              <FormInput<SignUpFormValues>
+                autoComplete="username"
+                label={t("fields.username")}
+                name="username"
+                placeholder={t("placeholders.username")}
+                className="bg-surface-input/50"
+                startIcon={<User size={20} />}
+              />
+            </div>
+            <div className="col-span-6">
+              <FormInput<SignUpFormValues>
+                autoComplete="given-name"
+                label={t("fields.firstName")}
+                name="firstName"
+                placeholder={t("placeholders.firstName")}
+                className="bg-surface-input/50"
+                startIcon={<User size={20} />}
+              />
+            </div>
+            <div className="col-span-6">
+              <FormInput<SignUpFormValues>
+                autoComplete="family-name"
+                label={t("fields.lastName")}
+                name="lastName"
+                placeholder={t("placeholders.lastName")}
+                className="bg-surface-input/50"
+                startIcon={<User size={20} />}
+              />
+            </div>
+            <div className="col-span-12">
+              <FormInput<SignUpFormValues>
+                autoComplete="email"
+                label={t("fields.email")}
+                name="email"
+                placeholder={t("placeholders.email")}
+                className="bg-surface-input/50"
+                type="email"
+                startIcon={<Mail size={20} />}
+              />
+            </div>
 
-            <FormInput<SignUpFormValues>
-              autoComplete="given-name"
-              label={t("fields.firstName")}
-              name="firstName"
-              placeholder={t("placeholders.firstName")}
-              className="bg-surface-input/50"
-            />
+            <div className="col-span-6">
+              <FormInputPassword<SignUpFormValues>
+                autoComplete="new-password"
+                label={t("fields.password")}
+                name="password"
+                placeholder={t("placeholders.password")}
+                className="bg-surface-input/50"
+                startIcon={<Lock size={20} />}
+              />
+            </div>
+            <div className="col-span-6">
+              <FormInputPassword<SignUpFormValues>
+                autoComplete="new-password"
+                label={t("fields.confirmPassword")}
+                name="confirmPassword"
+                placeholder={t("placeholders.confirmPassword")}
+                className="bg-surface-input/50"
+                startIcon={<ShieldCheck size={20} />}
+              />
+            </div>
 
-            <FormInput<SignUpFormValues>
-              autoComplete="family-name"
-              label={t("fields.lastName")}
-              name="lastName"
-              placeholder={t("placeholders.lastName")}
-              className="bg-surface-input/50"
-            />
-
-            <FormInput<SignUpFormValues>
-              autoComplete="email"
-              label={t("fields.email")}
-              name="email"
-              placeholder={t("placeholders.email")}
-              className="bg-surface-input/50"
-              type="email"
-            />
-
-            <FormInput<SignUpFormValues>
-              autoComplete="new-password"
-              label={t("fields.password")}
-              name="password"
-              placeholder={t("placeholders.password")}
-              className="bg-surface-input/50"
-              type="password"
-            />
-
-            <FormSubmitButton className="mt-2 w-full" pendingText={t("actions.submitting")}>
-              {t("actions.submit")}
-            </FormSubmitButton>
-          </>
+            <div className="col-span-12">
+              <FormSubmitButton className="mt-2 w-full" pendingText={t("actions.submitting")}>
+                {t("actions.submit")}
+              </FormSubmitButton>
+            </div>
+          </div>
         )}
       </Form>
 
