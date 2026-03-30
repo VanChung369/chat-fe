@@ -36,7 +36,7 @@ const SignUpForm = () => {
 
   return (
     <section className="w-full max-w-lg p-6">
-      <header className="mb-6 space-y-2">
+      <header className="animate-fade-in-up mb-6 space-y-2 delay-200">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-50">{t("title")}</h1>
         <p className="text-sm text-zinc-400">{t("description")}</p>
       </header>
@@ -44,7 +44,7 @@ const SignUpForm = () => {
       <Form<SignUpFormValues> className="space-y-4" onSubmit={onSubmit} options={options}>
         {() => (
           <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-12">
+            <div className="animate-fade-in-up col-span-12 delay-300">
               <FormInput<SignUpFormValues>
                 autoComplete="username"
                 label={t("fields.username")}
@@ -54,7 +54,7 @@ const SignUpForm = () => {
                 startIcon={<User size={20} />}
               />
             </div>
-            <div className="col-span-6">
+            <div className="animate-fade-in-up col-span-6 delay-400">
               <FormInput<SignUpFormValues>
                 autoComplete="given-name"
                 label={t("fields.firstName")}
@@ -64,7 +64,7 @@ const SignUpForm = () => {
                 startIcon={<User size={20} />}
               />
             </div>
-            <div className="col-span-6">
+            <div className="animate-fade-in-up col-span-6 delay-400">
               <FormInput<SignUpFormValues>
                 autoComplete="family-name"
                 label={t("fields.lastName")}
@@ -74,7 +74,7 @@ const SignUpForm = () => {
                 startIcon={<User size={20} />}
               />
             </div>
-            <div className="col-span-12">
+            <div className="animate-fade-in-up col-span-12 delay-500">
               <FormInput<SignUpFormValues>
                 autoComplete="email"
                 label={t("fields.email")}
@@ -86,7 +86,7 @@ const SignUpForm = () => {
               />
             </div>
 
-            <div className="col-span-6">
+            <div className="animate-fade-in-up col-span-6 delay-600">
               <FormInputPassword<SignUpFormValues>
                 autoComplete="new-password"
                 label={t("fields.password")}
@@ -96,7 +96,7 @@ const SignUpForm = () => {
                 startIcon={<Lock size={20} />}
               />
             </div>
-            <div className="col-span-6">
+            <div className="animate-fade-in-up col-span-6 delay-600">
               <FormInputPassword<SignUpFormValues>
                 autoComplete="new-password"
                 label={t("fields.confirmPassword")}
@@ -107,7 +107,7 @@ const SignUpForm = () => {
               />
             </div>
 
-            <div className="col-span-12">
+            <div className="animate-fade-in-up col-span-12 delay-700">
               <FormSubmitButton className="mt-2 w-full" pendingText={t("actions.submitting")}>
                 {t("actions.submit")}
               </FormSubmitButton>
@@ -115,8 +115,10 @@ const SignUpForm = () => {
           </div>
         )}
       </Form>
-
-      <p className="mt-5 text-sm text-zinc-400">
+      <div className="relative flex items-center py-5">
+        <div className="grow border-t border-slate-200 dark:border-[#324467]"></div>
+      </div>
+      <p className="animate-fade-in-up text-center text-sm text-zinc-400 delay-800">
         {t("loginPrompt")}{" "}
         <Link
           className="font-medium text-indigo-400 transition-colors hover:text-indigo-300"
