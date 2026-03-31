@@ -94,6 +94,7 @@
   "AuthVerify": {
     "title": "Xác thực email",
     "description": "Chúng tôi đã gửi mã xác thực 6 chữ số đến {email}.",
+    "didntReceiveCode": "Bạn không nhận được mã?",
     "fields": {
       "code": "MÃ XÁC THỰC"
     },
@@ -107,13 +108,73 @@
     "actions": {
       "submit": "Xác thực",
       "submitting": "Đang xác thực...",
-      "resend": "Gửi lại mã"
+      "resend": "Gửi lại mã",
+      "backToForgotPassword": "Quay lại quên mật khẩu"
     },
     "feedback": {
       "success": "Tài khoản đã được xác thực thành công!",
       "resendSuccess": "Mã xác thực đã được gửi lại thành công!",
       "error": "Mã xác thực không hợp lệ hoặc đã hết hạn.",
       "resendError": "Gửi lại mã thất bại."
+    }
+  },
+  "AuthForgotPassword": {
+    "title": "Quên mật khẩu",
+    "description": "Nhập địa chỉ email của bạn và chúng tôi sẽ gửi cho bạn mã gồm 6 chữ số để đặt lại mật khẩu.",
+    "fields": {
+      "email": "ĐỊA CHỈ EMAIL"
+    },
+    "placeholders": {
+      "email": "name@example.com"
+    },
+    "actions": {
+      "submit": "Gửi mã đặt lại",
+      "submitting": "Đang gửi..."
+    },
+    "feedback": {
+      "success": "Mã đặt lại mật khẩu đã được gửi! Đang chuyển hướng...",
+      "error": "Không thể gửi mã đặt lại mật khẩu. Vui lòng thử lại."
+    },
+    "errors": {
+      "emailRequired": "Vui lòng nhập email.",
+      "emailInvalid": "Địa chỉ email không hợp lệ."
+    },
+    "backToLogin": "Quay lại đăng nhập"
+  },
+  "AuthResetPassword": {
+    "title": "Đặt lại mật khẩu",
+    "description": "Nhập mã gồm 6 chữ số được gửi tới {email} và mật khẩu mới của bạn.",
+    "fields": {
+      "code": "MÃ ĐẶT LẠI",
+      "password": "MẬT KHẨU MỚI",
+      "confirmPassword": "XÁC NHẬN MẬT KHẨU MỚI"
+    },
+    "placeholders": {
+      "code": "123456",
+      "password": "••••••••",
+      "confirmPassword": "••••••••"
+    },
+    "errors": {
+      "codeRequired": "Vui lòng nhập mã đặt lại.",
+      "codeLength": "Mã đặt lại phải gồm 6 chữ số.",
+      "emailRequired": "Vui lòng nhập email.",
+      "emailInvalid": "Địa chỉ email không hợp lệ.",
+      "passwordRequired": "Vui lòng nhập mật khẩu mới.",
+      "passwordMin": "Mật khẩu phải có ít nhất 6 ký tự.",
+      "passwordMax": "Mật khẩu tối đa 128 ký tự.",
+      "passwordComplexity": "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt.",
+      "confirmPasswordRequired": "Vui lòng xác nhận mật khẩu.",
+      "confirmPasswordMin": "Xác nhận mật khẩu phải có ít nhất 6 ký tự.",
+      "confirmPasswordMax": "Xác nhận mật khẩu tối đa 128 ký tự.",
+      "confirmPasswordMismatch": "Mật khẩu không khớp."
+    },
+    "actions": {
+      "submit": "Đặt lại mật khẩu",
+      "submitting": "Đang đặt lại..."
+    },
+    "feedback": {
+      "success": "Đặt lại mật khẩu thành công! Đang chuyển đến đăng nhập...",
+      "error": "Mã không hợp lệ hoặc đặt lại mật khẩu thất bại."
     }
   },
   "Common": {

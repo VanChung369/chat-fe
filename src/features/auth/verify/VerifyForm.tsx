@@ -6,7 +6,7 @@ import { useRouter } from "@/i18n/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, type UseFormProps } from "react-hook-form";
 import { Form, FormOtpInput, FormSubmitButton } from "@/shared/components/form";
-import { AppRoutes, pathWithQuery } from "@/shared/constants";
+import { AppRoutes, pathWithQuery, RESEND_COOLDOWN } from "@/shared/constants";
 import { createVerifySchema, type VerifyFormValues } from "../schema/verifySchema";
 import { authApi } from "../api/auth-api";
 import { toast } from "sonner";
@@ -76,7 +76,7 @@ const VerifyForm = ({ email, autoResend }: VerifyFormProps) => {
     try {
       await authApi.resendCode(email);
       !(autoResend && !hasResent.current) && toast.success(t("feedback.resendSuccess"));
-      setCountdown(120);
+      setCountdown(RESEND_COOLDOWN);
     } catch (error) {
       const err = error as ErrorResponse;
       toast.error(err.message || t("feedback.resendError"));
