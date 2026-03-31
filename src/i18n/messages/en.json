@@ -60,5 +60,34 @@
     },
     "loginPrompt": "Already have an account?",
     "loginLink": "Log in"
+  },
+  "AuthVerify": {
+    "title": "Email Verification",
+    "description": "We've sent a 6-digit verification code to {email}.",
+    "didntReceiveCode": "Didn't receive a code?",
+    "fields": {
+      "code": "VERIFICATION CODE"
+    },
+    "placeholders": {
+      "code": "123456"
+    },
+    "errors": {
+      "codeRequired": "Verification code is required.",
+      "codeLength": "Verification code must be 6 digits."
+    },
+    "actions": {
+      "submit": "Verify Account",
+      "submitting": "Verifying...",
+      "resend": "Resend code"
+    },
+    "feedback": {
+      "success": "Account verified successfully!",
+      "resendSuccess": "Code resent successfully!",
+      "error": "Invalid or expired code.",
+      "resendError": "Failed to resend code."
+    }
+  },
+  "Common": {
+    "unexpectedError": "An unexpected error occurred. Please try again."
   }
 }

@@ -5,8 +5,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Form, FormInput, FormInputPassword, FormSubmitButton } from "@/shared/components/form";
-import { createSignUpSchema, type SignUpFormValues } from "./schema";
+import { AppRoutes, pathWithQuery } from "@/shared/constants";
+import { createSignUpSchema, type SignUpFormValues } from "../schema";
 import { Lock, Mail, ShieldCheck, User } from "lucide-react";
+import { authApi } from "../api/auth-api";
+import { useRouter } from "@/i18n/navigation";
+import { toast } from "sonner";
+import { AuthHeader } from "../components/AuthHeader";
 
 /**
  * SignUpForm handles user registration with automatic validation
@@ -14,6 +19,9 @@ import { Lock, Mail, ShieldCheck, User } from "lucide-react";
  */
 const SignUpForm = () => {
   const t = useTranslations("AuthSignup");
+  const tCommon = useTranslations("Common");
+  const router = useRouter();
+
   const options: UseFormProps<SignUpFormValues> = {
     mode: "onChange",
     reValidateMode: "onChange",
@@ -29,17 +37,22 @@ const SignUpForm = () => {
   };
 
   const onSubmit: SubmitHandler<SignUpFormValues> = async (values) => {
-    // Artificial delay to simulate network latency
-    await new Promise((resolve) => setTimeout(resolve, 350));
-    console.log("Registration Success:", values);
+    try {
+      const { confirmPassword, ...registerData } = values;
+      await authApi.signUp(registerData);
+
+      toast.success(t("feedback.success", { email: values.email }));
+      // Redirect to verification page with email in query
+      router.push(pathWithQuery(AppRoutes.verify, { email: values.email }));
+    } catch (error: any) {
+      console.error("Registration Error:", error);
+      toast.error(error.message || tCommon("unexpectedError"));
+    }
   };
 
   return (
     <section className="w-full max-w-lg p-6">
-      <header className="animate-fade-in-up mb-6 space-y-2 delay-200">
-        <h1 className="text-2xl font-semibold tracking-tight text-zinc-50">{t("title")}</h1>
-        <p className="text-sm text-zinc-400">{t("description")}</p>
-      </header>
+      <AuthHeader title={t("title")} description={t("description")} />
 
       <Form<SignUpFormValues> className="space-y-4" onSubmit={onSubmit} options={options}>
         {() => (
@@ -122,7 +135,7 @@ const SignUpForm = () => {
         {t("loginPrompt")}{" "}
         <Link
           className="font-medium text-indigo-400 transition-colors hover:text-indigo-300"
-          href="/login"
+          href={AppRoutes.login}
         >
           {t("loginLink")}
         </Link>

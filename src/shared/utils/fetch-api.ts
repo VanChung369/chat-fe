@@ -6,7 +6,7 @@
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 interface FetchOptions extends RequestInit {
-  data?: any;
+  data?: unknown;
 }
 
 /**
@@ -38,7 +38,7 @@ export async function fetchApi<T>(endpoint: string, options: FetchOptions = {}):
     } catch {
       errorData = { message: response.statusText };
     }
-    
+
     throw new Error(errorData?.message || `HTTP error! status: ${response.status}`);
   }
 
@@ -55,8 +55,12 @@ export async function fetchApi<T>(endpoint: string, options: FetchOptions = {}):
  */
 export const fetchClient = {
   get: <T>(url: string, options?: FetchOptions) => fetchApi<T>(url, { ...options, method: "GET" }),
-  post: <T>(url: string, data: any, options?: FetchOptions) => fetchApi<T>(url, { ...options, method: "POST", data }),
-  put: <T>(url: string, data: any, options?: FetchOptions) => fetchApi<T>(url, { ...options, method: "PUT", data }),
-  patch: <T>(url: string, data: any, options?: FetchOptions) => fetchApi<T>(url, { ...options, method: "PATCH", data }),
-  delete: <T>(url: string, options?: FetchOptions) => fetchApi<T>(url, { ...options, method: "DELETE" }),
+  post: <T>(url: string, data: any, options?: FetchOptions) =>
+    fetchApi<T>(url, { ...options, method: "POST", data }),
+  put: <T>(url: string, data: any, options?: FetchOptions) =>
+    fetchApi<T>(url, { ...options, method: "PUT", data }),
+  patch: <T>(url: string, data: any, options?: FetchOptions) =>
+    fetchApi<T>(url, { ...options, method: "PATCH", data }),
+  delete: <T>(url: string, options?: FetchOptions) =>
+    fetchApi<T>(url, { ...options, method: "DELETE" }),
 };
