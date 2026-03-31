@@ -108,13 +108,73 @@
     "actions": {
       "submit": "Verify Account",
       "submitting": "Verifying...",
-      "resend": "Resend code"
+      "resend": "Resend code",
+      "backToForgotPassword": "Back to forgot password"
     },
     "feedback": {
       "success": "Account verified successfully!",
       "resendSuccess": "Code resent successfully!",
       "error": "Invalid or expired code.",
       "resendError": "Failed to resend code."
+    }
+  },
+  "AuthForgotPassword": {
+    "title": "Forgot Password",
+    "description": "Enter your email address and we'll send you a 6-digit code to reset your password.",
+    "fields": {
+      "email": "EMAIL ADDRESS"
+    },
+    "placeholders": {
+      "email": "name@example.com"
+    },
+    "actions": {
+      "submit": "Send Reset Code",
+      "submitting": "Sending..."
+    },
+    "feedback": {
+      "success": "Reset code sent! Redirecting to reset page...",
+      "error": "Could not send reset code. Please try again."
+    },
+    "errors": {
+      "emailRequired": "Please enter your email.",
+      "emailInvalid": "Invalid email address."
+    },
+    "backToLogin": "Back to login"
+  },
+  "AuthResetPassword": {
+    "title": "Reset Password",
+    "description": "Enter the 6-digit code sent to {email} and your new password.",
+    "fields": {
+      "code": "RESET CODE",
+      "password": "NEW PASSWORD",
+      "confirmPassword": "CONFIRM PASSWORD"
+    },
+    "placeholders": {
+      "code": "123456",
+      "password": "••••••••",
+      "confirmPassword": "••••••••"
+    },
+    "errors": {
+      "codeRequired": "Please enter the reset code.",
+      "codeLength": "Reset code must be 6 digits.",
+      "emailRequired": "Please enter your email.",
+      "emailInvalid": "Invalid email address.",
+      "passwordRequired": "Please enter a new password.",
+      "passwordMin": "Password must be at least 8 characters.",
+      "passwordMax": "Password must be at most 128 characters.",
+      "passwordComplexity": "Password must contain at least 1 uppercase, 1 lowercase, 1 number, and 1 special character.",
+      "confirmPasswordRequired": "Please confirm your password.",
+      "confirmPasswordMin": "Confirm password must be at least 8 characters.",
+      "confirmPasswordMax": "Confirm password must be at most 128 characters.",
+      "confirmPasswordMismatch": "Passwords do not match."
+    },
+    "actions": {
+      "submit": "Reset Password",
+      "submitting": "Resetting..."
+    },
+    "feedback": {
+      "success": "Password reset successfully! Redirecting to login...",
+      "error": "Invalid code or failed to reset password."
     }
   },
   "Common": {

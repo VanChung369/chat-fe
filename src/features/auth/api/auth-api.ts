@@ -1,6 +1,7 @@
 import { fetchClient } from "@/shared/utils/fetch-api";
 import type { SignUpFormValues } from "../schema/signUpSchema";
 import type { LoginFormValues } from "../schema/loginSchema";
+import type { ResetPasswordValues } from "../schema/resetPasswordSchema";
 
 export const authApi = {
   /**
@@ -9,7 +10,7 @@ export const authApi = {
   signUp: async (data: Omit<SignUpFormValues, "confirmPassword">) => {
     return fetchClient.post("/auth/register", data);
   },
-  
+
   /**
    * Logs in a user.
    */
@@ -29,5 +30,19 @@ export const authApi = {
    */
   resendCode: async (email: string) => {
     return fetchClient.post("/auth/resend-code", { email });
+  },
+
+  /**
+   * Initiates the password reset process.
+   */
+  forgotPassword: async (email: string) => {
+    return fetchClient.post("/auth/forgot-password", { email });
+  },
+
+  /**
+   * Resets the user's password with a code.
+   */
+  resetPassword: async (data: ResetPasswordValues) => {
+    return fetchClient.post("/auth/reset-password", data);
   },
 };
