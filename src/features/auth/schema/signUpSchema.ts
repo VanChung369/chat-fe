@@ -30,7 +30,10 @@ export const createSignUpSchema = (t: (key: string, ...args: any) => string) =>
         .string()
         .min(1, { message: t("errors.passwordRequired") })
         .min(6, { message: t("errors.passwordMin") })
-        .max(128, { message: t("errors.passwordMax") }),
+        .max(128, { message: t("errors.passwordMax") })
+        .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])/, {
+          message: t("errors.passwordComplexity"),
+        }),
       confirmPassword: z
         .string()
         .min(1, { message: t("errors.confirmPasswordRequired") })

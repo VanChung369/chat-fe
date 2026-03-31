@@ -8,8 +8,6 @@ export async function generateMetadata() {
   };
 }
 
-const SignUpPage = () => {
+export default function SignUpPage() {
   return <SignUpForm />;
-};
-
-export default SignUpPage;
+}

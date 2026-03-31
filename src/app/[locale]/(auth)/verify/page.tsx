@@ -4,7 +4,7 @@ import { AppRoutes } from "@/shared/constants";
 import VerifyForm from "@/features/auth/verify/VerifyForm";
 
 interface VerifyPageProps {
-  searchParams: Promise<{ email?: string }>;
+  searchParams: Promise<{ email?: string; resend?: string }>;
 }
 
 export async function generateMetadata() {
@@ -15,11 +15,11 @@ export async function generateMetadata() {
 }
 
 export default async function VerifyPage({ searchParams }: VerifyPageProps) {
-  const { email } = await searchParams;
+  const { email, resend } = await searchParams;
 
   if (!email) {
     redirect(AppRoutes.signup);
   }
 
-  return <VerifyForm email={email} />;
+  return <VerifyForm email={email} autoResend={resend === "true"} />;
 }

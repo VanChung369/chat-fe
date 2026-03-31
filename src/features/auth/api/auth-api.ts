@@ -1,5 +1,6 @@
 import { fetchClient } from "@/shared/utils/fetch-api";
 import type { SignUpFormValues } from "../schema/signUpSchema";
+import type { LoginFormValues } from "../schema/loginSchema";
 
 export const authApi = {
   /**
@@ -7,6 +8,13 @@ export const authApi = {
    */
   signUp: async (data: Omit<SignUpFormValues, "confirmPassword">) => {
     return fetchClient.post("/auth/register", data);
+  },
+  
+  /**
+   * Logs in a user.
+   */
+  login: async (data: LoginFormValues) => {
+    return fetchClient.post("/auth/login", data);
   },
 
   /**
