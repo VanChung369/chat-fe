@@ -5,7 +5,7 @@
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
-interface FetchOptions extends RequestInit {
+export interface FetchOptions extends RequestInit {
   data?: unknown;
 }
 
