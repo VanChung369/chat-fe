@@ -147,7 +147,7 @@ export function FormOtpInput<T extends FieldValues>({
             onFocus={(e) => e.target.select()}
             onBlur={onBlur}
             className={cn(
-              "flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/40 text-center text-xl font-bold transition-all sm:h-14 sm:w-14",
+              "border-outline-variant flex h-12 w-12 items-center justify-center rounded-xl border bg-zinc-900/40 text-center text-xl font-bold ring-offset-zinc-950 transition-all sm:h-14 sm:w-14",
               "focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none",
               "hover:border-zinc-700",
               "placeholder:text-zinc-700",

@@ -3,6 +3,7 @@ export const AppRoutes = {
   login: "/login",
   signup: "/signup",
   verify: "/verify",
+  forgotPassword: "/forgot-password",
 } as const;
 
 export type AppRouteKey = keyof typeof AppRoutes;

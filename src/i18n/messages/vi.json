@@ -46,6 +46,7 @@
       "passwordRequired": "Vui lòng nhập mật khẩu.",
       "passwordMin": "Mật khẩu phải có ít nhất 6 ký tự.",
       "passwordMax": "Mật khẩu tối đa 128 ký tự.",
+      "passwordComplexity": "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt.",
       "confirmPasswordRequired": "Vui lòng xác nhận mật khẩu.",
       "confirmPasswordMin": "Xác nhận mật khẩu phải có ít nhất 6 ký tự.",
       "confirmPasswordMax": "Xác nhận mật khẩu tối đa 128 ký tự.",
@@ -60,6 +61,35 @@
     },
     "loginPrompt": "Bạn đã có tài khoản?",
     "loginLink": "Đăng nhập"
+  },
+  "AuthLogin": {
+    "title": "Chào mừng trở lại",
+    "description": "Đăng nhập vào tài khoản của bạn để tiếp tục trò chuyện.",
+    "fields": {
+      "email": "ĐỊA CHỈ EMAIL",
+      "password": "MẬT KHẨU"
+    },
+    "placeholders": {
+      "email": "ten@example.com",
+      "password": "••••••••"
+    },
+    "errors": {
+      "emailRequired": "Vui lòng nhập email.",
+      "emailInvalid": "Địa chỉ email không hợp lệ.",
+      "passwordRequired": "Vui lòng nhập mật khẩu."
+    },
+    "actions": {
+      "submit": "Đăng nhập",
+      "submitting": "Đang đăng nhập...",
+      "forgotPassword": "Quên mật khẩu?",
+      "signupPrompt": "Bạn chưa có tài khoản?",
+      "signupLink": "Đăng ký"
+    },
+    "feedback": {
+      "loginSuccess": "Đăng nhập thành công!",
+      "unverified": "Tài khoản của bạn chưa được xác thực. Đang chuyển sang trang xác thực...",
+      "invalidCredentials": "Email hoặc mật khẩu không chính xác. Vui lòng thử lại."
+    }
   },
   "AuthVerify": {
     "title": "Xác thực email",

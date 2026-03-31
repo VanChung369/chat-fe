@@ -12,6 +12,7 @@ import { authApi } from "../api/auth-api";
 import { useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
 import { AuthHeader } from "../components/AuthHeader";
+import { ErrorResponse } from "@/shared/types/errors";
 
 /**
  * SignUpForm handles user registration with automatic validation
@@ -44,9 +45,10 @@ const SignUpForm = () => {
       toast.success(t("feedback.success", { email: values.email }));
       // Redirect to verification page with email in query
       router.push(pathWithQuery(AppRoutes.verify, { email: values.email }));
-    } catch (error: any) {
-      console.error("Registration Error:", error);
-      toast.error(error.message || tCommon("unexpectedError"));
+    } catch (error) {
+      const err = error as ErrorResponse;
+      console.error("Registration Error:", err);
+      toast.error(err.message || tCommon("unexpectedError"));
     }
   };
 
@@ -128,10 +130,10 @@ const SignUpForm = () => {
           </div>
         )}
       </Form>
-      <div className="relative flex items-center py-5">
+      <div className="animate-fade-in-up relative flex items-center py-5 delay-800">
         <div className="grow border-t border-slate-200 dark:border-[#324467]"></div>
       </div>
-      <p className="animate-fade-in-up text-center text-sm text-zinc-400 delay-800">
+      <p className="animate-fade-in-up text-center text-sm text-zinc-400 delay-900">
         {t("loginPrompt")}{" "}
         <Link
           className="font-medium text-indigo-400 transition-colors hover:text-indigo-300"

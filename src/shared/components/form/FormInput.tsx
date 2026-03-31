@@ -21,6 +21,8 @@ export interface FormInputProps<T extends FieldValues>
   errorClassName?: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  labelAction?: ReactNode;
+  inputBottomAction?: ReactNode;
 }
 
 /**
@@ -38,6 +40,8 @@ export function FormInput<T extends FieldValues>({
   type = "text",
   startIcon,
   endIcon,
+  labelAction,
+  inputBottomAction,
   ...props
 }: FormInputProps<T>) {
   "use no memo";
@@ -58,15 +62,18 @@ export function FormInput<T extends FieldValues>({
   return (
     <div className={cn("flex flex-col gap-2", containerClassName)}>
       {label && (
-        <label
-          className={cn(
-            "text-sm leading-none font-semibold text-zinc-300 peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-            labelClassName
-          )}
-          htmlFor={inputId}
-        >
-          {label}
-        </label>
+        <div className="flex items-center justify-between">
+          <label
+            className={cn(
+              "text-sm leading-none font-semibold text-zinc-300 peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+              labelClassName
+            )}
+            htmlFor={inputId}
+          >
+            {label}
+          </label>
+          {labelAction}
+        </div>
       )}
       <div className="relative">
         {startIcon && (
@@ -95,18 +102,23 @@ export function FormInput<T extends FieldValues>({
           </div>
         )}
       </div>
-      {error && typeof error.message === "string" ? (
-        <p
-          id={errorId}
-          role="alert"
-          className={cn(
-            "animate-in fade-in slide-in-from-top-1 text-sm font-medium text-red-400 duration-200",
-            errorClassName
-          )}
-        >
-          {error.message}
-        </p>
-      ) : null}
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex-1">
+          {error && typeof error.message === "string" ? (
+            <p
+              id={errorId}
+              role="alert"
+              className={cn(
+                "animate-in fade-in slide-in-from-top-1 text-sm font-medium text-red-400 duration-200",
+                errorClassName
+              )}
+            >
+              {error.message}
+            </p>
+          ) : null}
+        </div>
+        {inputBottomAction}
+      </div>
     </div>
   );
 }

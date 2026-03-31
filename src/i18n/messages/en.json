@@ -46,6 +46,7 @@
       "passwordRequired": "Password is required.",
       "passwordMin": "Password must have at least 6 characters.",
       "passwordMax": "Password must have at most 128 characters.",
+      "passwordComplexity": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
       "confirmPasswordRequired": "Confirm password is required.",
       "confirmPasswordMin": "Confirm password must have at least 6 characters.",
       "confirmPasswordMax": "Confirm password must have at most 128 characters.",
@@ -60,6 +61,35 @@
     },
     "loginPrompt": "Already have an account?",
     "loginLink": "Log in"
+  },
+  "AuthLogin": {
+    "title": "Welcome back",
+    "description": "Log in to your account to continue chatting.",
+    "fields": {
+      "email": "EMAIL ADDRESS",
+      "password": "PASSWORD"
+    },
+    "placeholders": {
+      "email": "name@example.com",
+      "password": "••••••••"
+    },
+    "errors": {
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Please enter a valid email address.",
+      "passwordRequired": "Password is required."
+    },
+    "actions": {
+      "submit": "Log in",
+      "submitting": "Logging in...",
+      "forgotPassword": "Forgot password?",
+      "signupPrompt": "Don't have an account?",
+      "signupLink": "Sign up"
+    },
+    "feedback": {
+      "loginSuccess": "Logged in successfully!",
+      "unverified": "Your account is not verified. Redirecting to verification page...",
+      "invalidCredentials": "Invalid email or password. Please try again."
+    }
   },
   "AuthVerify": {
     "title": "Email Verification",

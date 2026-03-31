@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useEffectEvent } from "react";
+import { useState, useEffect, useEffectEvent, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,9 +15,10 @@ import { AuthHeader } from "../components/AuthHeader";
 
 interface VerifyFormProps {
   email: string;
+  autoResend?: boolean;
 }
 
-const VerifyForm = ({ email }: VerifyFormProps) => {
+const VerifyForm = ({ email, autoResend }: VerifyFormProps) => {
   const t = useTranslations("AuthVerify");
   const router = useRouter();
   const [countdown, setCountdown] = useState(0);
@@ -33,6 +34,21 @@ const VerifyForm = ({ email }: VerifyFormProps) => {
 
     return () => clearInterval(timer);
   }, []);
+
+  const hasResent = useRef(false);
+
+  // Handle automatic resend logic from login redirect
+  useEffect(() => {
+    if (autoResend && !hasResent.current) {
+      hasResent.current = true;
+      handleResend();
+
+      // Clean up the URL to prevent repeated resends
+      const cleanPath = pathWithQuery(AppRoutes.verify, { email });
+      router.replace(cleanPath);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoResend, email]);
 
   const options: UseFormProps<VerifyFormValues> = {
     mode: "onChange",
@@ -59,7 +75,7 @@ const VerifyForm = ({ email }: VerifyFormProps) => {
     if (countdown > 0) return;
     try {
       await authApi.resendCode(email);
-      toast.success(t("feedback.resendSuccess"));
+      !(autoResend && !hasResent.current) && toast.success(t("feedback.resendSuccess"));
       setCountdown(120);
     } catch (error) {
       const err = error as ErrorResponse;
