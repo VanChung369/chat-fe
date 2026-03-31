@@ -7,7 +7,7 @@ interface VerifyPageProps {
   searchParams: Promise<{ email?: string }>;
 }
 
-export async function generateMetadata({ searchParams }: VerifyPageProps) {
+export async function generateMetadata() {
   const t = await getTranslations("AuthVerify");
   return {
     title: t("title"),

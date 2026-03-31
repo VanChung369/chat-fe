@@ -64,6 +64,7 @@
   "AuthVerify": {
     "title": "Email Verification",
     "description": "We've sent a 6-digit verification code to {email}.",
+    "didntReceiveCode": "Didn't receive a code?",
     "fields": {
       "code": "VERIFICATION CODE"
     },
@@ -75,9 +76,15 @@
       "codeLength": "Verification code must be 6 digits."
     },
     "actions": {
-      "submit": "Verify",
+      "submit": "Verify Account",
       "submitting": "Verifying...",
       "resend": "Resend code"
+    },
+    "feedback": {
+      "success": "Account verified successfully!",
+      "resendSuccess": "Code resent successfully!",
+      "error": "Invalid or expired code.",
+      "resendError": "Failed to resend code."
     }
   },
   "Common": {

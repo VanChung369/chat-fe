@@ -11,6 +11,7 @@ import { Lock, Mail, ShieldCheck, User } from "lucide-react";
 import { authApi } from "../api/auth-api";
 import { useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
+import { AuthHeader } from "../components/AuthHeader";
 
 /**
  * SignUpForm handles user registration with automatic validation
@@ -51,10 +52,7 @@ const SignUpForm = () => {
 
   return (
     <section className="w-full max-w-lg p-6">
-      <header className="animate-fade-in-up mb-6 space-y-2 delay-200">
-        <h1 className="text-2xl font-semibold tracking-tight text-zinc-50">{t("title")}</h1>
-        <p className="text-sm text-zinc-400">{t("description")}</p>
-      </header>
+      <AuthHeader title={t("title")} description={t("description")} />
 
       <Form<SignUpFormValues> className="space-y-4" onSubmit={onSubmit} options={options}>
         {() => (

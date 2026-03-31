@@ -78,6 +78,12 @@
       "submit": "Xác thực",
       "submitting": "Đang xác thực...",
       "resend": "Gửi lại mã"
+    },
+    "feedback": {
+      "success": "Tài khoản đã được xác thực thành công!",
+      "resendSuccess": "Mã xác thực đã được gửi lại thành công!",
+      "error": "Mã xác thực không hợp lệ hoặc đã hết hạn.",
+      "resendError": "Gửi lại mã thất bại."
     }
   },
   "Common": {

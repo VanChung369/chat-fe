@@ -1,17 +1,17 @@
 "use client";
 
+import { useState, useEffect, useEffectEvent } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
-import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, type SubmitHandler, type UseFormProps } from "react-hook-form";
-import { Form, FormInput, FormSubmitButton } from "@/shared/components/form";
+import { type SubmitHandler, type UseFormProps } from "react-hook-form";
+import { Form, FormOtpInput, FormSubmitButton } from "@/shared/components/form";
 import { AppRoutes, pathWithQuery } from "@/shared/constants";
 import { createVerifySchema, type VerifyFormValues } from "../schema/verifySchema";
-import { ShieldCheck } from "lucide-react";
 import { authApi } from "../api/auth-api";
-import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
+import { ErrorResponse } from "@/shared/types/errors";
+import { AuthHeader } from "../components/AuthHeader";
 
 interface VerifyFormProps {
   email: string;
@@ -20,6 +20,19 @@ interface VerifyFormProps {
 const VerifyForm = ({ email }: VerifyFormProps) => {
   const t = useTranslations("AuthVerify");
   const router = useRouter();
+  const [countdown, setCountdown] = useState(0);
+
+  const onTick = useEffectEvent(() => {
+    setCountdown((c) => c - 1);
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      onTick();
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const options: UseFormProps<VerifyFormValues> = {
     mode: "onChange",
@@ -32,42 +45,40 @@ const VerifyForm = ({ email }: VerifyFormProps) => {
   const onSubmit: SubmitHandler<VerifyFormValues> = async (values) => {
     try {
       await authApi.verifyEmail(email, values.code);
-      toast.success("Account verified successfully!");
+      toast.success(t("feedback.success"));
       // Successful verification -> Login
       router.push(pathWithQuery(AppRoutes.login, { verified: true }));
-    } catch (error: any) {
-      console.error("Verification Error:", error);
-      toast.error(error.message || "Invalid or expired code.");
+    } catch (error) {
+      const err = error as ErrorResponse;
+      console.error("Verification Error:", err);
+      toast.error(err.message || t("feedback.error"));
     }
   };
 
   const handleResend = async () => {
+    if (countdown > 0) return;
     try {
       await authApi.resendCode(email);
-      toast.success("Code resent successfully!");
-    } catch (error: any) {
-      toast.error(error.message || "Failed to resend code.");
+      toast.success(t("feedback.resendSuccess"));
+      setCountdown(120);
+    } catch (error) {
+      const err = error as ErrorResponse;
+      toast.error(err.message || t("feedback.resendError"));
     }
   };
 
   return (
     <section className="w-full max-w-lg p-6">
-      <header className="animate-fade-in-up mb-8 space-y-2">
-        <h1 className="text-2xl font-semibold tracking-tight text-zinc-50">{t("title")}</h1>
-        <p className="text-sm text-zinc-400">{t("description", { email })}</p>
-      </header>
+      <AuthHeader title={t("title")} description={t("description", { email })} />
 
-      <Form<VerifyFormValues> className="space-y-6" onSubmit={onSubmit} options={options}>
-        {() => (
+      <Form<VerifyFormValues> className="space-y-4" onSubmit={onSubmit} options={options}>
+        {({ control }) => (
           <div className="space-y-4 text-left">
             <div className="animate-fade-in-up">
-              <FormInput<VerifyFormValues>
+              <FormOtpInput<VerifyFormValues>
+                control={control}
                 label={t("fields.code")}
                 name="code"
-                placeholder={t("placeholders.code")}
-                className="bg-surface-input/50 text-center text-lg font-bold tracking-[0.5em]"
-                startIcon={<ShieldCheck size={20} />}
-                maxLength={6}
               />
             </div>
 
@@ -80,12 +91,14 @@ const VerifyForm = ({ email }: VerifyFormProps) => {
         )}
       </Form>
 
-      <div className="animate-fade-in-up mt-8">
+      <div className="animate-fade-in-up mt-4 flex items-center gap-2">
+        <p className="text-sm text-zinc-400">{t("didntReceiveCode")}</p>
         <button
           onClick={handleResend}
-          className="text-sm font-medium text-indigo-400 transition-colors hover:text-indigo-300"
+          disabled={countdown > 0}
+          className="text-sm font-medium text-indigo-400 transition-colors hover:text-indigo-300 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {t("actions.resend")}
+          {t("actions.resend")} {countdown > 0 && `(${countdown}s)`}
         </button>
       </div>
     </section>
