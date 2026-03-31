@@ -1,3 +1,4 @@
+import { GuestRoute } from "@/shared/components/auth";
 import { PublicLayout } from "@/shared/layouts";
 
 export default function AuthLayout({
@@ -5,5 +6,9 @@ export default function AuthLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <PublicLayout>{children}</PublicLayout>;
+  return (
+    <GuestRoute>
+      <PublicLayout>{children}</PublicLayout>
+    </GuestRoute>
+  );
 }

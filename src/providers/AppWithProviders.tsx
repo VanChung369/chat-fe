@@ -1,6 +1,7 @@
-import type { ReactNode } from "react";
+import { type ReactNode } from "react";
 import I18nProvider from "@/providers/I18nProvider";
 import { Toaster } from "sonner";
+import { AuthProvider } from "./AuthProvider";
 
 type AppWithProvidersProps = {
   children: ReactNode;
@@ -9,8 +10,10 @@ type AppWithProvidersProps = {
 const AppWithProviders = ({ children }: AppWithProvidersProps) => {
   return (
     <I18nProvider>
-      {children}
-      <Toaster position="top-center" richColors />
+      <AuthProvider>
+        {children}
+        <Toaster position="top-center" richColors />
+      </AuthProvider>
     </I18nProvider>
   );
 };

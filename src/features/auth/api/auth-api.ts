@@ -1,7 +1,8 @@
-import { fetchClient } from "@/shared/utils/fetch-api";
+import { fetchClient, FetchOptions } from "@/shared/utils/fetch-api";
 import type { SignUpFormValues } from "../schema/signUpSchema";
 import type { LoginFormValues } from "../schema/loginSchema";
 import type { ResetPasswordValues } from "../schema/resetPasswordSchema";
+import type { User } from "@/shared/types/user";
 
 export const authApi = {
   /**
@@ -14,8 +15,22 @@ export const authApi = {
   /**
    * Logs in a user.
    */
-  login: async (data: LoginFormValues) => {
+  login: async (data: LoginFormValues): Promise<User> => {
     return fetchClient.post("/auth/login", data);
+  },
+
+  /**
+   * Logs out the current user.
+   */
+  logout: async () => {
+    return fetchClient.post("/auth/logout", {});
+  },
+
+  /**
+   * Gets the current authenticated user.
+   */
+  getMe: async (options?: FetchOptions): Promise<User> => {
+    return fetchClient.get<User>("/users/me");
   },
 
   /**
