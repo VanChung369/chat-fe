@@ -134,7 +134,7 @@ export const UserListSidebar = () => {
   );
 
   return (
-    <aside className="dark:bg-surface-sidebar z-20 flex h-full w-full max-w-[360px] shrink-0 flex-col border-r border-gray-200 bg-white md:max-w-[400px] dark:border-gray-800">
+    <aside className="dark:bg-surface-sidebar z-20 flex h-full w-full max-w-90 shrink-0 flex-col border-r border-gray-200 bg-white md:max-w-100 dark:border-gray-800">
       {/* Sidebar Header */}
       <div className="border-b border-gray-200 p-4 dark:border-gray-800">
         <div className="mb-4 flex items-center justify-between">

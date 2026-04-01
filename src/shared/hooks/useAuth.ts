@@ -34,7 +34,7 @@ export function useAuth() {
     fetchMe();
 
     return () => controller.abort();
-  }, [user, isLoading, setIsLoading, updateAuthUser]);
+  }, []);
 
   return {
     user,
