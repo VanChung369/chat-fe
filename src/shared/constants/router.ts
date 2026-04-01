@@ -10,6 +10,7 @@ export const AppRoutes = {
   hub: "/hub",
   contacts: "/contacts",
   settings: "/settings",
+  demoUpload: "/demo/upload",
 } as const;
 
 export type AppRouteKey = keyof typeof AppRoutes;

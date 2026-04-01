@@ -16,13 +16,16 @@ export interface FetchOptions extends RequestInit {
 export async function fetchApi<T>(endpoint: string, options: FetchOptions = {}): Promise<T> {
   const { data, headers, ...customConfig } = options;
 
+  // Handle FormData - don't set Content-Type header, let browser set it with boundary
+  const isFormData = data instanceof FormData;
+
   const config: RequestInit = {
     method: data ? "POST" : "GET",
-    body: data ? JSON.stringify(data) : undefined,
+    body: isFormData ? data : data ? JSON.stringify(data) : undefined,
     // CRITICAL: Always include credentials for session/cookie authentication
     credentials: "include",
     headers: {
-      "Content-Type": "application/json",
+      ...(isFormData ? {} : { "Content-Type": "application/json" }),
       ...headers,
     },
     ...customConfig,

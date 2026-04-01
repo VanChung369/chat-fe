@@ -1,4 +1,4 @@
-import { Inbox, Activity, LayoutGrid, Users, Settings } from "lucide-react";
+import { Inbox, Activity, LayoutGrid, Users, Settings, Upload } from "lucide-react";
 import { AppRoutes } from "./router";
 
 export interface NavigationItem {
@@ -12,6 +12,7 @@ export const sidebarNavigationItems: NavigationItem[] = [
   { name: "Monitoring", href: AppRoutes.monitoring, icon: Activity },
   { name: "Hub", href: AppRoutes.hub, icon: LayoutGrid },
   { name: "Users", href: AppRoutes.contacts, icon: Users },
+  { name: "Demo Upload", href: AppRoutes.demoUpload, icon: Upload },
 ];
 
 export const sidebarBottomItems: NavigationItem[] = [
