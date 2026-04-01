@@ -14,6 +14,13 @@
     "english": "English",
     "vietnamese": "Tiếng Việt"
   },
+  "EmptyChatState": {
+    "welcomeTitle": "Chào mừng đến Messenger",
+    "welcomeDescription": "Chọn một cuộc trò chuyện từ thanh bên để bắt đầu trò chuyện, hoặc bắt đầu kết nối mới ngay lập tức.",
+    "contacts": "Danh bạ",
+    "newGroup": "Nhóm mới",
+    "encryption": "Được mã hóa đầu cuối"
+  },
   "AuthLayout": {
     "chatApp": "ChatApp",
     "title": "Kết nối với đội ngũ của bạn ngay lập tức.",

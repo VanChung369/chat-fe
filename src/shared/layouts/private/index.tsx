@@ -15,7 +15,7 @@ const PrivateLayout = ({ children }: { children: ReactNode }) => {
 
         {/* Core Content Area */}
         <main className="bg-surface-content/30 min-w-0 flex-1 overflow-x-hidden overflow-y-auto scroll-smooth selection:bg-indigo-500/30">
-          <div className="h-full w-full px-4">{children}</div>
+          <div className="h-full w-full">{children}</div>
         </main>
       </div>
     </div>

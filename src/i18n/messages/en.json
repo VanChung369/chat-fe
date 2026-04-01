@@ -14,6 +14,13 @@
     "english": "English",
     "vietnamese": "Vietnamese"
   },
+  "EmptyChatState": {
+    "welcomeTitle": "Welcome to Messenger",
+    "welcomeDescription": "Select a conversation from the sidebar to start chatting, or start a new connection instantly.",
+    "contacts": "Contacts",
+    "newGroup": "New Group",
+    "encryption": "End-to-end encrypted"
+  },
   "AuthLayout": {
     "chatApp": "ChatApp",
     "title": "Connect with your team instantly.",
