@@ -5,6 +5,11 @@ export const AppRoutes = {
   verify: "/verify",
   forgotPassword: "/forgot-password",
   resetPassword: "/reset-password",
+  chat: "/chat",
+  monitoring: "/monitoring",
+  hub: "/hub",
+  contacts: "/contacts",
+  settings: "/settings",
 } as const;
 
 export type AppRouteKey = keyof typeof AppRoutes;

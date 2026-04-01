@@ -1,1 +1,1 @@
-export * from "./UserListSidebar";
+export { UserListSidebar } from "./UserListSidebar";

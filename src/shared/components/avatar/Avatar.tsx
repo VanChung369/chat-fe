@@ -11,6 +11,10 @@ export interface AvatarProps {
   size?: "sm" | "md" | "lg" | "xl";
   status?: "online" | "offline" | "away" | "busy";
   showStatus?: boolean;
+  showTooltip?: boolean;
+  unreadCount?: number;
+  showUnread?: boolean;
+  showInitials?: boolean;
   className?: string;
   onClick?: () => void;
 }
@@ -28,6 +32,10 @@ export const Avatar: React.FC<AvatarProps> = ({
   size = "md",
   status = "offline",
   showStatus = false,
+  showTooltip = false,
+  unreadCount = 0,
+  showUnread = false,
+  showInitials = false,
   className,
   onClick,
 }) => {
@@ -56,38 +64,69 @@ export const Avatar: React.FC<AvatarProps> = ({
   };
 
   return (
-    <div 
+    <div
       className={cn(
-        "relative flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full border border-outline-variant bg-surface-low transition-all duration-200",
+        "relative shrink-0 select-none",
         sizes[size],
-        onClick && "cursor-pointer hover:ring-2 hover:ring-primary hover:ring-offset-2 hover:ring-offset-background",
+        onClick && "cursor-pointer",
         className
       )}
       onClick={onClick}
+      role="img"
+      aria-label={`Avatar của ${name}`}
+      title={showTooltip ? name : undefined}
     >
-      {src ? (
-        <Image
-          src={src}
-          alt={name}
-          fill
-          className="aspect-square h-full w-full object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      ) : (
-        <span className="flex h-full w-full items-center justify-center font-semibold text-text-strong">
-          {initials}
-        </span>
-      )}
+      <div
+        className={cn(
+          "border-outline-variant bg-surface-low flex h-full w-full items-center justify-center overflow-hidden rounded-full border transition-all duration-200",
+          onClick &&
+            "hover:ring-primary hover:ring-offset-background hover:ring-2 hover:ring-offset-2",
+          showInitials && "bg-indigo-500 text-white"
+        )}
+      >
+        {src && !showInitials ? (
+          <Image
+            src={src}
+            alt={name}
+            fill
+            className="aspect-square h-full w-full object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        ) : (
+          <span
+            className={cn(
+              "flex h-full w-full items-center justify-center font-semibold",
+              showInitials ? "text-white" : "text-text-strong"
+            )}
+          >
+            {initials}
+          </span>
+        )}
+      </div>
 
       {/* Online Status Indicator */}
       {showStatus && (
         <span
           className={cn(
-            "absolute bottom-0 right-0 h-[25%] w-[25%] rounded-full border-2 border-background",
+            "absolute right-1 bottom-0 h-[25%] w-[25%] rounded-full border border-slate-900 dark:border-white",
             statusColors[status]
           )}
           aria-hidden="true"
         />
+      )}
+
+      {/* Unread Count Badge */}
+      {showUnread && unreadCount > 0 && (
+        <span
+          className={cn(
+            "absolute -top-1 -right-1 flex min-h-4.5 min-w-4.5 items-center justify-center rounded-full border-2 border-white text-[10px] font-bold text-white dark:border-slate-900",
+            "bg-indigo-500",
+            unreadCount > 99 ? "px-1" : "h-4.5 w-4.5"
+          )}
+          aria-label={`${unreadCount} unread messages`}
+        >
+          {unreadCount > 99 ? "99+" : unreadCount}
+        </span>
       )}
     </div>
   );

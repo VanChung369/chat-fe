@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
-import { Sidebar } from "@/shared/layouts/private/Sidebar/Sidebar";
-import { UserListSidebar } from "@/shared/layouts/private/UserListSidebar/UserListSidebar";
+import { Sidebar } from "./Sidebar";
+import { UserListSidebar } from "./UserListSidebar";
 
 const PrivateLayout = ({ children }: { children: ReactNode }) => {
   return (

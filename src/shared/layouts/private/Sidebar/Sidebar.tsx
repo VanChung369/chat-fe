@@ -2,11 +2,11 @@
 
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { Avatar } from "@/shared/components/avatar";
-import { Inbox, Activity, LayoutGrid, Users, Settings, HelpCircle, LogOut } from "lucide-react";
+import { Settings, LogOut } from "lucide-react";
 import { cn } from "@/shared/utils";
 import { authApi } from "@/features/auth/api/auth-api";
 import { toast } from "sonner";
-import { AppRoutes, pathWithQuery } from "@/shared/constants";
+import { AppRoutes, pathWithQuery, sidebarNavigationItems } from "@/shared/constants";
 import { useAuthCtx } from "@/providers/AuthProvider";
 
 /**
@@ -18,12 +18,7 @@ export const Sidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const navItems = [
-    { name: "Inbox", href: "/chat", icon: Inbox },
-    { name: "Monitoring", href: "/monitoring", icon: Activity },
-    { name: "Hub", href: "/hub", icon: LayoutGrid },
-    { name: "Users", href: "/contacts", icon: Users },
-  ];
+  // Navigation items are now defined in constants/navigation.ts
 
   const handleLogout = async () => {
     try {
@@ -38,14 +33,24 @@ export const Sidebar = () => {
 
   return (
     <aside className="dark:bg-surface-sidebar z-50 flex h-full w-20 flex-col items-center border-r border-slate-800/50 bg-slate-900 py-6 font-['Inter'] tracking-tight antialiased shadow-2xl shadow-indigo-500/10">
-      {/* Logo */}
-      <div className="mb-10 flex items-center justify-center">
-        <span className="text-lg font-bold tracking-tighter text-indigo-500">IS</span>
+      {/* Logo + Avatar */}
+      <div className="mb-10 flex flex-col items-center gap-3">
+        <div className="h-10 w-10 shadow-sm transition-transform hover:scale-105">
+          <Avatar
+            name={
+              `${user?.firstName || ""} ${user?.lastName || ""}`.trim() || user?.username || "User"
+            }
+            size="md"
+            className="h-full w-full"
+            showStatus
+            status="online"
+          />
+        </div>
       </div>
 
       {/* Navigation */}
       <nav className="flex flex-1 flex-col items-center gap-6">
-        {navItems.map((item) => {
+        {sidebarNavigationItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
 
@@ -65,28 +70,10 @@ export const Sidebar = () => {
             </Link>
           );
         })}
-
-        {/* Settings at the bottom of nav list */}
-        <Link
-          href="/settings"
-          className={cn(
-            "mt-auto flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 active:scale-[0.98]",
-            pathname === "/settings"
-              ? "border-l-2 border-indigo-500 bg-indigo-500/10 text-indigo-400"
-              : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
-          )}
-          title="Settings"
-        >
-          <Settings size={24} />
-        </Link>
       </nav>
 
       {/* Bottom Actions */}
       <div className="mt-6 flex flex-col items-center gap-4">
-        <button className="text-slate-400 transition-colors hover:text-slate-200" title="Help">
-          <HelpCircle size={24} />
-        </button>
-
         <button
           onClick={handleLogout}
           className="text-slate-400 transition-colors hover:text-rose-400"
@@ -94,18 +81,18 @@ export const Sidebar = () => {
         >
           <LogOut size={20} />
         </button>
-
-        <div className="h-10 w-10 overflow-hidden rounded-full border-2 border-indigo-500 shadow-sm transition-transform hover:scale-105">
-          <Avatar
-            name={
-              `${user?.firstName || ""} ${user?.lastName || ""}`.trim() || user?.username || "User"
-            }
-            size="md"
-            className="h-full w-full border-none ring-0"
-            showStatus
-            status="online"
-          />
-        </div>
+        <Link
+          href={AppRoutes.settings}
+          className={cn(
+            "mt-auto flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 active:scale-[0.98]",
+            pathname === AppRoutes.settings
+              ? "border-l-2 border-indigo-500 bg-indigo-500/10 text-indigo-400"
+              : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
+          )}
+          title="Settings"
+        >
+          <Settings size={24} />
+        </Link>
       </div>
     </aside>
   );
