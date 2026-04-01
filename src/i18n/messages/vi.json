@@ -1,4 +1,12 @@
 {
+  "NotFound": {
+    "errorCode": "404",
+    "title": "Lạc vào màn đêm.",
+    "description": "Trang bạn đang tìm không tồn tại hoặc đã được chuyển đi nơi khác.",
+    "backHome": "Về trang chủ",
+    "login": "Đăng nhập",
+    "copyright": "© {year} Chat App. All rights reserved."
+  },
   "HomePage": {
     "title": "Trang chủ ứng dụng chat đa ngôn ngữ",
     "description": "next-intl đã được cấu hình với tiếng Anh và tiếng Việt.",

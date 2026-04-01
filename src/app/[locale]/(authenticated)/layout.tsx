@@ -1,7 +1,7 @@
 import { AuthenticatedRoute } from "@/shared/components/auth";
 import { PrivateLayout } from "@/shared/layouts";
 
-export default function AuthenticatedLayout({
+export default async function AuthenticatedLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

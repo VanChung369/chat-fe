@@ -1,4 +1,12 @@
 {
+  "NotFound": {
+    "errorCode": "404",
+    "title": "Lost in the dark.",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home",
+    "login": "Login",
+    "copyright": "© {year} Chat App. All rights reserved."
+  },
   "HomePage": {
     "title": "Chat frontend is ready for i18n",
     "description": "next-intl has been configured with English and Vietnamese.",
