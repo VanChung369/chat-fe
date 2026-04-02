@@ -61,7 +61,7 @@ export const Sidebar = () => {
               className={cn(
                 "flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 active:scale-[0.98]",
                 isActive
-                  ? "border-l-2 border-indigo-500 bg-indigo-500/10 text-indigo-400 shadow-[0_0_20px_rgba(99,102,241,0.15)]"
+                  ? "border-indigo-400 bg-indigo-500/10 text-indigo-400 shadow-[0_0_20px_rgba(99,102,241,0.15)]"
                   : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
               )}
               title={item.name}
@@ -86,7 +86,7 @@ export const Sidebar = () => {
           className={cn(
             "mt-auto flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 active:scale-[0.98]",
             pathname === AppRoutes.settings
-              ? "border-l-2 border-indigo-500 bg-indigo-500/10 text-indigo-400"
+              ? "border-indigo-400 bg-indigo-500/10 text-indigo-400"
               : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
           )}
           title="Settings"

@@ -194,5 +194,18 @@
   },
   "Common": {
     "unexpectedError": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
+  },
+  "SettingsSidebar": {
+    "title": "Cài đặt",
+    "description": "Quản lý tùy chọn tài khoản của bạn",
+    "items": {
+      "profile": "Hồ sơ",
+      "privacySecurity": "Quyền riêng tư & Bảo mật",
+      "notifications": "Thông báo",
+      "preferences": "Tùy chọn"
+    },
+    "toasts": {
+      "unavailableSection": "Mục cài đặt này hiện chưa khả dụng"
+    }
   }
 }

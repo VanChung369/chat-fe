@@ -194,5 +194,18 @@
   },
   "Common": {
     "unexpectedError": "An unexpected error occurred. Please try again."
+  },
+  "SettingsSidebar": {
+    "title": "Settings",
+    "description": "Manage your account preferences",
+    "items": {
+      "profile": "Profile",
+      "privacySecurity": "Privacy & Security",
+      "notifications": "Notifications",
+      "preferences": "Preferences"
+    },
+    "toasts": {
+      "unavailableSection": "This settings section is not available yet"
+    }
   }
 }

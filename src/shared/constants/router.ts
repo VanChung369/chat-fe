@@ -5,11 +5,11 @@ export const AppRoutes = {
   verify: "/verify",
   forgotPassword: "/forgot-password",
   resetPassword: "/reset-password",
-  chat: "/chat",
+  chat: "/",
   monitoring: "/monitoring",
   hub: "/hub",
   contacts: "/contacts",
-  settings: "/settings",
+  settings: "/settings/profile",
   demoUpload: "/demo/upload",
 } as const;
 

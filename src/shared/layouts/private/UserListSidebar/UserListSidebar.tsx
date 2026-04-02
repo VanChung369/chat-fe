@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Avatar } from "@/shared/components/avatar";
 import { cn } from "@/shared/utils";
 import { SearchBar } from "./SearchBar";
@@ -132,7 +132,7 @@ export const UserListSidebar = () => {
   );
 
   return (
-    <aside className="dark:bg-surface-sidebar z-20 flex h-full w-full max-w-90 shrink-0 flex-col border-r border-gray-200 bg-white md:max-w-100 dark:border-gray-800">
+    <Fragment>
       {/* Search Bar */}
       <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
@@ -149,6 +149,6 @@ export const UserListSidebar = () => {
 
       {/* Floating Action Button for New Chat */}
       <FloatingActionButton />
-    </aside>
+    </Fragment>
   );
 };

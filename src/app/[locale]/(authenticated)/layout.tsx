@@ -3,12 +3,14 @@ import { PrivateLayout } from "@/shared/layouts";
 
 export default async function AuthenticatedLayout({
   children,
+  sidebar,
 }: Readonly<{
   children: React.ReactNode;
+  sidebar: React.ReactNode;
 }>) {
   return (
     <AuthenticatedRoute>
-      <PrivateLayout>{children}</PrivateLayout>
+      <PrivateLayout sidebar={sidebar}>{children}</PrivateLayout>
     </AuthenticatedRoute>
   );
 }
