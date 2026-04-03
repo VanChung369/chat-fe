@@ -41,8 +41,11 @@ export const ChatListContainer: React.FC<ChatListContainerProps> = ({
             className={cn(
               "rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-sm transition-all",
               activeFilter === filter
-                ? "bg-indigo-500 text-white shadow-indigo-500/30"
-                : "dark:bg-surface-hover dark:hover:bg-surface-hover-deep bg-gray-100 text-gray-600 hover:bg-gray-200 dark:text-gray-300"
+                ? cn("bg-indigo-500 text-white shadow-indigo-500/30")
+                : cn(
+                    "bg-gray-100 text-gray-600 hover:bg-gray-200",
+                    "dark:bg-surface-hover dark:text-gray-300 dark:hover:bg-surface-hover-deep"
+                  )
             )}
           >
             {filter}
@@ -52,7 +55,12 @@ export const ChatListContainer: React.FC<ChatListContainerProps> = ({
 
       {/* Pinned Section */}
       <div className="px-4 pt-2 pb-2">
-        <div className="mb-2 flex items-center gap-2 px-2 text-xs font-bold tracking-wider text-gray-400 uppercase">
+        <div
+          className={cn(
+            "mb-2 flex items-center gap-2 px-2 text-xs font-bold uppercase tracking-wider",
+            "text-gray-400"
+          )}
+        >
           <Pin size={14} className="fill-current" />
           Pinned
         </div>
@@ -61,7 +69,7 @@ export const ChatListContainer: React.FC<ChatListContainerProps> = ({
 
       {/* All Chats Section */}
       <div className="px-4 pt-4 pb-2">
-        <div className="mb-2 px-2 text-xs font-bold tracking-wider text-gray-400 uppercase">
+        <div className={cn("mb-2 px-2 text-xs font-bold uppercase tracking-wider", "text-gray-400")}>
           All Chats
         </div>
         {allChats.map((chat) => renderChatItem(chat, selectedChatId === chat.id))}

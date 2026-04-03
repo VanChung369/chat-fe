@@ -22,26 +22,33 @@ export const SettingsSidebar = () => {
   };
 
   return (
-    <div className="flex h-full flex-col p-4">
+    <div className={cn("flex h-full flex-col p-5")}>
       {/* Header */}
-      <div className="mb-6 px-1">
-        <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">{t("title")}</h2>
-        <p className="mt-1 text-xs text-slate-500 dark:text-gray-400">{t("description")}</p>
+      <div className="mb-8 rounded-2xl">
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <div>
+            <h2
+              className={cn(
+                "text-2xl font-semibold tracking-tight",
+                "text-slate-950",
+                "dark:text-white"
+              )}
+            >
+              {t("title")}
+            </h2>
+          </div>
+        </div>
+        <p className={cn("max-w-90 text-sm leading-6", "text-slate-600", "dark:text-slate-400")}>
+          {t("description")}
+        </p>
       </div>
 
       {/* Navigation List */}
-      <nav className="flex flex-1 flex-col gap-1">
+      <nav className="flex flex-1 flex-col gap-2">
         {settingsNavigationItems.map((item) => {
           const Icon = item.icon;
           const isActive = item.href ? pathname.includes(item.href) : false;
           const itemLabel = itemLabels[item.labelKey];
-
-          const baseClasses =
-            "group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200";
-          const activeClasses =
-            "bg-indigo-500/10 text-indigo-500 shadow-sm border border-indigo-500/20";
-          const inactiveClasses =
-            "text-slate-700 hover:bg-slate-100 dark:text-gray-300 dark:hover:bg-surface-hover";
 
           if (item.href == null) {
             return (
@@ -49,10 +56,23 @@ export const SettingsSidebar = () => {
                 key={item.labelKey}
                 type="button"
                 onClick={handleUnavailableSection}
-                className={cn(baseClasses, inactiveClasses, "w-full text-left")}
+                className={cn(
+                  "group flex items-center gap-4 rounded-xl px-4 py-3.5 text-sm font-semibold transition-all duration-200",
+                  "text-slate-800 hover:bg-slate-100/90 hover:text-white",
+                  "dark:hover:bg-surface-hover dark:text-slate-300",
+                  "w-full text-left opacity-90 hover:opacity-100"
+                )}
               >
-                <Icon className="h-5 w-5 shrink-0 text-slate-400 transition-colors group-hover:text-slate-700 dark:text-gray-500 dark:group-hover:text-gray-300" />
-                {itemLabel}
+                <span
+                  className={cn(
+                    "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-colors",
+                    "bg-slate-100 text-slate-500 group-hover:bg-white group-hover:text-slate-200",
+                    "dark:bg-indigo-500/15 dark:text-slate-400 dark:group-hover:bg-slate-900 dark:group-hover:text-slate-200"
+                  )}
+                >
+                  <Icon className="h-5 w-5 shrink-0" />
+                </span>
+                <span className="min-w-0 flex-1 truncate">{itemLabel}</span>
               </button>
             );
           }
@@ -61,17 +81,33 @@ export const SettingsSidebar = () => {
             <Link
               key={item.labelKey}
               href={item.href}
-              className={cn(baseClasses, isActive ? activeClasses : inactiveClasses)}
+              className={cn(
+                "group flex items-center gap-4 rounded-xl px-4 py-3.5 text-sm font-semibold transition-all duration-200",
+                isActive
+                  ? cn("bg-indigo-100 text-slate-950", "dark:bg-indigo-500/10 dark:text-white")
+                  : cn(
+                      "text-slate-800 hover:bg-slate-100/90 hover:text-slate-950",
+                      "dark:hover:bg-surface-hover dark:text-slate-300"
+                    )
+              )}
             >
-              <Icon
+              <span
                 className={cn(
-                  "h-5 w-5 shrink-0 transition-colors",
+                  "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-all duration-200",
                   isActive
-                    ? "text-indigo-500"
-                    : "text-slate-400 group-hover:text-slate-700 dark:text-gray-500 dark:group-hover:text-gray-300"
+                    ? cn(
+                        "bg-indigo-500/15 text-indigo-600",
+                        "dark:bg-indigo-500/10 dark:text-indigo-300"
+                      )
+                    : cn(
+                        "bg-slate-100 text-slate-500 group-hover:bg-white group-hover:text-slate-800",
+                        "dark:bg-slate-900/70 dark:text-slate-400 dark:group-hover:bg-slate-900 dark:group-hover:text-slate-200"
+                      )
                 )}
-              />
-              {itemLabel}
+              >
+                <Icon className="h-5 w-5 shrink-0" />
+              </span>
+              <span className="min-w-0 flex-1 truncate">{itemLabel}</span>
             </Link>
           );
         })}

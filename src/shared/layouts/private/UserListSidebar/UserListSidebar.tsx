@@ -78,8 +78,8 @@ export const UserListSidebar = () => {
       className={cn(
         "group mb-2 flex w-full items-center gap-3 rounded-lg p-2 text-left transition-all duration-200",
         isSelected
-          ? "border-indigo-500 bg-indigo-500/10 shadow-sm"
-          : "dark:hover:bg-surface-hover hover:bg-slate-100"
+          ? cn("border-indigo-500 bg-indigo-500/10 shadow-sm")
+          : cn("hover:bg-slate-100", "dark:hover:bg-surface-hover")
       )}
     >
       <div className="relative shrink-0">
@@ -110,7 +110,7 @@ export const UserListSidebar = () => {
           <h3
             className={cn(
               "truncate text-sm font-semibold transition-colors",
-              isSelected ? "text-indigo-500" : "text-slate-900 dark:text-white"
+              isSelected ? cn("text-indigo-500") : cn("text-slate-900", "dark:text-white")
             )}
           >
             {chat.name}
@@ -118,13 +118,13 @@ export const UserListSidebar = () => {
           <span
             className={cn(
               "text-[10px]",
-              chat.unread > 0 ? "font-medium text-indigo-500" : "text-slate-500 dark:text-gray-400"
+              chat.unread > 0 ? cn("font-medium text-indigo-500") : cn("text-slate-500", "dark:text-gray-400")
             )}
           >
             {chat.time}
           </span>
         </div>
-        <p className="mt-0.5 truncate text-xs text-slate-500 dark:text-gray-400">
+        <p className={cn("mt-0.5 truncate text-xs", "text-slate-500", "dark:text-gray-400")}>
           {chat.lastMessage}
         </p>
       </div>
