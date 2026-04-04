@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
 
   experimental: {
-    optimizePackageImports: [],
+    optimizePackageImports: ["lucide-react"],
     optimizeCss: true,
     turbopackFileSystemCacheForDev: true,
   },
