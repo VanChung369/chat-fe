@@ -1,19 +1,37 @@
 import { type ReactNode } from "react";
-import { AuthenticatedRoute } from "@/shared/components/auth";
-import { Sidebar } from "@/shared/layouts/private/Sidebar/Sidebar";
+import { cn } from "@/shared/utils";
+import { Sidebar } from "./Sidebar";
 
-const PrivateLayout = ({ children }: { children: ReactNode }) => {
+const PrivateLayout = ({ children, sidebar }: { children: ReactNode; sidebar: ReactNode }) => {
   return (
-    <AuthenticatedRoute>
-      <div className="flex min-h-screen bg-[#010101] text-zinc-100">
-        <Sidebar />
-        <main className="flex-1 pl-20 sm:pl-24">
-          <div className="mx-auto h-full w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-            {children}
-          </div>
+    <div className={cn("flex h-screen overflow-hidden", "bg-surface-darkest text-zinc-100")}>
+      {/* Navigation Sidebar */}
+      <Sidebar />
+
+      {/* Dynamic Inner Layout */}
+      <div className="flex flex-1">
+        {/* Conversation/User Selection Sidebar */}
+        <aside
+          className={cn(
+            "z-20 flex h-full w-full max-w-85 shrink-0 flex-col border-r md:max-w-100",
+            "border-gray-200 bg-white",
+            "dark:border-gray-800 dark:bg-surface-sidebar"
+          )}
+        >
+          {sidebar}
+        </aside>
+
+        {/* Core Content Area */}
+        <main
+          className={cn(
+            "min-w-0 flex-1 overflow-x-hidden overflow-y-auto scroll-smooth",
+            "bg-surface-content/30 selection:bg-indigo-500/30"
+          )}
+        >
+          <div className="h-full w-full">{children}</div>
         </main>
       </div>
-    </AuthenticatedRoute>
+    </div>
   );
 };
 

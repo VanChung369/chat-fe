@@ -131,7 +131,7 @@ const SignUpForm = () => {
         )}
       </Form>
       <div className="animate-fade-in-up relative flex items-center py-5 delay-800">
-        <div className="grow border-t border-slate-200 dark:border-[#324467]"></div>
+        <div className="dark:border-outline-variant grow border-t border-slate-200"></div>
       </div>
       <p className="animate-fade-in-up text-center text-sm text-zinc-400 delay-900">
         {t("loginPrompt")}{" "}

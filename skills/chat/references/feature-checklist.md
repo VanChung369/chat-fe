@@ -24,7 +24,8 @@ Use this checklist before finalizing any feature implemented with this skill.
 - Exercise the main happy path manually when no automated test exists.
 - Exercise one failure path (validation/network/permission).
 - Confirm no obvious regressions in auth, routing, and realtime updates.
-- Check responsive behavior at mobile and at least one larger breakpoint (`md` or `lg`) for touched screens.
+- Check responsive behavior for touched screens at mobile, tablet (`md`), and desktop (`lg`) breakpoints.
+- For theme-aware UI, verify both default/light and dark-mode class behavior remains intentional after the change.
 
 ## 4) Delivery Quality
 

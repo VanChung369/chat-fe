@@ -30,7 +30,7 @@ export const authApi = {
    * Gets the current authenticated user.
    */
   getMe: async (options?: FetchOptions): Promise<User> => {
-    return fetchClient.get<User>("/users/me");
+    return fetchClient.get<User>("/users/me", options);
   },
 
   /**

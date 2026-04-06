@@ -41,7 +41,9 @@
 - Shared styled utilities from `src/utils/styles/*` for reusable primitives.
 - Match current labels and button copy style for auth and chat actions.
 - Apply responsive styles mobile-first (`base`, then `sm:`, `md:`, `lg:`).
+- When touching UI, account for at least mobile, tablet (`md`), and desktop (`lg`) layouts or spacing changes.
 - Use `cn(...)` to compose conditional responsive class sets instead of manual string concatenation.
+- When a component has theme-specific styling, keep normal/light classes and `dark:` classes explicit inside `cn(...)` instead of hiding them in concatenated strings or scattered helpers.
 - Keep breakpoint intent explicit in one place when possible (example: `cn("flex flex-col gap-3 md:flex-row md:items-center", isCompact && "md:gap-2")`).
 
 ## Toast and Feedback

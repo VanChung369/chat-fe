@@ -26,7 +26,7 @@ const Loading: React.FC<LoadingProps> = ({
   };
 
   const containerClasses = fullscreen
-    ? "fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#010101]"
+    ? "fixed inset-0 z-50 flex flex-col items-center justify-center bg-surface-darkest"
     : `flex flex-col items-center justify-center ${className}`;
 
   return (

@@ -1,10 +1,25 @@
 {
+  "NotFound": {
+    "errorCode": "404",
+    "title": "Lost in the dark.",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home",
+    "login": "Login",
+    "copyright": "© {year} Chat App. All rights reserved."
+  },
   "HomePage": {
     "title": "Chat frontend is ready for i18n",
     "description": "next-intl has been configured with English and Vietnamese.",
     "languageLabel": "Language",
     "english": "English",
     "vietnamese": "Vietnamese"
+  },
+  "EmptyChatState": {
+    "welcomeTitle": "Welcome to Messenger",
+    "welcomeDescription": "Select a conversation from the sidebar to start chatting, or start a new connection instantly.",
+    "contacts": "Contacts",
+    "newGroup": "New Group",
+    "encryption": "End-to-end encrypted"
   },
   "AuthLayout": {
     "chatApp": "ChatApp",
@@ -177,7 +192,98 @@
       "error": "Invalid code or failed to reset password."
     }
   },
+  "SettingsProfile": {
+    "breadcrumb": {
+      "settings": "Settings",
+      "profile": "Profile"
+    },
+    "actions": {
+      "changeCover": "Change Cover",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes"
+    },
+    "placeholders": {
+      "displayName": "No display name",
+      "username": "No username",
+      "about": "Write something about yourself",
+      "email": "No email address",
+      "phone": "No phone number"
+    },
+    "labels": {
+      "verified": "Verified"
+    },
+    "sections": {
+      "general": {
+        "title": "General Information",
+        "fields": {
+          "displayName": "Display Name",
+          "username": "Username",
+          "about": "About Me"
+        }
+      },
+      "contact": {
+        "title": "Contact Information",
+        "fields": {
+          "email": "Email Address",
+          "phone": "Phone Number"
+        }
+      },
+      "preferences": {
+        "title": "Preferences",
+        "showOnlineStatus": {
+          "title": "Show Online Status",
+          "description": "Allow others to see when you're active"
+        },
+        "directMessages": {
+          "title": "Direct Messages",
+          "description": "Receive messages from non-contacts"
+        }
+      }
+    },
+    "status": {
+      "title": "Current Status",
+      "onlineLabel": "Online",
+      "onlineDescription": "Focusing on deep work",
+      "awayLabel": "Away",
+      "awayDescription": "Back in 30 mins",
+      "busyLabel": "Do Not Disturb",
+      "busyDescription": "In a meeting",
+      "setCustom": "Set custom status..."
+    },
+    "defaults": {
+      "guestUser": "Guest User",
+      "fallbackName": "Sarah Jenkings",
+      "fallbackUsername": "sarah_j",
+      "fallbackJobTitle": "Product Designer",
+      "fallbackAbout": "Product Designer based in NYC. Love coffee and pixels.",
+      "fallbackEmail": "sarah.jenkings@example.com",
+      "fallbackPhone": "+1 (555) 000-0000"
+    },
+    "toasts": {
+      "saved": "Profile changes saved locally",
+      "discarded": "Profile changes discarded",
+      "bannerEditUnimplemented": "Banner edit unimplemented",
+      "avatarEditUnimplemented": "Avatar edit unimplemented",
+      "currentStatus": "Current status: {status}"
+    },
+    "errors": {
+      "aboutMax": "About me must be at most 240 characters."
+    }
+  },
   "Common": {
     "unexpectedError": "An unexpected error occurred. Please try again."
+  },
+  "SettingsSidebar": {
+    "title": "Settings",
+    "description": "Manage your account preferences",
+    "items": {
+      "profile": "Profile",
+      "privacySecurity": "Privacy & Security",
+      "notifications": "Notifications",
+      "preferences": "Preferences"
+    },
+    "toasts": {
+      "unavailableSection": "This settings section is not available yet"
+    }
   }
 }
