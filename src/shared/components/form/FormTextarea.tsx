@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/shared/utils/cn";
-import { type InputHTMLAttributes, type ReactNode } from "react";
+import { type ReactNode, type TextareaHTMLAttributes } from "react";
 import {
   get,
   useFormContext,
@@ -10,10 +10,10 @@ import {
   type Path,
   type RegisterOptions,
 } from "react-hook-form";
-import { Input } from "@/shared/components/input";
+import { Textarea } from "@/shared/components/input";
 
-export interface FormInputProps<T extends FieldValues> extends Omit<
-  InputHTMLAttributes<HTMLInputElement>,
+export interface FormTextareaProps<T extends FieldValues> extends Omit<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
   "name"
 > {
   name: Path<T>;
@@ -30,10 +30,9 @@ export interface FormInputProps<T extends FieldValues> extends Omit<
 }
 
 /**
- * Accessible Input component with built-in error handling and field-level reactivity.
- * Uses the base Input component internally for consistency.
+ * Accessible textarea component with built-in error handling and field-level reactivity.
  */
-export function FormInput<T extends FieldValues>({
+export function FormTextarea<T extends FieldValues>({
   name,
   label,
   rules,
@@ -42,20 +41,17 @@ export function FormInput<T extends FieldValues>({
   className,
   errorClassName,
   id,
-  type = "text",
   startIcon,
   endIcon,
   labelAction,
   inputBottomAction,
   requiredMark,
   ...props
-}: FormInputProps<T>) {
+}: FormTextareaProps<T>) {
   "use no memo";
   const { control, register } = useFormContext<T>();
   const isRequired = requiredMark ?? Boolean(props.required || rules?.required);
 
-  // useFormState(control, name) ensures only this input re-renders
-  // when its specific error state changes.
   const { errors } = useFormState({
     control,
     name,
@@ -89,10 +85,9 @@ export function FormInput<T extends FieldValues>({
           {labelAction}
         </div>
       )}
-      <Input
+      <Textarea
         {...register(name, rules)}
         id={inputId}
-        type={type}
         startIcon={startIcon}
         endIcon={endIcon}
         error={!!error}

@@ -18,6 +18,8 @@
   --color-primary-glow: var(--primary-glow);
 
   --color-surface-darkest: var(--bg-darkest);
+  --color-surface-light: #ffffff;
+  --color-surface-dark: var(--surface-dark);
   --color-surface-content: var(--bg-content);
   --color-surface-lowest: var(--bg-dark);
   --color-surface-low: var(--surface-dark);
@@ -28,6 +30,11 @@
   --color-surface-hover: var(--surface-hover);
   --color-surface-hover-deep: var(--surface-hover-deep);
   --color-outline-variant: var(--input-border);
+  --color-border-light: #e5e7eb;
+  --color-border-dark: var(--surface-hover);
+
+  --color-text-secondary-light: #6b7280;
+  --color-text-secondary-dark: #92a4c9;
 
   --color-online: var(--emerald-online);
   --color-online-ring: var(--emerald-online-ring);

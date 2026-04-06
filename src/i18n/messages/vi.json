@@ -192,6 +192,84 @@
       "error": "Mã không hợp lệ hoặc đặt lại mật khẩu thất bại."
     }
   },
+  "SettingsProfile": {
+    "breadcrumb": {
+      "settings": "Cài đặt",
+      "profile": "Hồ sơ"
+    },
+    "actions": {
+      "changeCover": "Đổi ảnh bìa",
+      "cancel": "Hủy",
+      "saveChanges": "Lưu thay đổi"
+    },
+    "placeholders": {
+      "displayName": "Chưa có tên hiển thị",
+      "username": "Chưa có tên người dùng",
+      "about": "Viết vài dòng giới thiệu về bạn",
+      "email": "Chưa có địa chỉ email",
+      "phone": "Chưa có số điện thoại"
+    },
+    "labels": {
+      "verified": "Đã xác minh"
+    },
+    "sections": {
+      "general": {
+        "title": "Thông tin chung",
+        "fields": {
+          "displayName": "Tên hiển thị",
+          "username": "Tên người dùng",
+          "about": "Giới thiệu"
+        }
+      },
+      "contact": {
+        "title": "Thông tin liên hệ",
+        "fields": {
+          "email": "Địa chỉ email",
+          "phone": "Số điện thoại"
+        }
+      },
+      "preferences": {
+        "title": "Tùy chọn",
+        "showOnlineStatus": {
+          "title": "Hiện trạng thái hoạt động",
+          "description": "Cho phép người khác thấy khi bạn đang online"
+        },
+        "directMessages": {
+          "title": "Tin nhắn trực tiếp",
+          "description": "Nhận tin nhắn từ người chưa có trong danh bạ"
+        }
+      }
+    },
+    "status": {
+      "title": "Trạng thái hiện tại",
+      "onlineLabel": "Đang online",
+      "onlineDescription": "Đang tập trung làm việc",
+      "awayLabel": "Tạm vắng",
+      "awayDescription": "Quay lại sau 30 phút",
+      "busyLabel": "Không làm phiền",
+      "busyDescription": "Đang họp",
+      "setCustom": "Đặt trạng thái tùy chỉnh..."
+    },
+    "defaults": {
+      "guestUser": "Khách",
+      "fallbackName": "Sarah Jenkings",
+      "fallbackUsername": "sarah_j",
+      "fallbackJobTitle": "Nhà thiết kế sản phẩm",
+      "fallbackAbout": "Nhà thiết kế sản phẩm tại NYC. Yêu cà phê và pixel.",
+      "fallbackEmail": "sarah.jenkings@example.com",
+      "fallbackPhone": "+1 (555) 000-0000"
+    },
+    "toasts": {
+      "saved": "Đã lưu thay đổi hồ sơ cục bộ",
+      "discarded": "Đã hủy các thay đổi hồ sơ",
+      "bannerEditUnimplemented": "Chưa hỗ trợ chỉnh sửa ảnh bìa",
+      "avatarEditUnimplemented": "Chưa hỗ trợ chỉnh sửa avatar",
+      "currentStatus": "Trạng thái hiện tại: {status}"
+    },
+    "errors": {
+      "aboutMax": "Phần giới thiệu tối đa 240 ký tự."
+    }
+  },
   "Common": {
     "unexpectedError": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
   },
