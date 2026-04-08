@@ -1,40 +1,47 @@
 "use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react";
-import { User } from "@/shared/types/user";
+import { createContext, useContext, type ReactNode } from "react";
+import useSWR from "swr";
+import { authApi } from "@/features/auth/api/auth-api";
+import { AUTH_USER_CACHE_KEY } from "@/shared/constants";
+import type { User } from "@/shared/types/user";
 
 interface AuthContextType {
-  user?: User | null | undefined;
+  user?: User | null;
   updateAuthUser: (data: User | null) => void;
+  refreshAuthUser: () => Promise<User | null | undefined>;
   isAuthenticated: boolean;
   isLoading: boolean;
-  setIsLoading: (loading: boolean) => void;
 }
 
-export const AuthContext = createContext<AuthContextType>({
-  user: undefined,
-  updateAuthUser: () => {},
-  isAuthenticated: false,
-  isLoading: false,
-  setIsLoading: () => {},
-});
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null | undefined>(undefined);
-  const [isLoading, setIsLoading] = useState(false);
+  const { data, isLoading, mutate } = useSWR<User | null>(
+    AUTH_USER_CACHE_KEY,
+    async () => {
+      try {
+        return await authApi.getMe();
+      } catch {
+        return null;
+      }
+    }
+  );
 
   const updateAuthUser = (data: User | null) => {
-    setUser(data);
+    void mutate(data, false);
   };
+
+  const refreshAuthUser = () => mutate();
 
   return (
     <AuthContext.Provider
       value={{
-        user,
+        user: data,
         updateAuthUser,
-        isAuthenticated: !!user,
+        refreshAuthUser,
+        isAuthenticated: !!data,
         isLoading,
-        setIsLoading,
       }}
     >
       {children}
@@ -45,7 +52,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 export const useAuthCtx = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error("useAuthCtx must be used within an AuthProvider");
   }
   return context;
 };

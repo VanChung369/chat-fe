@@ -3,6 +3,7 @@ import type { SignUpFormValues } from "../schema/signUpSchema";
 import type { LoginFormValues } from "../schema/loginSchema";
 import type { ResetPasswordValues } from "../schema/resetPasswordSchema";
 import type { User } from "@/shared/types/user";
+import type { LoginResponse } from "@/shared/types";
 
 export const authApi = {
   /**
@@ -15,8 +16,8 @@ export const authApi = {
   /**
    * Logs in a user.
    */
-  login: async (data: LoginFormValues): Promise<User> => {
-    return fetchClient.post("/auth/login", data);
+  login: async (data: LoginFormValues): Promise<LoginResponse> => {
+    return fetchClient.post<LoginResponse>("/auth/login", data);
   },
 
   /**
