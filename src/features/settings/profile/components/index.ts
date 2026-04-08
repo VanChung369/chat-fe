@@ -1,4 +1,5 @@
 export { MobileBreadcrumb } from "./MobileBreadcrumb";
+export { ProfileFormContent } from "./ProfileFormContent";
 export { ProfileHeader } from "./ProfileHeader";
 export { GeneralInfoSection } from "./GeneralInfoSection";
 export { ContactInfoSection } from "./ContactInfoSection";

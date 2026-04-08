@@ -200,7 +200,9 @@
     "actions": {
       "changeCover": "Change Cover",
       "cancel": "Cancel",
-      "saveChanges": "Save Changes"
+      "saveChanges": "Save Changes",
+      "savingChanges": "Saving...",
+      "uploading": "Uploading..."
     },
     "placeholders": {
       "displayName": "No display name",
@@ -260,7 +262,7 @@
       "fallbackPhone": "+1 (555) 000-0000"
     },
     "toasts": {
-      "saved": "Profile changes saved locally",
+      "saved": "Profile changes saved",
       "discarded": "Profile changes discarded",
       "bannerEditUnimplemented": "Banner edit unimplemented",
       "avatarEditUnimplemented": "Avatar edit unimplemented",

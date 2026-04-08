@@ -200,7 +200,9 @@
     "actions": {
       "changeCover": "Đổi ảnh bìa",
       "cancel": "Hủy",
-      "saveChanges": "Lưu thay đổi"
+      "saveChanges": "Lưu thay đổi",
+      "savingChanges": "Đang lưu...",
+      "uploading": "Đang tải lên..."
     },
     "placeholders": {
       "displayName": "Chưa có tên hiển thị",
@@ -260,7 +262,7 @@
       "fallbackPhone": "+1 (555) 000-0000"
     },
     "toasts": {
-      "saved": "Đã lưu thay đổi hồ sơ cục bộ",
+      "saved": "Đã lưu thay đổi hồ sơ",
       "discarded": "Đã hủy các thay đổi hồ sơ",
       "bannerEditUnimplemented": "Chưa hỗ trợ chỉnh sửa ảnh bìa",
       "avatarEditUnimplemented": "Chưa hỗ trợ chỉnh sửa avatar",

@@ -16,9 +16,9 @@ export type ProfileFormValues = {
 };
 
 export type ProfileUpdatePayload = {
-  about: string;
-  avatar?: File | null;
-  banner?: File | null;
+  about?: string;
+  avatarUrl?: string | null;
+  bannerUrl?: string | null;
 };
 
 export type UpdateProfileField = <K extends Path<ProfileFormValues>>(

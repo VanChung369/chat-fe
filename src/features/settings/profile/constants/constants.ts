@@ -15,3 +15,7 @@ export const BANNER_IMAGE_URL =
 export const AVATAR_IMAGE_URL =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBM0vPtw00ECzHEk47VVTP22kYm9Uf7lt1qslL3nWttggPmv5ul6GbNmJ5F8lNw8eWQyl44cxN8lWEfl_t1xq09ZmWbPmKuQItpg1vmw6MZ7NmrHqJS0F8t0V6cf8P2Pu98gWp3bgVStvqOX7NKXoIjfTgrWK28j40Su0VYngalEqiT-Xu15zqJc7WrsoO5365i0y4D-UcBcuMAVH9llsbA7pSzRHNg2fG3K7NnLa5OZCo6A4Vz3w2Q1-q0Xn5xnjaKz96A5DgNgmo";
 
+export const PROFILE_UPLOAD_FOLDERS = {
+  avatar: "/chat-app/avatars",
+  banner: "/chat-app/banners",
+} as const;

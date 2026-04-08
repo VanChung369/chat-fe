@@ -9,12 +9,15 @@ type ProfileHeaderProps = {
   username: string;
   jobTitle: string;
   hasChanges: boolean;
+  isAvatarUploading: boolean;
+  isBannerUploading: boolean;
+  isSaving: boolean;
   avatarImageUrl?: string;
   bannerImageUrl?: string;
   onSave: () => void;
   onCancel: () => void;
-  onAvatarSelect: (file: File) => void;
-  onBannerSelect: (file: File) => void;
+  onAvatarSelect: (file: File) => void | Promise<void>;
+  onBannerSelect: (file: File) => void | Promise<void>;
 };
 
 export function ProfileHeader({
@@ -22,6 +25,9 @@ export function ProfileHeader({
   username,
   jobTitle,
   hasChanges,
+  isAvatarUploading,
+  isBannerUploading,
+  isSaving,
   avatarImageUrl,
   bannerImageUrl,
   onSave,
@@ -64,12 +70,13 @@ export function ProfileHeader({
         <button
           type="button"
           onClick={() => bannerInputRef.current?.click()}
+          disabled={isBannerUploading}
           className={cn(
             "absolute top-4 right-4 flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors md:top-6 md:right-6 md:px-4",
-            "border border-white/10 bg-black/50 text-white backdrop-blur-md hover:bg-black/70"
+            "border border-white/10 bg-black/50 text-white backdrop-blur-md hover:bg-black/70 disabled:cursor-not-allowed disabled:opacity-60"
           )}
         >
-          {t("actions.changeCover")}
+          {isBannerUploading ? t("actions.uploading") : t("actions.changeCover")}
         </button>
       </div>
 
@@ -95,9 +102,10 @@ export function ProfileHeader({
             <button
               type="button"
               onClick={() => avatarInputRef.current?.click()}
+              disabled={isAvatarUploading}
               className={cn(
                 "absolute right-1 bottom-1 rounded-full border-4 p-2.5 text-white shadow-lg transition-colors md:p-3",
-                "bg-primary hover:bg-blue-600",
+                "bg-primary hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-60",
                 "border-surface-light dark:border-surface-dark"
               )}
             >
@@ -137,7 +145,7 @@ export function ProfileHeader({
                 <button
                   type="button"
                   onClick={onCancel}
-                  disabled={!hasChanges}
+                  disabled={!hasChanges || isSaving || isAvatarUploading || isBannerUploading}
                   className={cn(
                     "flex-1 rounded-lg border px-4 py-2.5 text-sm font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-60 md:flex-none md:px-6",
                     "border-border-light text-gray-900 hover:bg-gray-100",
@@ -149,13 +157,13 @@ export function ProfileHeader({
                 <button
                   type="button"
                   onClick={onSave}
-                  disabled={!hasChanges}
+                  disabled={!hasChanges || isSaving || isAvatarUploading || isBannerUploading}
                   className={cn(
                     "flex-1 rounded-lg px-5 py-2.5 text-sm font-bold text-white transition-colors disabled:cursor-not-allowed disabled:opacity-60 md:flex-none md:px-8",
                     "bg-primary shadow-lg shadow-blue-500/20 hover:bg-blue-600"
                   )}
                 >
-                  {t("actions.saveChanges")}
+                  {isSaving ? t("actions.savingChanges") : t("actions.saveChanges")}
                 </button>
               </div>
             </div>

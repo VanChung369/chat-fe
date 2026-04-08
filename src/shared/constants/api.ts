@@ -14,5 +14,7 @@ export const API_ROUTES = {
   },
   imageStorage: {
     upload: "/image-storage/upload",
+    uploadDirect: "/image-storage/upload-direct",
+    delete: "/image-storage",
   },
 } as const;
