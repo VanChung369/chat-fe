@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { API_ROUTES } from "@/shared/constants";
 import { fetchClient } from "@/shared/utils/fetch-api";
 
 interface UseImageUploadOptions {
@@ -40,7 +41,7 @@ export const useImageUpload = (options?: UseImageUploadOptions) => {
       }
 
       const response = await fetchClient.post<ImageUploadResponse>(
-        "/image-storage/upload",
+        API_ROUTES.imageStorage.upload,
         formData
       );
 
