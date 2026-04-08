@@ -1,12 +1,23 @@
 import { API_ROUTES } from "@/shared/constants";
-import { fetchClient } from "@/shared/utils/fetch-api";
 import type { User } from "@/shared/types/user";
-import type { ProfileFormValues } from "../profile/types";
+import { fetchClient } from "@/shared/utils/fetch-api";
+
+import type { ProfileUpdatePayload } from "../profile/types/types";
 
 export const profileApi = {
-  updateMe: async (form: ProfileFormValues): Promise<User> => {
-    return fetchClient.patch<User>(API_ROUTES.users.profiles, {
-      about: form.about.trim(),
-    });
+  updateMe: async ({ about, avatar, banner }: ProfileUpdatePayload): Promise<User> => {
+    const formData = new FormData();
+
+    formData.append("about", about.trim());
+
+    if (avatar) {
+      formData.append("avatar", avatar);
+    }
+
+    if (banner) {
+      formData.append("banner", banner);
+    }
+
+    return fetchClient.patch<User>(API_ROUTES.users.profiles, formData);
   },
 };

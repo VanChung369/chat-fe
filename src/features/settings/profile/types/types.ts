@@ -15,6 +15,12 @@ export type ProfileFormValues = {
   allowDirectMessages: boolean;
 };
 
+export type ProfileUpdatePayload = {
+  about: string;
+  avatar?: File | null;
+  banner?: File | null;
+};
+
 export type UpdateProfileField = <K extends Path<ProfileFormValues>>(
   key: K,
   value: PathValue<ProfileFormValues, K>

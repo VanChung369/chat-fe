@@ -1,6 +1,6 @@
+import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { BadgeCheck, Camera } from "lucide-react";
-import { toast } from "sonner";
 import { cn } from "@/shared/utils";
 import { AVATAR_IMAGE_URL, BANNER_IMAGE_URL } from "../constants/constants";
 
@@ -9,8 +9,12 @@ type ProfileHeaderProps = {
   username: string;
   jobTitle: string;
   hasChanges: boolean;
+  avatarImageUrl?: string;
+  bannerImageUrl?: string;
   onSave: () => void;
   onCancel: () => void;
+  onAvatarSelect: (file: File) => void;
+  onBannerSelect: (file: File) => void;
 };
 
 export function ProfileHeader({
@@ -18,24 +22,48 @@ export function ProfileHeader({
   username,
   jobTitle,
   hasChanges,
+  avatarImageUrl,
+  bannerImageUrl,
   onSave,
   onCancel,
+  onAvatarSelect,
+  onBannerSelect,
 }: ProfileHeaderProps) {
   const t = useTranslations("SettingsProfile");
+  const avatarInputRef = useRef<HTMLInputElement>(null);
+  const bannerInputRef = useRef<HTMLInputElement>(null);
   const displayUsername = username || t("placeholders.username");
   const metaLine = [`@${displayUsername}`, jobTitle].filter(Boolean).join(" | ");
+
+  const handleFileChange =
+    (onSelect: (file: File) => void) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0];
+
+      if (file) {
+        onSelect(file);
+      }
+
+      event.target.value = "";
+    };
 
   return (
     <>
       <div
         className={cn("relative h-44 w-full bg-cover bg-center md:h-64 lg:h-68")}
         style={{
-          backgroundImage: `url('${BANNER_IMAGE_URL}')`,
+          backgroundImage: `url('${bannerImageUrl || BANNER_IMAGE_URL}')`,
         }}
       >
+        <input
+          ref={bannerInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={handleFileChange(onBannerSelect)}
+        />
         <button
           type="button"
-          onClick={() => toast.info(t("toasts.bannerEditUnimplemented"))}
+          onClick={() => bannerInputRef.current?.click()}
           className={cn(
             "absolute top-4 right-4 flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors md:top-6 md:right-6 md:px-4",
             "border border-white/10 bg-black/50 text-white backdrop-blur-md hover:bg-black/70"
@@ -54,12 +82,19 @@ export function ProfileHeader({
                 "border-surface-light dark:border-surface-dark"
               )}
               style={{
-                backgroundImage: `url('${AVATAR_IMAGE_URL}')`,
+                backgroundImage: `url('${avatarImageUrl || AVATAR_IMAGE_URL}')`,
               }}
+            />
+            <input
+              ref={avatarInputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleFileChange(onAvatarSelect)}
             />
             <button
               type="button"
-              onClick={() => toast.info(t("toasts.avatarEditUnimplemented"))}
+              onClick={() => avatarInputRef.current?.click()}
               className={cn(
                 "absolute right-1 bottom-1 rounded-full border-4 p-2.5 text-white shadow-lg transition-colors md:p-3",
                 "bg-primary hover:bg-blue-600",

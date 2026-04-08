@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { FormInput, FormTextarea } from "@/shared/components/form";
 import { ABOUT_MAX_LENGTH, INPUT_CLASSNAME } from "../constants/constants";
 import { cn } from "@/shared/utils";
-import type { ProfileFormValues, ProfileSectionProps } from "../types";
+import type { ProfileFormValues, ProfileSectionProps } from "../types/types";
 
 export function GeneralInfoSection({ form, onUpdateField }: ProfileSectionProps) {
   const t = useTranslations("SettingsProfile");

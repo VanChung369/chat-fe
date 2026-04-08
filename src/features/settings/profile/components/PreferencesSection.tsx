@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import type { ProfileSectionProps } from "../types";
+import type { ProfileSectionProps } from "../types/types";
 import { PreferenceToggle } from "./PreferenceToggle";
 
 export function PreferencesSection({ form }: ProfileSectionProps) {

@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { cn } from "@/shared/utils";
-import type { PresenceStatus } from "../types";
-import type { ProfileSectionProps } from "../types";
+import type { PresenceStatus } from "../types/types";
+import type { ProfileSectionProps } from "../types/types";
 
 export function StatusSection({ form }: ProfileSectionProps) {
   const t = useTranslations("SettingsProfile");

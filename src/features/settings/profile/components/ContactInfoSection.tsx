@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { Mail, Phone } from "lucide-react";
 import { FormInput } from "@/shared/components/form";
 import { ICON_INPUT_CLASSNAME } from "../constants/constants";
-import type { ProfileFormValues, ProfileSectionProps } from "../types";
+import type { ProfileFormValues, ProfileSectionProps } from "../types/types";
 
 export function ContactInfoSection(_: ProfileSectionProps) {
   const t = useTranslations("SettingsProfile");
