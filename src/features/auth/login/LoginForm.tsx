@@ -13,7 +13,6 @@ import { toast } from "sonner";
 import { ErrorResponse } from "@/shared/types/errors";
 import { AuthHeader } from "../components/AuthHeader";
 import { useAuthCtx } from "@/providers/AuthProvider";
-import { User } from "@/shared/types/user";
 
 /**
  * LoginForm component with automatic redirect for unverified accounts.
@@ -21,7 +20,7 @@ import { User } from "@/shared/types/user";
 const LoginForm = () => {
   const t = useTranslations("AuthLogin");
   const router = useRouter();
-  const { updateAuthUser } = useAuthCtx();
+  const { refreshAuthUser } = useAuthCtx();
 
   const options: UseFormProps<LoginFormValues> = {
     mode: "onChange",
@@ -34,8 +33,8 @@ const LoginForm = () => {
 
   const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
     try {
-      const data = await authApi.login(values);
-      updateAuthUser(data);
+      await authApi.login(values);
+      await refreshAuthUser();
       toast.success(t("feedback.loginSuccess"));
       router.push(AppRoutes.home);
     } catch (error) {

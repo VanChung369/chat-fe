@@ -1,10 +1,10 @@
 "use client";
 
-import { useAuth } from "@/shared/hooks/useAuth";
 import { useRouter } from "@/i18n/navigation";
 import { useEffect } from "react";
 import { AppRoutes, pathWithQuery } from "@/shared/constants";
 import { Loading } from "@/shared/components/loading";
+import { useAuthCtx } from "@/providers/AuthProvider";
 
 interface AuthenticatedRouteProps {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ interface AuthenticatedRouteProps {
  * AuthenticatedRoute wraps protected pages and redirects unauthenticated users to the login page.
  */
 export const AuthenticatedRoute = ({ children }: AuthenticatedRouteProps) => {
-  const { user, isAuthenticated, isLoading } = useAuth();
+  const { user, isAuthenticated, isLoading } = useAuthCtx();
   const router = useRouter();
 
   useEffect(() => {
