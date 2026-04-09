@@ -17,16 +17,21 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const { data, isLoading, mutate } = useSWR<User | null>(
-    AUTH_USER_CACHE_KEY,
-    async () => {
-      try {
-        return await authApi.getMe();
-      } catch {
-        return null;
+  const { data, isLoading, mutate } = useSWR<User | null>(AUTH_USER_CACHE_KEY, async () => {
+    try {
+      return await authApi.getMe();
+    } catch (error) {
+      // 401 is expected when not logged in — suppress. Log other failures.
+      const status =
+        error !== null && typeof error === "object" && "status" in error
+          ? (error as { status: number }).status
+          : null;
+      if (status !== 401) {
+        console.warn("[AuthProvider] Failed to fetch current user:", error);
       }
+      return null;
     }
-  );
+  });
 
   const updateAuthUser = (data: User | null) => {
     void mutate(data, false);

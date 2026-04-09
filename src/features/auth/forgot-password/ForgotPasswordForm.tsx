@@ -13,7 +13,7 @@ import {
 import { Mail, ArrowLeft } from "lucide-react";
 import { authApi } from "../api/auth-api";
 import { toast } from "sonner";
-import { ErrorResponse } from "@/shared/types/errors";
+import { parseError } from "@/shared/utils";
 import { AuthHeader } from "../components/AuthHeader";
 
 /**
@@ -38,8 +38,7 @@ const ForgotPasswordForm = () => {
       // Redirect to reset password with email pre-filled
       router.push(pathWithQuery(AppRoutes.resetPassword, { email: values.email }));
     } catch (error) {
-      const err = error as ErrorResponse;
-      toast.error(err.message || t("feedback.error"));
+      toast.error(parseError(error, t("feedback.error")));
     }
   };
 

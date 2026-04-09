@@ -10,7 +10,7 @@ import { createLoginSchema, type LoginFormValues } from "../schema/loginSchema";
 import { Mail, Lock } from "lucide-react";
 import { authApi } from "../api/auth-api";
 import { toast } from "sonner";
-import { ErrorResponse } from "@/shared/types/errors";
+import { parseError } from "@/shared/utils";
 import { AuthHeader } from "../components/AuthHeader";
 import { useAuthCtx } from "@/providers/AuthProvider";
 
@@ -38,21 +38,16 @@ const LoginForm = () => {
       toast.success(t("feedback.loginSuccess"));
       router.push(AppRoutes.home);
     } catch (error) {
-      const err = error as ErrorResponse;
-      console.error("Login Error:", err);
+      const message = parseError(error, t("feedback.invalidCredentials"));
 
       // Handle unverified account redirect
-      // Assuming backend return message "User not verified" or similar
-      if (
-        err.message?.toLowerCase().includes("verify") ||
-        err.message?.toLowerCase().includes("verified")
-      ) {
+      if (message.toLowerCase().includes("verify") || message.toLowerCase().includes("verified")) {
         toast.info(t("feedback.unverified"));
         router.push(pathWithQuery(AppRoutes.verify, { email: values.email, resend: true }));
         return;
       }
 
-      toast.error(err.message || t("feedback.invalidCredentials"));
+      toast.error(message);
     }
   };
 

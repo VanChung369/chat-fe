@@ -11,7 +11,7 @@ import { createResetPasswordSchema, type ResetPasswordValues } from "../schema/r
 import { Lock, ArrowLeft, ShieldCheck } from "lucide-react";
 import { authApi } from "../api/auth-api";
 import { toast } from "sonner";
-import { ErrorResponse } from "@/shared/types/errors";
+import { parseError } from "@/shared/utils";
 import { AuthHeader } from "../components/AuthHeader";
 
 interface ResetPasswordFormProps {
@@ -57,8 +57,7 @@ const ResetPasswordForm = ({ email }: ResetPasswordFormProps) => {
       // Redirect to login after successful reset
       router.push(AppRoutes.login);
     } catch (error) {
-      const err = error as ErrorResponse;
-      toast.error(err.message || t("feedback.error"));
+      toast.error(parseError(error, t("feedback.error")));
     }
   };
 
@@ -69,8 +68,7 @@ const ResetPasswordForm = ({ email }: ResetPasswordFormProps) => {
       toast.success(tVerify("feedback.resendSuccess"));
       setCountdown(RESEND_COOLDOWN);
     } catch (error) {
-      const err = error as ErrorResponse;
-      toast.error(err.message || tVerify("feedback.resendError"));
+      toast.error(parseError(error, tVerify("feedback.resendError")));
     }
   };
 

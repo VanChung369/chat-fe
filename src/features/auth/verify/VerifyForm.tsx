@@ -10,7 +10,7 @@ import { AppRoutes, pathWithQuery, RESEND_COOLDOWN } from "@/shared/constants";
 import { createVerifySchema, type VerifyFormValues } from "../schema/verifySchema";
 import { authApi } from "../api/auth-api";
 import { toast } from "sonner";
-import { ErrorResponse } from "@/shared/types/errors";
+import { parseError } from "@/shared/utils";
 import { AuthHeader } from "../components/AuthHeader";
 
 interface VerifyFormProps {
@@ -65,9 +65,7 @@ const VerifyForm = ({ email, autoResend }: VerifyFormProps) => {
       // Successful verification -> Login
       router.push(pathWithQuery(AppRoutes.login, { verified: true }));
     } catch (error) {
-      const err = error as ErrorResponse;
-      console.error("Verification Error:", err);
-      toast.error(err.message || t("feedback.error"));
+      toast.error(parseError(error, t("feedback.error")));
     }
   };
 
@@ -78,8 +76,7 @@ const VerifyForm = ({ email, autoResend }: VerifyFormProps) => {
       !(autoResend && !hasResent.current) && toast.success(t("feedback.resendSuccess"));
       setCountdown(RESEND_COOLDOWN);
     } catch (error) {
-      const err = error as ErrorResponse;
-      toast.error(err.message || t("feedback.resendError"));
+      toast.error(parseError(error, t("feedback.resendError")));
     }
   };
 

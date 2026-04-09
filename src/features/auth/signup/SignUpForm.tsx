@@ -12,7 +12,7 @@ import { authApi } from "../api/auth-api";
 import { useRouter } from "@/i18n/navigation";
 import { toast } from "sonner";
 import { AuthHeader } from "../components/AuthHeader";
-import { ErrorResponse } from "@/shared/types/errors";
+import { parseError } from "@/shared/utils";
 
 /**
  * SignUpForm handles user registration with automatic validation
@@ -46,9 +46,7 @@ const SignUpForm = () => {
       // Redirect to verification page with email in query
       router.push(pathWithQuery(AppRoutes.verify, { email: values.email }));
     } catch (error) {
-      const err = error as ErrorResponse;
-      console.error("Registration Error:", err);
-      toast.error(err.message || tCommon("unexpectedError"));
+      toast.error(parseError(error, tCommon("unexpectedError")));
     }
   };
 
