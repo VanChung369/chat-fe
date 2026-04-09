@@ -59,7 +59,7 @@ export const authApi = {
   /**
    * Resets the user's password with a code.
    */
-  resetPassword: async (data: ResetPasswordValues) => {
+  resetPassword: async (data: Omit<ResetPasswordValues, "confirmPassword">) => {
     return fetchClient.post(API_ROUTES.auth.resetPassword, data);
   },
 };

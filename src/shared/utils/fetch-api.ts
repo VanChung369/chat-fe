@@ -39,10 +39,12 @@ export async function fetchApi<T>(endpoint: string, options: FetchOptions = {}):
     try {
       errorData = await response.json();
     } catch {
-      errorData = { message: response.statusText };
+      errorData = { message: response.statusText, status: response.status };
     }
 
-    throw new Error(errorData?.message || `HTTP error! status: ${response.status}`);
+    throw new Error(errorData?.message || `HTTP error! status: ${response.status}`, {
+      cause: errorData,
+    });
   }
 
   // Handle No Content (204)

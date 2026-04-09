@@ -5,7 +5,12 @@ import { useRouter, Link } from "@/i18n/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, type UseFormProps } from "react-hook-form";
 import { Form, FormInput, FormInputPassword, FormSubmitButton } from "@/shared/components/form";
-import { AppRoutes, pathWithQuery } from "@/shared/constants";
+import {
+  AppRoutes,
+  mapHttpStatusToResponse,
+  pathWithQuery,
+  STATUS_RESPONSE,
+} from "@/shared/constants";
 import { createLoginSchema, type LoginFormValues } from "../schema/loginSchema";
 import { Mail, Lock } from "lucide-react";
 import { authApi } from "../api/auth-api";
@@ -13,6 +18,7 @@ import { toast } from "sonner";
 import { parseError } from "@/shared/utils";
 import { AuthHeader } from "../components/AuthHeader";
 import { useAuthCtx } from "@/providers/AuthProvider";
+import { ErrorResponse } from "@/shared/types";
 
 /**
  * LoginForm component with automatic redirect for unverified accounts.
@@ -38,14 +44,16 @@ const LoginForm = () => {
       toast.success(t("feedback.loginSuccess"));
       router.push(AppRoutes.home);
     } catch (error) {
-      const message = parseError(error, t("feedback.invalidCredentials"));
+      const err = error as ErrorResponse;
 
       // Handle unverified account redirect
-      if (message.toLowerCase().includes("verify") || message.toLowerCase().includes("verified")) {
+      if (mapHttpStatusToResponse(err.cause.statusCode) === STATUS_RESPONSE.FORBIDDEN) {
         toast.info(t("feedback.unverified"));
         router.push(pathWithQuery(AppRoutes.verify, { email: values.email, resend: true }));
         return;
       }
+
+      const message = parseError(err, t("feedback.invalidCredentials"), true);
 
       toast.error(message);
     }

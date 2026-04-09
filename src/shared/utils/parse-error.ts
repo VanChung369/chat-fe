@@ -1,6 +1,14 @@
 import type { ErrorResponse } from "@/shared/types/errors";
 
-export function parseError(error: unknown, fallback = "An unexpected error occurred"): string {
+export function parseError(
+  error: unknown,
+  fallback = "An unexpected error occurred",
+  isUseFallback = false
+): string {
+  if (isUseFallback) {
+    return fallback;
+  }
+
   if (
     error !== null &&
     typeof error === "object" &&

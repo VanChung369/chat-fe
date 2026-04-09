@@ -52,7 +52,8 @@ const ResetPasswordForm = ({ email }: ResetPasswordFormProps) => {
 
   const onSubmit: SubmitHandler<ResetPasswordValues> = async (values) => {
     try {
-      await authApi.resetPassword(values);
+      const { confirmPassword, ...rest } = values;
+      await authApi.resetPassword({ ...rest });
       toast.success(t("feedback.success"));
       // Redirect to login after successful reset
       router.push(AppRoutes.login);
