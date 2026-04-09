@@ -13,7 +13,14 @@ const AppWithProviders = ({ children }: AppWithProvidersProps) => {
     <SWRConfig
       value={{
         revalidateOnFocus: false,
-        shouldRetryOnError: false,
+        shouldRetryOnError: (error: unknown) => {
+          // Don't retry on 4xx client errors — only retry on network/server issues
+          const status =
+            error !== null && typeof error === "object" && "status" in error
+              ? (error as { status: number }).status
+              : null;
+          return status === null || status >= 500;
+        },
       }}
     >
       <I18nProvider>
