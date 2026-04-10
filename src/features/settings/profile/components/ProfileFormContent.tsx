@@ -33,7 +33,7 @@ export function ProfileFormContent({
   onBannerSelect,
   t,
 }: ProfileFormContentProps) {
-  const form = methods.watch();
+  const form = methods.getValues();
 
   const { isDirty } = useFormState({
     control: methods.control,
