@@ -44,6 +44,7 @@ export const settingsNavigationItems: SettingsNavigationItem[] = [
   },
   {
     labelKey: "privacySecurity",
+    href: AppRoutes.settingsPrivacySecurity,
     icon: Lock,
   },
   {
@@ -52,6 +53,7 @@ export const settingsNavigationItems: SettingsNavigationItem[] = [
   },
   {
     labelKey: "preferences",
+    href: AppRoutes.settingsPreferences,
     icon: Settings2,
   },
 ];

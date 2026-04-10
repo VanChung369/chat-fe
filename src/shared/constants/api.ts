@@ -7,6 +7,7 @@ export const API_ROUTES = {
     resendCode: "/auth/resend-code",
     forgotPassword: "/auth/forgot-password",
     resetPassword: "/auth/reset-password",
+    changePassword: "/auth/change-password",
   },
   users: {
     me: "/users/me",

@@ -41,6 +41,43 @@
 }
 
 :root {
+  --background-light: #f8fafc;
+  --bg-darkest: #eef4ff;
+  --bg-content: #f4f7fb;
+  --bg-footer: #e5ecf6;
+  --bg-sidebar: #ffffff;
+  --bg-dark: #f8fbff;
+  --surface-dark: #ffffff;
+  --input-bg: #ffffff;
+  --surface-secondary: #eef2ff;
+  --surface-hover: #dbe5f1;
+  --surface-hover-deep: #c8d4e5;
+  --input-border: #cbd5e1;
+
+  --text-strong: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+
+  --primary: #135bec;
+  --primary-hover: #1e69ff;
+  --primary-pressed: #0d46bc;
+  --primary-glow: rgb(19 91 236 / 20%);
+
+  --emerald-online: #10b981;
+  --emerald-online-ring: #34d399;
+
+  --gradient-main: linear-gradient(160deg, #f8fbff 0%, #eef4ff 46%, #dde9ff 100%);
+
+  --gradient-auth-overlay: linear-gradient(
+    to bottom,
+    rgba(248, 251, 255, 0.25) 0%,
+    rgba(222, 233, 255, 0.9) 100%
+  );
+  --glow-primary: radial-gradient(circle at center, rgba(19, 91, 236, 0.12) 0%, transparent 70%);
+}
+
+html.dark {
   --background-light: #f6f6f8;
   --bg-darkest: #010101;
   --bg-content: #050505;

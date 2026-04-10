@@ -10,6 +10,8 @@ export const AppRoutes = {
   hub: "/hub",
   contacts: "/contacts",
   settings: "/settings/profile",
+  settingsPrivacySecurity: "/settings/privacy-security",
+  settingsPreferences: "/settings/preferences",
   demoUpload: "/demo/upload",
 } as const;
 

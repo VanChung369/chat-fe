@@ -289,6 +289,80 @@
       "currentStatus": "Current status: {status}"
     }
   },
+  "SettingsPrivacySecurity": {
+    "eyebrow": "Account Protection",
+    "title": "Privacy & Security",
+    "description": "Change your password and keep your account protected. Updating your password will sign you out on all devices.",
+    "fields": {
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password"
+    },
+    "placeholders": {
+      "currentPassword": "Enter your current password",
+      "newPassword": "Create a strong new password",
+      "confirmPassword": "Confirm your new password"
+    },
+    "actions": {
+      "submit": "Change Password",
+      "submitting": "Updating password..."
+    },
+    "errors": {
+      "currentPasswordRequired": "Please enter your current password.",
+      "newPasswordRequired": "Please enter a new password.",
+      "newPasswordMin": "New password must be at least 8 characters.",
+      "newPasswordMax": "New password must be at most 128 characters.",
+      "newPasswordComplexity": "New password must contain at least 1 uppercase, 1 lowercase, 1 number, and 1 special character.",
+      "confirmPasswordRequired": "Please confirm your new password.",
+      "confirmPasswordMin": "Confirm password must be at least 8 characters.",
+      "confirmPasswordMax": "Confirm password must be at most 128 characters.",
+      "confirmPasswordMismatch": "Passwords do not match.",
+      "passwordSameAsCurrent": "New password must be different from your current password."
+    },
+    "securityCard": {
+      "title": "Before you continue",
+      "description": "A good password update should improve both security and recovery readiness.",
+      "items": {
+        "signOut": "You will be asked to log in again after the password changes.",
+        "length": "Use at least 8 characters with a strong mix of letters, numbers, and symbols.",
+        "reuse": "Avoid reusing passwords from email, banking, or social accounts."
+      }
+    },
+    "toasts": {
+      "passwordChanged": "Password updated. Please log in again."
+    }
+  },
+  "SettingsPreferences": {
+    "eyebrow": "Experience",
+    "title": "Preferences",
+    "description": "Choose the language and interface style that fit the way you work. Changes apply immediately.",
+    "language": {
+      "title": "Language",
+      "description": "Pick the language used across your account and settings screens.",
+      "options": {
+        "en": "English",
+        "enDescription": "Use English across the interface.",
+        "vi": "Vietnamese",
+        "viDescription": "Use Vietnamese across the interface."
+      }
+    },
+    "appearance": {
+      "title": "Appearance",
+      "description": "Switch between a dark, light, or system-based interface.",
+      "options": {
+        "system": "System",
+        "systemDescription": "Follow your device appearance automatically.",
+        "light": "Light",
+        "lightDescription": "Use a bright workspace with softer contrast.",
+        "dark": "Dark",
+        "darkDescription": "Keep the current dark workspace and higher contrast."
+      }
+    },
+    "toasts": {
+      "languageUpdated": "Language changed to {language}.",
+      "appearanceUpdated": "Appearance changed to {appearance}."
+    }
+  },
   "Common": {
     "unexpectedError": "An unexpected error occurred. Please try again."
   },

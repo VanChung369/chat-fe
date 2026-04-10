@@ -289,6 +289,80 @@
       "currentStatus": "Trạng thái hiện tại: {status}"
     }
   },
+  "SettingsPrivacySecurity": {
+    "eyebrow": "Bảo vệ tài khoản",
+    "title": "Quyền riêng tư & Bảo mật",
+    "description": "Đổi mật khẩu để bảo vệ tài khoản tốt hơn. Sau khi cập nhật, bạn sẽ phải đăng nhập lại trên mọi thiết bị.",
+    "fields": {
+      "currentPassword": "Mật khẩu hiện tại",
+      "newPassword": "Mật khẩu mới",
+      "confirmPassword": "Xác nhận mật khẩu mới"
+    },
+    "placeholders": {
+      "currentPassword": "Nhập mật khẩu hiện tại",
+      "newPassword": "Tạo mật khẩu mới mạnh hơn",
+      "confirmPassword": "Nhập lại mật khẩu mới"
+    },
+    "actions": {
+      "submit": "Đổi mật khẩu",
+      "submitting": "Đang cập nhật mật khẩu..."
+    },
+    "errors": {
+      "currentPasswordRequired": "Vui lòng nhập mật khẩu hiện tại.",
+      "newPasswordRequired": "Vui lòng nhập mật khẩu mới.",
+      "newPasswordMin": "Mật khẩu mới phải có ít nhất 8 ký tự.",
+      "newPasswordMax": "Mật khẩu mới tối đa 128 ký tự.",
+      "newPasswordComplexity": "Mật khẩu mới phải chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt.",
+      "confirmPasswordRequired": "Vui lòng xác nhận mật khẩu mới.",
+      "confirmPasswordMin": "Xác nhận mật khẩu phải có ít nhất 8 ký tự.",
+      "confirmPasswordMax": "Xác nhận mật khẩu tối đa 128 ký tự.",
+      "confirmPasswordMismatch": "Mật khẩu không khớp.",
+      "passwordSameAsCurrent": "Mật khẩu mới phải khác mật khẩu hiện tại."
+    },
+    "securityCard": {
+      "title": "Lưu ý trước khi đổi",
+      "description": "Một lần cập nhật mật khẩu tốt nên vừa tăng bảo mật vừa giúp bạn dễ quản lý tài khoản hơn.",
+      "items": {
+        "signOut": "Bạn sẽ cần đăng nhập lại sau khi mật khẩu được thay đổi.",
+        "length": "Hãy dùng ít nhất 8 ký tự với chữ hoa, chữ thường, số và ký tự đặc biệt.",
+        "reuse": "Không nên dùng lại mật khẩu đang sử dụng cho email, ngân hàng hoặc mạng xã hội."
+      }
+    },
+    "toasts": {
+      "passwordChanged": "Đã cập nhật mật khẩu. Vui lòng đăng nhập lại."
+    }
+  },
+  "SettingsPreferences": {
+    "eyebrow": "Trải nghiệm",
+    "title": "Tùy chọn",
+    "description": "Chọn ngôn ngữ và giao diện phù hợp với cách bạn làm việc. Các thay đổi được áp dụng ngay lập tức.",
+    "language": {
+      "title": "Ngôn ngữ",
+      "description": "Chọn ngôn ngữ hiển thị cho toàn bộ tài khoản và màn hình cài đặt.",
+      "options": {
+        "en": "Tiếng Anh",
+        "enDescription": "Dùng tiếng Anh cho toàn bộ giao diện.",
+        "vi": "Tiếng Việt",
+        "viDescription": "Dùng tiếng Việt cho toàn bộ giao diện."
+      }
+    },
+    "appearance": {
+      "title": "Giao diện",
+      "description": "Chuyển giữa chế độ tối, sáng hoặc tự động theo thiết bị.",
+      "options": {
+        "system": "Theo hệ thống",
+        "systemDescription": "Tự động theo giao diện hiện tại của thiết bị.",
+        "light": "Sáng",
+        "lightDescription": "Không gian làm việc sáng hơn, độ tương phản mềm hơn.",
+        "dark": "Tối",
+        "darkDescription": "Giữ giao diện tối hiện tại với độ tương phản cao hơn."
+      }
+    },
+    "toasts": {
+      "languageUpdated": "Đã chuyển ngôn ngữ sang {language}.",
+      "appearanceUpdated": "Đã chuyển giao diện sang {appearance}."
+    }
+  },
   "Common": {
     "unexpectedError": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
   },
