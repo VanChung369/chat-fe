@@ -2,15 +2,7 @@
 
 import { cn } from "@/shared/utils/cn";
 import { Check, ChevronDown } from "lucide-react";
-import {
-  type KeyboardEvent,
-  type ReactNode,
-  useCallback,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from "react";
+import { type KeyboardEvent, type ReactNode, useEffect, useId, useRef, useState } from "react";
 
 export type SelectOption<T extends string = string> = {
   value: T;
@@ -63,21 +55,18 @@ export const Select = <T extends string = string>({
 
   const selectedOption = options.find((o) => o.value === currentValue) ?? null;
 
-  const closeDropdown = useCallback(() => {
+  const closeDropdown = () => {
     setOpen(false);
     setFocusedIndex(-1);
-  }, []);
+  };
 
-  const selectOption = useCallback(
-    (option: SelectOption<T>) => {
-      if (option.disabled) return;
-      if (!isControlled) setInternalValue(option.value);
-      onChange?.(option.value);
-      closeDropdown();
-      buttonRef.current?.focus();
-    },
-    [isControlled, onChange, closeDropdown]
-  );
+  const selectOption = (option: SelectOption<T>) => {
+    if (option.disabled) return;
+    if (!isControlled) setInternalValue(option.value);
+    onChange?.(option.value);
+    closeDropdown();
+    buttonRef.current?.focus();
+  };
 
   // Close on outside click
   useEffect(() => {
@@ -99,40 +88,39 @@ export const Select = <T extends string = string>({
   const enabledOptions = options.filter((o) => !o.disabled);
 
   const handleButtonKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     if (disabled) return;
+
     if (e.key === "Enter" || e.key === " " || e.key === "ArrowDown") {
-      e.preventDefault();
       setOpen(true);
       const idx = options.findIndex((o) => o.value === currentValue);
       setFocusedIndex(idx >= 0 ? idx : 0);
     } else if (e.key === "ArrowUp") {
-      e.preventDefault();
       setOpen(true);
       setFocusedIndex(options.length - 1);
     }
   };
 
   const handleListKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
+    e.preventDefault();
+
     if (e.key === "Escape") {
-      e.preventDefault();
       closeDropdown();
       buttonRef.current?.focus();
     } else if (e.key === "ArrowDown") {
-      e.preventDefault();
       setFocusedIndex((prev) => {
         let next = prev + 1;
         while (next < options.length && options[next].disabled) next++;
         return next < options.length ? next : prev;
       });
     } else if (e.key === "ArrowUp") {
-      e.preventDefault();
       setFocusedIndex((prev) => {
         let next = prev - 1;
         while (next >= 0 && options[next].disabled) next--;
         return next >= 0 ? next : prev;
       });
     } else if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
       if (focusedIndex >= 0) selectOption(options[focusedIndex]);
     } else if (e.key === "Tab") {
       closeDropdown();
