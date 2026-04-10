@@ -200,7 +200,7 @@ export const Select = <T extends string = string>({
           tabIndex={-1}
           onKeyDown={handleListKeyDown}
           className={cn(
-            "absolute z-50 mt-1.5 max-h-60 w-full overflow-auto rounded-lg border p-2",
+            "absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-lg border p-2",
             "border-outline-variant bg-surface-input shadow-[0_8px_32px_rgba(0,0,0,0.18)] backdrop-blur-sm",
             "focus:outline-none"
           )}
@@ -226,7 +226,9 @@ export const Select = <T extends string = string>({
                   isSelected && !option.disabled && "text-primary"
                 )}
               >
-                <span className="truncate">{option.label}</span>
+                <span className={cn("truncate", options.length - 1 !== index && "mb-0.5")}>
+                  {option.label}
+                </span>
                 {isSelected ? <Check className="text-primary size-4 shrink-0" /> : null}
               </li>
             );

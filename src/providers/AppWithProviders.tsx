@@ -17,14 +17,14 @@ const AppWithProviders = ({ children }: AppWithProvidersProps) => {
         shouldRetryOnError: false,
       }}
     >
-      <I18nProvider>
-        <ThemeProvider>
+      <ThemeProvider>
+        <I18nProvider>
           <AuthProvider>
             {children}
             <Toaster position="top-center" richColors />
           </AuthProvider>
-        </ThemeProvider>
-      </I18nProvider>
+        </I18nProvider>{" "}
+      </ThemeProvider>
     </SWRConfig>
   );
 };

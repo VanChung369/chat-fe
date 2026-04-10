@@ -5,7 +5,7 @@ import { type ThemePreference } from "@/shared/types";
 import { cn } from "@/shared/utils";
 import { useTheme } from "next-themes";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
 
 import {
@@ -28,7 +28,6 @@ import type {
   PreferenceOption,
 } from "./types/preferences";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { getLanguageLabel } from "@/shared/constants";
 
 export function SettingsPreferencesFeature() {
   const t = useTranslations("SettingsPreferences");
@@ -52,64 +51,54 @@ export function SettingsPreferencesFeature() {
 
   const themePreference = (theme ?? "dark") as ThemePreference;
 
-  const languageOptions = useMemo<PreferenceOption<AppLocale>[]>(
-    () => [
-      {
-        value: "en" as const,
-        title: t("language.options.en"),
-        description: t("language.options.enDescription"),
-      },
-      {
-        value: "vi" as const,
-        title: t("language.options.vi"),
-        description: t("language.options.viDescription"),
-      },
-    ],
-    [t]
-  );
+  const languageOptions: PreferenceOption<AppLocale>[] = [
+    {
+      value: "en" as const,
+      title: t("language.options.en"),
+      description: t("language.options.enDescription"),
+    },
+    {
+      value: "vi" as const,
+      title: t("language.options.vi"),
+      description: t("language.options.viDescription"),
+    },
+  ];
 
-  const appearanceOptions = useMemo<AppearanceOption[]>(
-    () => [
-      {
-        value: "system" as const satisfies ThemePreference,
-        title: t("appearance.options.system"),
-        description: t("appearance.options.systemDescription"),
-        previewClassName:
-          "bg-[linear-gradient(145deg,rgba(15,23,42,0.92),rgba(71,85,105,0.82),rgba(248,250,252,0.85))]",
-        swatchClassName: "bg-white/80",
-      },
-      {
-        value: "light" as const satisfies ThemePreference,
-        title: t("appearance.options.light"),
-        description: t("appearance.options.lightDescription"),
-        previewClassName:
-          "bg-[linear-gradient(145deg,rgba(248,250,252,1),rgba(226,232,240,0.98),rgba(255,255,255,0.95))]",
-        swatchClassName: "bg-slate-100",
-      },
-      {
-        value: "dark" as const satisfies ThemePreference,
-        title: t("appearance.options.dark"),
-        description: t("appearance.options.darkDescription"),
-        previewClassName:
-          "bg-[linear-gradient(145deg,rgba(2,6,23,1),rgba(15,23,42,0.98),rgba(30,41,59,0.96))]",
-        swatchClassName: "bg-indigo-500",
-      },
-    ],
-    [t]
-  );
+  const appearanceOptions: AppearanceOption[] = [
+    {
+      value: "system" as const satisfies ThemePreference,
+      title: t("appearance.options.system"),
+      description: t("appearance.options.systemDescription"),
+      previewClassName:
+        "bg-[linear-gradient(145deg,rgba(15,23,42,0.92),rgba(71,85,105,0.82),rgba(248,250,252,0.85))]",
+      swatchClassName: "bg-white/80",
+    },
+    {
+      value: "light" as const satisfies ThemePreference,
+      title: t("appearance.options.light"),
+      description: t("appearance.options.lightDescription"),
+      previewClassName:
+        "bg-[linear-gradient(145deg,rgba(248,250,252,1),rgba(226,232,240,0.98),rgba(255,255,255,0.95))]",
+      swatchClassName: "bg-slate-100",
+    },
+    {
+      value: "dark" as const satisfies ThemePreference,
+      title: t("appearance.options.dark"),
+      description: t("appearance.options.darkDescription"),
+      previewClassName:
+        "bg-[linear-gradient(145deg,rgba(2,6,23,1),rgba(15,23,42,0.98),rgba(30,41,59,0.96))]",
+      swatchClassName: "bg-indigo-500",
+    },
+  ];
 
   const handleLocaleChange = (nextLocale: AppLocale) => {
     if (nextLocale === locale || isLocalePending) {
       return;
     }
 
-    const nextLocaleLabel = getLanguageLabel(nextLocale);
-
     startLocaleTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
+      router.replace(pathname, { locale: nextLocale, scroll: false });
     });
-
-    toast.success(t("toasts.languageUpdated", { language: nextLocaleLabel }));
   };
 
   const handleThemeChange = (nextTheme: ThemePreference) => {
