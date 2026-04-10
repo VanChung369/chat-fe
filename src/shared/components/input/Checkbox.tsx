@@ -54,17 +54,22 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           </span>
         </span>
 
-        {(label || description) ? (
+        {label || description ? (
           <span className="flex flex-col">
             {label ? (
-              <span className={cn("text-sm font-semibold text-gray-900 dark:text-white", labelClassName)}>
+              <span
+                className={cn(
+                  "text-sm font-semibold text-gray-900 dark:text-white",
+                  labelClassName
+                )}
+              >
                 {label}
               </span>
             ) : null}
             {description ? (
               <span
                 className={cn(
-                  "text-text-secondary-light dark:text-text-secondary-dark mt-0.5 text-xs",
+                  "text-text-secondary-light dark:text-text-secondary-dark mt-0.5 text-sm",
                   descriptionClassName
                 )}
               >

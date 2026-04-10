@@ -1,71 +1,58 @@
 "use client";
 
 import { type AppLocale } from "@/i18n/routing";
-import { usePathname, useRouter } from "@/i18n/navigation";
 import { type ThemePreference } from "@/shared/types";
 import { cn } from "@/shared/utils";
-import { Check, Globe2, Laptop, MoonStar, Sparkles, SunMedium } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useMemo, useState, useTransition, type ReactNode } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import { toast } from "sonner";
 
-type OptionCardProps = {
-  active: boolean;
-  title: string;
-  description: string;
-  onClick: () => void;
-  icon: ReactNode;
-  disabled?: boolean;
-};
-
-function OptionCard({ active, title, description, onClick, icon, disabled }: OptionCardProps) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      className={cn(
-        "border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark flex w-full items-start gap-4 rounded-2xl border p-4 text-left transition-all",
-        active
-          ? "border-primary bg-primary/5 shadow-primary/10 shadow-lg"
-          : "hover:border-primary/40 hover:bg-white dark:hover:bg-slate-950/40",
-        disabled ? "cursor-not-allowed opacity-60" : ""
-      )}
-    >
-      <span className="bg-primary/10 text-primary flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
-        {icon}
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="flex items-center justify-between gap-3">
-          <span className="text-sm font-semibold text-slate-900 dark:text-white">{title}</span>
-          {active ? <Check className="text-primary h-4 w-4 shrink-0" /> : null}
-        </span>
-        <span className="text-text-secondary-light dark:text-text-secondary-dark mt-1 block text-sm leading-6">
-          {description}
-        </span>
-      </span>
-    </button>
-  );
-}
+import {
+  ACCENT_OPTIONS,
+  DEFAULT_ACCESSIBILITY_PREFERENCES,
+  DEFAULT_NOTIFICATION_PREFERENCES,
+} from "./constants/preferences";
+import {
+  AccessibilitySection,
+  AppearanceSection,
+  LanguageRegionSection,
+  NotificationsSection,
+  PreferencesHero,
+} from "./components";
+import type {
+  AccessibilityPreferencesState,
+  AccentTone,
+  AppearanceOption,
+  NotificationPreferencesState,
+  PreferenceOption,
+} from "./types/preferences";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { getLanguageLabel } from "@/shared/constants";
 
 export function SettingsPreferencesFeature() {
   const t = useTranslations("SettingsPreferences");
   const locale = useLocale() as AppLocale;
   const pathname = usePathname();
   const router = useRouter();
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [isLocalePending, startLocaleTransition] = useTransition();
   const [isMounted, setIsMounted] = useState(false);
+  const [selectedAccent, setSelectedAccent] = useState<AccentTone>("indigo");
+  const [accessibilityState, setAccessibilityState] = useState<AccessibilityPreferencesState>(
+    DEFAULT_ACCESSIBILITY_PREFERENCES
+  );
+  const [notificationState, setNotificationState] = useState<NotificationPreferencesState>(
+    DEFAULT_NOTIFICATION_PREFERENCES
+  );
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   const themePreference = (theme ?? "dark") as ThemePreference;
-  const activeResolvedTheme = resolvedTheme === "light" ? "light" : "dark";
 
-  const languageOptions = useMemo(
+  const languageOptions = useMemo<PreferenceOption<AppLocale>[]>(
     () => [
       {
         value: "en" as const,
@@ -81,25 +68,31 @@ export function SettingsPreferencesFeature() {
     [t]
   );
 
-  const appearanceOptions = useMemo(
+  const appearanceOptions = useMemo<AppearanceOption[]>(
     () => [
       {
         value: "system" as const satisfies ThemePreference,
         title: t("appearance.options.system"),
         description: t("appearance.options.systemDescription"),
-        icon: <Laptop className="h-5 w-5" />,
+        previewClassName:
+          "bg-[linear-gradient(145deg,rgba(15,23,42,0.92),rgba(71,85,105,0.82),rgba(248,250,252,0.85))]",
+        swatchClassName: "bg-white/80",
       },
       {
         value: "light" as const satisfies ThemePreference,
         title: t("appearance.options.light"),
         description: t("appearance.options.lightDescription"),
-        icon: <SunMedium className="h-5 w-5" />,
+        previewClassName:
+          "bg-[linear-gradient(145deg,rgba(248,250,252,1),rgba(226,232,240,0.98),rgba(255,255,255,0.95))]",
+        swatchClassName: "bg-slate-100",
       },
       {
         value: "dark" as const satisfies ThemePreference,
         title: t("appearance.options.dark"),
         description: t("appearance.options.darkDescription"),
-        icon: <MoonStar className="h-5 w-5" />,
+        previewClassName:
+          "bg-[linear-gradient(145deg,rgba(2,6,23,1),rgba(15,23,42,0.98),rgba(30,41,59,0.96))]",
+        swatchClassName: "bg-indigo-500",
       },
     ],
     [t]
@@ -110,8 +103,7 @@ export function SettingsPreferencesFeature() {
       return;
     }
 
-    const nextLocaleLabel =
-      nextLocale === "vi" ? t("language.options.vi") : t("language.options.en");
+    const nextLocaleLabel = getLanguageLabel(nextLocale);
 
     startLocaleTransition(() => {
       router.replace(pathname, { locale: nextLocale });
@@ -130,86 +122,109 @@ export function SettingsPreferencesFeature() {
     toast.success(t("toasts.appearanceUpdated", { appearance: nextThemeLabel }));
   };
 
+  const handleAccentChange = (nextAccent: AccentTone) => {
+    if (nextAccent === selectedAccent) {
+      return;
+    }
+
+    setSelectedAccent(nextAccent);
+    toast.success(t(`toasts.accentUpdated.${nextAccent}`));
+  };
+
+  const selectedAccentOption =
+    ACCENT_OPTIONS.find((option) => option.value === selectedAccent) ?? ACCENT_OPTIONS[0];
+
   return (
     <div className={cn("w-full flex-1 overflow-y-auto")}>
       <div className={cn("w-full px-4 py-6 md:px-6 lg:px-8")}>
-        <div
-          className={cn(
-            "bg-surface-light dark:bg-surface-dark border-border-light dark:border-border-dark w-full overflow-hidden rounded-2xl border shadow-sm"
-          )}
-        >
-          <div className="border-border-light dark:border-border-dark border-b px-5 py-6 md:px-8">
-            <p className="text-text-secondary-light dark:text-text-secondary-dark text-xs font-semibold uppercase tracking-[0.22em]">
-              {t("eyebrow")}
-            </p>
-            <div className="mt-3 flex items-start gap-4">
-              <div className="bg-primary/10 text-primary flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl">
-                <Sparkles className="h-6 w-6" />
-              </div>
-              <div className="space-y-2">
-                <h1 className="text-2xl font-bold text-slate-900 dark:text-white">{t("title")}</h1>
-                <p className="text-text-secondary-light dark:text-text-secondary-dark max-w-2xl text-sm leading-6">
-                  {t("description")}
-                </p>
+        <div className="mx-auto w-full">
+          <div
+            className={cn(
+              "bg-surface-light dark:bg-surface-dark border-border-light dark:border-border-dark w-full overflow-hidden rounded-2xl border shadow-sm"
+            )}
+          >
+            <div className="border-border-light dark:border-border-dark border-b px-5 py-6 md:px-8 lg:px-10">
+              <PreferencesHero
+                eyebrow={t("eyebrow")}
+                title={t("title")}
+                description={t("description")}
+              />
+            </div>
+
+            <div className="px-5 py-6 md:px-8 lg:px-10">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-6">
+                <AppearanceSection
+                  title={t("appearance.title")}
+                  description={t("appearance.description")}
+                  badge={t("appearance.badge")}
+                  accentTitle={t("appearance.accentTitle")}
+                  accentDescription={t("appearance.accentDescription")}
+                  selectedTheme={isMounted ? themePreference : "dark"}
+                  options={appearanceOptions}
+                  accentOptions={ACCENT_OPTIONS}
+                  selectedAccent={selectedAccentOption}
+                  onThemeChange={handleThemeChange}
+                  onAccentChange={handleAccentChange}
+                />
+
+                <LanguageRegionSection
+                  title={t("language.title")}
+                  description={t("language.description")}
+                  displayLanguageLabel={t("language.displayLanguageLabel")}
+                  selectedLanguage={locale}
+                  options={languageOptions}
+                  onLanguageChange={handleLocaleChange}
+                  disabled={isLocalePending}
+                />
+
+                <AccessibilitySection
+                  state={accessibilityState}
+                  title={t("accessibility.title")}
+                  description={t("accessibility.description")}
+                  fontSizeLabel={t("accessibility.fontSizeLabel")}
+                  fontSizeValue={t("accessibility.fontSizeValue", {
+                    size: accessibilityState.fontSize,
+                  })}
+                  fontSizeMinLabel={t("accessibility.fontSizeMinLabel")}
+                  fontSizeMaxLabel={t("accessibility.fontSizeMaxLabel")}
+                  highContrastTitle={t("accessibility.highContrast.title")}
+                  highContrastDescription={t("accessibility.highContrast.description")}
+                  reduceMotionTitle={t("accessibility.reduceMotion.title")}
+                  reduceMotionDescription={t("accessibility.reduceMotion.description")}
+                  onFontSizeChange={(value) =>
+                    setAccessibilityState((prev) => ({ ...prev, fontSize: value }))
+                  }
+                  onToggleHighContrast={(value) =>
+                    setAccessibilityState((prev) => ({ ...prev, highContrast: value }))
+                  }
+                  onToggleReduceMotion={(value) =>
+                    setAccessibilityState((prev) => ({ ...prev, reduceMotion: value }))
+                  }
+                />
+
+                <NotificationsSection
+                  state={notificationState}
+                  title={t("notifications.title")}
+                  description={t("notifications.description")}
+                  desktopTitle={t("notifications.desktop.title")}
+                  desktopDescription={t("notifications.desktop.description")}
+                  soundTitle={t("notifications.sound.title")}
+                  soundDescription={t("notifications.sound.description")}
+                  emailTitle={t("notifications.email.title")}
+                  emailDescription={t("notifications.email.description")}
+                  quietHoursLabel={t("notifications.quietHours")}
+                  onToggleDesktop={(value) =>
+                    setNotificationState((prev) => ({ ...prev, desktop: value }))
+                  }
+                  onToggleSound={(value) =>
+                    setNotificationState((prev) => ({ ...prev, sound: value }))
+                  }
+                  onToggleEmail={(value) =>
+                    setNotificationState((prev) => ({ ...prev, email: value }))
+                  }
+                />
               </div>
             </div>
-          </div>
-
-          <div className="grid gap-6 px-5 py-6 md:px-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <section className="space-y-4">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-slate-900 dark:text-white">
-                  <Globe2 className="h-5 w-5 text-primary" />
-                  <h2 className="text-lg font-bold">{t("language.title")}</h2>
-                </div>
-                <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm leading-6">
-                  {t("language.description")}
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                {languageOptions.map((option) => (
-                  <OptionCard
-                    key={option.value}
-                    active={locale === option.value}
-                    title={option.title}
-                    description={option.description}
-                    disabled={isLocalePending}
-                    onClick={() => handleLocaleChange(option.value)}
-                    icon={<Globe2 className="h-5 w-5" />}
-                  />
-                ))}
-              </div>
-            </section>
-
-            <section className="space-y-4">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-slate-900 dark:text-white">
-                  {activeResolvedTheme === "dark" ? (
-                    <MoonStar className="h-5 w-5 text-primary" />
-                  ) : (
-                    <SunMedium className="h-5 w-5 text-primary" />
-                  )}
-                  <h2 className="text-lg font-bold">{t("appearance.title")}</h2>
-                </div>
-                <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm leading-6">
-                  {t("appearance.description")}
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                {appearanceOptions.map((option) => (
-                  <OptionCard
-                    key={option.value}
-                    active={isMounted ? themePreference === option.value : option.value === "dark"}
-                    title={option.title}
-                    description={option.description}
-                    onClick={() => handleThemeChange(option.value)}
-                    icon={option.icon}
-                  />
-                ))}
-              </div>
-            </section>
           </div>
         </div>
       </div>

@@ -335,32 +335,78 @@
   "SettingsPreferences": {
     "eyebrow": "Experience",
     "title": "Preferences",
-    "description": "Choose the language and interface style that fit the way you work. Changes apply immediately.",
+    "description": "Shape the workspace around how you work. Theme and language update immediately, while the rest of the controls mirror the settings dashboard structure.",
     "language": {
       "title": "Language",
-      "description": "Pick the language used across your account and settings screens.",
+      "description": "Choose your display language.",
+      "displayLanguageLabel": "Display language",
+      "timezoneLabel": "Timezone",
+      "timezoneValue": "Auto-detected: {timezone}",
+      "regionAction": "Change region",
       "options": {
         "en": "English",
-        "enDescription": "Use English across the interface.",
+        "enDescription": "Use English across the workspace, menus, and settings.",
         "vi": "Vietnamese",
-        "viDescription": "Use Vietnamese across the interface."
+        "viDescription": "Use Vietnamese across the workspace, menus, and settings."
       }
     },
     "appearance": {
       "title": "Appearance",
-      "description": "Switch between a dark, light, or system-based interface.",
+      "description": "Set the visual tone of the workspace and choose the accent color used for key actions.",
+      "badge": "Primary",
+      "accentTitle": "Accent color",
+      "accentDescription": "Used for active states, emphasis, and highlighted actions.",
       "options": {
         "system": "System",
-        "systemDescription": "Follow your device appearance automatically.",
+        "systemDescription": "Blend dark and light behavior based on your device.",
         "light": "Light",
-        "lightDescription": "Use a bright workspace with softer contrast.",
+        "lightDescription": "A cleaner bright canvas for daytime work and review.",
         "dark": "Dark",
-        "darkDescription": "Keep the current dark workspace and higher contrast."
+        "darkDescription": "A dense indigo slate workspace with stronger contrast."
       }
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "description": "Adjust reading comfort, contrast, and motion to fit the way you consume information.",
+      "fontSizeLabel": "Font size",
+      "fontSizeValue": "{size}px",
+      "fontSizeMinLabel": "Small",
+      "fontSizeMaxLabel": "Large",
+      "highContrast": {
+        "title": "High contrast mode",
+        "description": "Increase the visibility of text and interface edges."
+      },
+      "reduceMotion": {
+        "title": "Reduce motion",
+        "description": "Minimize non-essential animation in workspace transitions."
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Control which alerts stay immediate and which ones can wait until later.",
+      "desktop": {
+        "title": "Desktop notifications",
+        "description": "Show message and mention alerts while the app is open."
+      },
+      "sound": {
+        "title": "Sound effects",
+        "description": "Play feedback sounds for important activity and actions."
+      },
+      "email": {
+        "title": "Email summaries",
+        "description": "Receive recap emails when you are away from the workspace."
+      },
+      "quietHours": "Configure quiet hours"
     },
     "toasts": {
       "languageUpdated": "Language changed to {language}.",
-      "appearanceUpdated": "Appearance changed to {appearance}."
+      "appearanceUpdated": "Appearance changed to {appearance}.",
+      "accentUpdated": {
+        "indigo": "Accent color changed to Indigo.",
+        "emerald": "Accent color changed to Emerald.",
+        "rose": "Accent color changed to Rose.",
+        "amber": "Accent color changed to Amber."
+      }
     }
   },
   "Common": {

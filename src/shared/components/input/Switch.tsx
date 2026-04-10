@@ -46,7 +46,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             {description ? (
               <span
                 className={cn(
-                  "text-text-secondary-light dark:text-text-secondary-dark mt-0.5 text-xs",
+                  "text-text-secondary-light dark:text-text-secondary-dark mt-0.5 text-sm",
                   descriptionClassName
                 )}
               >

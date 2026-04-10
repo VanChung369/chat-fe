@@ -16,3 +16,5 @@ export {
   mapHttpStatusToResponse,
 } from "./status-response";
 export type { StatusResponse, HttpStatusCode, HttpStatusResponse } from "./status-response";
+
+export { LANGUAGES, getLanguageLabel } from "./language";

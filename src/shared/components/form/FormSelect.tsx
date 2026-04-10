@@ -86,10 +86,8 @@ export function FormSelect<T extends FieldValues, TValue extends string = string
 
       <Select
         id={inputId}
-        ref={field.ref}
         value={(field.value as string | undefined) ?? ""}
-        onBlur={field.onBlur}
-        onChange={(event) => field.onChange(event.target.value)}
+        onChange={(value) => field.onChange(value)}
         disabled={disabled}
         options={options}
         placeholder={placeholder}

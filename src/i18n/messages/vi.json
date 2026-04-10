@@ -335,32 +335,78 @@
   "SettingsPreferences": {
     "eyebrow": "Trải nghiệm",
     "title": "Tùy chọn",
-    "description": "Chọn ngôn ngữ và giao diện phù hợp với cách bạn làm việc. Các thay đổi được áp dụng ngay lập tức.",
+    "description": "Tinh chỉnh không gian làm việc theo cách bạn vận hành. Giao diện và ngôn ngữ đổi ngay lập tức, còn các phần còn lại được trình bày theo bố cục dashboard settings.",
     "language": {
       "title": "Ngôn ngữ",
-      "description": "Chọn ngôn ngữ hiển thị cho toàn bộ tài khoản và màn hình cài đặt.",
+      "description": "Chọn ngôn ngữ hiển thị.",
+      "displayLanguageLabel": "Ngôn ngữ hiển thị",
+      "timezoneLabel": "Múi giờ",
+      "timezoneValue": "Tự nhận diện: {timezone}",
+      "regionAction": "Đổi khu vực",
       "options": {
         "en": "Tiếng Anh",
-        "enDescription": "Dùng tiếng Anh cho toàn bộ giao diện.",
+        "enDescription": "Dùng tiếng Anh cho toàn bộ workspace, menu và phần cài đặt.",
         "vi": "Tiếng Việt",
-        "viDescription": "Dùng tiếng Việt cho toàn bộ giao diện."
+        "viDescription": "Dùng tiếng Việt cho toàn bộ workspace, menu và phần cài đặt."
       }
     },
     "appearance": {
       "title": "Giao diện",
-      "description": "Chuyển giữa chế độ tối, sáng hoặc tự động theo thiết bị.",
+      "description": "Thiết lập tông nhìn của workspace và chọn màu nhấn cho các hành động quan trọng.",
+      "badge": "Chính",
+      "accentTitle": "Màu nhấn",
+      "accentDescription": "Dùng cho trạng thái active, điểm nhấn và hành động nổi bật.",
       "options": {
         "system": "Theo hệ thống",
-        "systemDescription": "Tự động theo giao diện hiện tại của thiết bị.",
+        "systemDescription": "Tự cân bằng giữa tối và sáng theo thiết bị của bạn.",
         "light": "Sáng",
-        "lightDescription": "Không gian làm việc sáng hơn, độ tương phản mềm hơn.",
+        "lightDescription": "Canvas sáng hơn, phù hợp cho đọc và rà soát ban ngày.",
         "dark": "Tối",
-        "darkDescription": "Giữ giao diện tối hiện tại với độ tương phản cao hơn."
+        "darkDescription": "Không gian indigo slate đậm hơn với độ tương phản rõ hơn."
       }
+    },
+    "accessibility": {
+      "title": "Trợ năng",
+      "description": "Điều chỉnh khả năng đọc, độ tương phản và chuyển động theo cách bạn tiếp nhận thông tin.",
+      "fontSizeLabel": "Cỡ chữ",
+      "fontSizeValue": "{size}px",
+      "fontSizeMinLabel": "Nhỏ",
+      "fontSizeMaxLabel": "Lớn",
+      "highContrast": {
+        "title": "Chế độ tương phản cao",
+        "description": "Tăng độ rõ cho chữ và ranh giới các thành phần giao diện."
+      },
+      "reduceMotion": {
+        "title": "Giảm chuyển động",
+        "description": "Giảm các animation không cần thiết trong quá trình chuyển cảnh."
+      }
+    },
+    "notifications": {
+      "title": "Thông báo",
+      "description": "Kiểm soát cảnh báo nào cần xuất hiện ngay và cảnh báo nào có thể chờ sau.",
+      "desktop": {
+        "title": "Thông báo trên máy tính",
+        "description": "Hiển thị cảnh báo tin nhắn và mention khi ứng dụng đang mở."
+      },
+      "sound": {
+        "title": "Âm thanh phản hồi",
+        "description": "Phát âm thanh cho các hoạt động và hành động quan trọng."
+      },
+      "email": {
+        "title": "Tóm tắt qua email",
+        "description": "Nhận email tổng hợp khi bạn rời khỏi workspace."
+      },
+      "quietHours": "Thiết lập giờ yên lặng"
     },
     "toasts": {
       "languageUpdated": "Đã chuyển ngôn ngữ sang {language}.",
-      "appearanceUpdated": "Đã chuyển giao diện sang {appearance}."
+      "appearanceUpdated": "Đã chuyển giao diện sang {appearance}.",
+      "accentUpdated": {
+        "indigo": "Đã chuyển màu nhấn sang Indigo.",
+        "emerald": "Đã chuyển màu nhấn sang Emerald.",
+        "rose": "Đã chuyển màu nhấn sang Rose.",
+        "amber": "Đã chuyển màu nhấn sang Amber."
+      }
     }
   },
   "Common": {
