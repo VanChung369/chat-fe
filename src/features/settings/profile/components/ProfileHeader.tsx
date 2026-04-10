@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { BadgeCheck, Camera, Loader2 } from "lucide-react";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 
 import { cn } from "@/shared/utils";
 import { FormImageUpload } from "@/shared/components/form";
@@ -32,11 +32,10 @@ export function ProfileHeader({
   onAvatarSelect,
   onBannerSelect,
 }: ProfileHeaderProps) {
-  "use no memo";
   const t = useTranslations("SettingsProfile");
-  const { watch } = useFormContext<ProfileFormValues>();
-  const avatarUrl = watch("avatarUrl");
-  const bannerUrl = watch("bannerUrl");
+  const { control } = useFormContext<ProfileFormValues>();
+  const avatarUrl = useWatch({ control, name: "avatarUrl" });
+  const bannerUrl = useWatch({ control, name: "bannerUrl" });
   const displayUsername = username || t("placeholders.username");
   const metaLine = [`@${displayUsername}`, jobTitle].filter(Boolean).join(" | ");
 
@@ -71,7 +70,7 @@ export function ProfileHeader({
             )}
             overlayClassName="rounded-full"
             buttonClassName={cn(
-              "right-1 bottom-1 rounded-full border-4 p-2.5 text-white shadow-lg md:p-3",
+              "right-1 bottom-1 rounded-full border-4 p-2.5 text-white shadow-lg md:p-3 cursor-pointer",
               "bg-primary hover:bg-blue-600",
               "border-surface-light dark:border-surface-dark"
             )}
