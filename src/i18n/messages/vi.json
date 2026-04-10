@@ -206,6 +206,8 @@
     },
     "placeholders": {
       "displayName": "Chưa có tên hiển thị",
+      "firstName": "Nhập tên của bạn",
+      "lastName": "Nhập họ của bạn",
       "username": "Chưa có tên người dùng",
       "about": "Viết vài dòng giới thiệu về bạn",
       "email": "Chưa có địa chỉ email",
@@ -218,7 +220,8 @@
       "general": {
         "title": "Thông tin chung",
         "fields": {
-          "displayName": "Tên hiển thị",
+          "firstName": "Tên",
+          "lastName": "Họ",
           "username": "Tên người dùng",
           "about": "Giới thiệu"
         }
@@ -241,6 +244,18 @@
           "description": "Nhận tin nhắn từ người chưa có trong danh bạ"
         }
       }
+    },
+    "errors": {
+      "usernameRequired": "Vui lòng nhập tên đăng nhập.",
+      "usernameMin": "Tên đăng nhập phải có ít nhất 3 ký tự.",
+      "usernameMax": "Tên đăng nhập tối đa 16 ký tự.",
+      "firstNameRequired": "Vui lòng nhập tên.",
+      "firstNameMin": "Tên phải có ít nhất 2 ký tự.",
+      "firstNameMax": "Tên tối đa 32 ký tự.",
+      "lastNameRequired": "Vui lòng nhập họ.",
+      "lastNameMin": "Họ phải có ít nhất 2 ký tự.",
+      "lastNameMax": "Họ tối đa 32 ký tự.",
+      "aboutMax": "Giới thiệu tối đa 240 ký tự."
     },
     "status": {
       "title": "Trạng thái hiện tại",
@@ -267,9 +282,6 @@
       "bannerEditUnimplemented": "Chưa hỗ trợ chỉnh sửa ảnh bìa",
       "avatarEditUnimplemented": "Chưa hỗ trợ chỉnh sửa avatar",
       "currentStatus": "Trạng thái hiện tại: {status}"
-    },
-    "errors": {
-      "aboutMax": "Phần giới thiệu tối đa 240 ký tự."
     }
   },
   "Common": {

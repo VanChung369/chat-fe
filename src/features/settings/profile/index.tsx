@@ -7,6 +7,7 @@ import { type SubmitHandler, type UseFormProps, type UseFormReturn } from "react
 import { toast } from "sonner";
 
 import { profileApi } from "@/features/settings/api";
+import { userApi } from "@/features/settings/api/user-api";
 import { useAuthCtx } from "@/providers/AuthProvider";
 import { Form } from "@/shared/components/form";
 import type { ErrorResponse } from "@/shared/types/errors";
@@ -44,7 +45,12 @@ export function SettingsProfileFeature() {
 
   const handleSubmit: SubmitHandler<ProfileFormValues> = async (values) => {
     try {
-      const updatedUser = await profileApi.updateMe({
+      await userApi.updateMe({
+        username: values.username,
+        firstName: values.firstName,
+        lastName: values.lastName,
+      });
+      const updatedUser = await profileApi.updateProfile({
         about: values.about,
         avatarUrl: values.avatarUrl || undefined,
         bannerUrl: values.bannerUrl || undefined,

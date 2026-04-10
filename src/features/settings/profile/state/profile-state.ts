@@ -2,11 +2,10 @@ import type { User } from "@/shared/types/user";
 import type { ProfileFormValues } from "../types/types";
 
 export function buildInitialProfileState(user: User | null | undefined): ProfileFormValues {
-  const displayName = `${user?.firstName || ""} ${user?.lastName || ""}`.trim();
-
   return {
-    displayName,
-    username: user?.username || "",
+    firstName: user?.firstName || "",
+    lastName: user?.lastName || "",
+    username: user?.username || user?.name || "",
     jobTitle: "",
     about: user?.profile?.about || "",
     email: user?.email || "",

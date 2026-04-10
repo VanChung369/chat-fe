@@ -38,8 +38,7 @@ export function ProfileFormContent({
   const { isDirty } = useFormState({
     control: methods.control,
   });
-
-  const fullName = form.displayName.trim() || t("placeholders.displayName");
+  const fullName = form.username.trim() || t("placeholders.displayName");
 
   const updateField: UpdateProfileField = (key, value) => {
     methods.setValue(key, value, {
@@ -82,7 +81,7 @@ export function ProfileFormContent({
         <div className={cn("px-4 pb-8 md:px-8 md:pb-10 lg:px-12")}>
           <div className={cn("grid grid-cols-1 gap-10 md:gap-12 xl:grid-cols-12")}>
             <div className={cn("flex flex-col gap-8 md:gap-10 xl:col-span-8")}>
-              <GeneralInfoSection form={form} onUpdateField={updateField} />
+              <GeneralInfoSection onUpdateField={updateField} />
               <ContactInfoSection form={form} onUpdateField={updateField} />
             </div>
 

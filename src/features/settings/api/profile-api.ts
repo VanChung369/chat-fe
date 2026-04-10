@@ -1,6 +1,7 @@
 import { API_ROUTES } from "@/shared/constants";
 import { fetchClient } from "@/shared/utils/fetch-api";
 import type { User } from "@/shared/types/user";
+import { optionalTrimmedString } from "@/shared/utils";
 
 import type { ProfileUpdatePayload } from "../profile/types/types";
 
@@ -16,9 +17,9 @@ type UploadDirectResponse = {
 };
 
 export const profileApi = {
-  updateMe: async ({ about, avatarUrl, bannerUrl }: ProfileUpdatePayload): Promise<User> => {
+  updateProfile: async ({ about, avatarUrl, bannerUrl }: ProfileUpdatePayload): Promise<User> => {
     return fetchClient.patch<User>(API_ROUTES.users.profiles, {
-      about: typeof about === "string" ? about.trim() : undefined,
+      about: optionalTrimmedString(about),
       avatarUrl,
       bannerUrl,
     });

@@ -10,6 +10,7 @@ export interface UserProfile {
 export interface User {
   id: string;
   username: string;
+  name?: string;
   email: string;
   firstName: string;
   lastName: string;

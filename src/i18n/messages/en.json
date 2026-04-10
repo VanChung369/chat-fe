@@ -206,6 +206,8 @@
     },
     "placeholders": {
       "displayName": "No display name",
+      "firstName": "Enter your first name",
+      "lastName": "Enter your last name",
       "username": "No username",
       "about": "Write something about yourself",
       "email": "No email address",
@@ -218,7 +220,8 @@
       "general": {
         "title": "General Information",
         "fields": {
-          "displayName": "Display Name",
+          "firstName": "First Name",
+          "lastName": "Last Name",
           "username": "Username",
           "about": "About Me"
         }
@@ -241,6 +244,18 @@
           "description": "Receive messages from non-contacts"
         }
       }
+    },
+    "errors": {
+      "usernameRequired": "Username is required.",
+      "usernameMin": "Username must have at least 3 characters.",
+      "usernameMax": "Username must have at most 16 characters.",
+      "firstNameRequired": "First name is required.",
+      "firstNameMin": "First name must have at least 2 characters.",
+      "firstNameMax": "First name must have at most 32 characters.",
+      "lastNameRequired": "Last name is required.",
+      "lastNameMin": "Last name must have at least 2 characters.",
+      "lastNameMax": "Last name must have at most 32 characters.",
+      "aboutMax": "About me must be at most 240 characters."
     },
     "status": {
       "title": "Current Status",
@@ -267,9 +282,6 @@
       "bannerEditUnimplemented": "Banner edit unimplemented",
       "avatarEditUnimplemented": "Avatar edit unimplemented",
       "currentStatus": "Current status: {status}"
-    },
-    "errors": {
-      "aboutMax": "About me must be at most 240 characters."
     }
   },
   "Common": {

@@ -3,7 +3,8 @@ import type { Path, PathValue } from "react-hook-form";
 export type PresenceStatus = "online" | "away" | "busy";
 
 export type ProfileFormValues = {
-  displayName: string;
+  firstName: string;
+  lastName: string;
   username: string;
   jobTitle: string;
   about: string;
@@ -18,6 +19,9 @@ export type ProfileFormValues = {
 };
 
 export type ProfileUpdatePayload = {
+  username?: string;
+  firstName?: string;
+  lastName?: string;
   about?: string;
   avatarUrl?: string | null;
   bannerUrl?: string | null;
