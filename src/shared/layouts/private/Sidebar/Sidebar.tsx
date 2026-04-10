@@ -37,9 +37,7 @@ export const Sidebar = () => {
       <div className="mb-10 flex flex-col items-center gap-3">
         <div className="h-10 w-10 shadow-sm transition-transform hover:scale-105">
           <Avatar
-            name={
-              `${user?.firstName || ""} ${user?.lastName || ""}`.trim() || user?.username || "User"
-            }
+            name={`${user?.firstName || ""} ${user?.lastName || ""}`.trim() || user?.userName || "User"}
             size="md"
             className="h-full w-full"
             showStatus

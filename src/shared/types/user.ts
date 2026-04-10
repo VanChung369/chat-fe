@@ -23,8 +23,7 @@ export interface UserPresence {
 
 export interface User {
   id: string;
-  username: string;
-  name?: string;
+  userName: string;
   email: string;
   firstName: string;
   lastName: string;

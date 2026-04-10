@@ -5,7 +5,7 @@ export function buildInitialProfileState(user: User | null | undefined): Profile
   return {
     firstName: user?.firstName || "",
     lastName: user?.lastName || "",
-    username: user?.username || user?.name || "",
+    username: user?.userName || "",
     about: user?.profile?.about || "",
     email: user?.email || "",
     phone: user?.profile?.phone || "",
