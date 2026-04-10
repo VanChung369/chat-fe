@@ -82,7 +82,7 @@ export function ProfileFormContent({
 
             <div className={cn("flex flex-col gap-8 md:gap-10 xl:col-span-4")}>
               <StatusSection />
-              <PreferencesSection onUpdateField={updateField} />
+              <PreferencesSection />
             </div>
           </div>
         </div>
