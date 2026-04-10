@@ -59,7 +59,7 @@ export function ProfileHeader({
         onSelect={onBannerSelect}
       />
 
-      <div className={cn("relative px-4 pb-8 md:px-8 md:pb-10 lg:px-12")}>
+      <div className={cn("relative px-4 pb-6 md:px-8 md:pb-8 lg:px-12")}>
         <div className={cn("flex flex-col items-start gap-6 md:flex-row md:gap-8")}>
           <FormImageUpload<ProfileFormValues>
             name="avatarUrl"
@@ -80,7 +80,7 @@ export function ProfileHeader({
             onSelect={onAvatarSelect}
           />
 
-          <div className={cn("flex-1 pt-2 md:pt-4 lg:pt-6")}>
+          <div className={cn("flex-1 pt-2 lg:pt-4")}>
             <div
               className={cn(
                 "flex flex-col items-start justify-between gap-5 md:flex-row md:items-center md:gap-6"

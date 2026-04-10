@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import type { UseFormReturn } from "react-hook-form";
+import { useFormState, type UseFormReturn } from "react-hook-form";
 
 import { cn } from "@/shared/utils";
 
@@ -34,7 +34,11 @@ export function ProfileFormContent({
   t,
 }: ProfileFormContentProps) {
   const form = methods.watch();
-  const hasChanges = methods.formState.isDirty;
+
+  const { isDirty } = useFormState({
+    control: methods.control,
+  });
+
   const fullName = form.displayName.trim() || t("placeholders.displayName");
 
   const updateField: UpdateProfileField = (key, value) => {
@@ -66,7 +70,7 @@ export function ProfileFormContent({
           fullName={fullName}
           username={form.username}
           jobTitle={form.jobTitle}
-          hasChanges={hasChanges}
+          hasChanges={isDirty}
           isAvatarUploading={isAvatarUploading}
           isBannerUploading={isBannerUploading}
           isSaving={methods.formState.isSubmitting}

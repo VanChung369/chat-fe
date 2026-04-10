@@ -40,7 +40,6 @@ export function SettingsProfileFeature() {
   useEffect(() => {
     const next = buildInitialProfileState(user);
     setSavedState(next);
-    resetRef.current?.(next);
   }, [user]);
 
   const handleSubmit: SubmitHandler<ProfileFormValues> = async (values) => {
