@@ -1,9 +1,20 @@
 import { API_ROUTES } from "@/shared/constants";
-import { fetchClient } from "@/shared/utils/fetch-api";
-import type { User } from "@/shared/types/user";
+import { PresenceStatus, type User } from "@/shared/types/user";
 import { optionalTrimmedString } from "@/shared/utils";
+import { fetchClient } from "@/shared/utils/fetch-api";
 
-import type { ProfileUpdatePayload } from "../profile/types/types";
+type UpdateProfilePayload = {
+  username?: string;
+  firstName?: string;
+  lastName?: string;
+  about?: string;
+  phone?: string;
+  avatarUrl?: string | null;
+  bannerUrl?: string | null;
+  status?: PresenceStatus;
+  statusMessage?: string;
+  showOnlineStatus?: boolean;
+};
 
 type UploadDirectPayload = {
   file: File;
@@ -17,11 +28,29 @@ type UploadDirectResponse = {
 };
 
 export const profileApi = {
-  updateProfile: async ({ about, avatarUrl, bannerUrl }: ProfileUpdatePayload): Promise<User> => {
+  updateProfile: async ({
+    username,
+    firstName,
+    lastName,
+    about,
+    phone,
+    avatarUrl,
+    bannerUrl,
+    status,
+    statusMessage,
+    showOnlineStatus,
+  }: UpdateProfilePayload): Promise<User> => {
     return fetchClient.patch<User>(API_ROUTES.users.profiles, {
+      username: optionalTrimmedString(username),
+      firstName: optionalTrimmedString(firstName),
+      lastName: optionalTrimmedString(lastName),
       about: optionalTrimmedString(about),
+      phone: optionalTrimmedString(phone),
       avatarUrl,
       bannerUrl,
+      status,
+      statusMessage: optionalTrimmedString(statusMessage),
+      showOnlineStatus,
     });
   },
 

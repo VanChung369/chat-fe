@@ -39,7 +39,6 @@ export function ContactInfoSection(_: ProfileSectionProps) {
           startIcon={
             <Phone size={20} className="text-text-secondary-light dark:text-text-secondary-dark" />
           }
-          readOnly
         />
       </div>
     </section>

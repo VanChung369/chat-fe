@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { PresenceStatus } from "@/shared/types/user";
 
 export const createProfileSchema = (t: (key: string) => string) =>
   z.object({
@@ -20,12 +21,15 @@ export const createProfileSchema = (t: (key: string) => string) =>
       .min(1, { message: t("errors.usernameRequired") })
       .min(3, { message: t("errors.usernameMin") })
       .max(16, { message: t("errors.usernameMax") }),
-    jobTitle: z.string(),
     about: z.string().max(240, { message: t("errors.aboutMax") }),
     email: z.string(),
-    phone: z.string(),
-    status: z.enum(["online", "away", "busy"]),
-    statusMessage: z.string(),
+    phone: z
+      .string()
+      .trim()
+      .min(7, { message: t("errors.phoneMin") })
+      .max(15, { message: t("errors.phoneMax") }),
+    status: z.enum([PresenceStatus.Online, PresenceStatus.Away, PresenceStatus.Busy]),
+    statusMessage: z.string().max(120, { message: t("errors.statusMessageMax") }),
     showOnlineStatus: z.boolean(),
     allowDirectMessages: z.boolean(),
     avatarUrl: z.string(),

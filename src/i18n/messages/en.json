@@ -255,7 +255,10 @@
       "lastNameRequired": "Last name is required.",
       "lastNameMin": "Last name must have at least 2 characters.",
       "lastNameMax": "Last name must have at most 32 characters.",
-      "aboutMax": "About me must be at most 240 characters."
+      "aboutMax": "About me must be at most 240 characters.",
+      "phoneMin": "Phone number must have at least 7 characters.",
+      "phoneMax": "Phone number must have at most 15 characters.",
+      "statusMessageMax": "Status message must be at most 120 characters."
     },
     "status": {
       "title": "Current Status",
@@ -265,6 +268,8 @@
       "awayDescription": "Back in 30 mins",
       "busyLabel": "Do Not Disturb",
       "busyDescription": "In a meeting",
+      "customLabel": "Status Message",
+      "customPlaceholder": "Add a custom status message",
       "setCustom": "Set custom status..."
     },
     "defaults": {

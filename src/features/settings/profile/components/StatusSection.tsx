@@ -1,10 +1,19 @@
 import { useTranslations } from "next-intl";
+import { useFormContext, useWatch } from "react-hook-form";
+import { FormInput } from "@/shared/components/form";
+import { PresenceStatus } from "@/shared/types/user";
 import { cn } from "@/shared/utils";
-import type { PresenceStatus } from "../types/types";
-import type { ProfileSectionProps } from "../types/types";
+import { INPUT_CLASSNAME } from "../constants/constants";
+import type { ProfileFormValues, ProfileSectionProps } from "../types/types";
 
-export function StatusSection({ form }: ProfileSectionProps) {
+export function StatusSection({ onUpdateField }: Omit<ProfileSectionProps, "form">) {
   const t = useTranslations("SettingsProfile");
+  const { control } = useFormContext<ProfileFormValues>();
+  const selectedStatus = useWatch({
+    control,
+    name: "status",
+    defaultValue: PresenceStatus.Online,
+  });
   const options: Array<{
     value: PresenceStatus;
     label: string;
@@ -12,19 +21,19 @@ export function StatusSection({ form }: ProfileSectionProps) {
     indicatorClassName: string;
   }> = [
     {
-      value: "online",
+      value: PresenceStatus.Online,
       label: t("status.onlineLabel"),
       description: t("status.onlineDescription"),
       indicatorClassName: "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]",
     },
     {
-      value: "away",
+      value: PresenceStatus.Away,
       label: t("status.awayLabel"),
       description: t("status.awayDescription"),
       indicatorClassName: "bg-yellow-500",
     },
     {
-      value: "busy",
+      value: PresenceStatus.Busy,
       label: t("status.busyLabel"),
       description: t("status.busyDescription"),
       indicatorClassName: "bg-red-500",
@@ -36,7 +45,7 @@ export function StatusSection({ form }: ProfileSectionProps) {
       <h3 className="mb-6 text-xl font-bold text-gray-900 dark:text-white">{t("status.title")}</h3>
       <div className="bg-background-light dark:bg-background-dark border-border-light dark:border-border-dark flex flex-col gap-5 rounded-xl border p-6">
         {options.map((option) => {
-          const checked = form.status === option.value;
+          const checked = selectedStatus === option.value;
           return (
             <label
               key={option.value}
@@ -50,8 +59,7 @@ export function StatusSection({ form }: ProfileSectionProps) {
                   type="radio"
                   name="status"
                   checked={checked}
-                  onChange={() => {}}
-                  disabled
+                  onChange={() => onUpdateField("status", option.value)}
                   className="border-text-secondary-light dark:border-text-secondary-dark checked:border-primary h-6 w-6 appearance-none rounded-full border-2 bg-transparent transition-all checked:border-[7px]"
                 />
               </div>
@@ -66,13 +74,12 @@ export function StatusSection({ form }: ProfileSectionProps) {
           );
         })}
 
-        <button
-          type="button"
-          disabled
-          className="text-primary mt-2 text-left text-sm font-bold hover:underline"
-        >
-          {t("status.setCustom")}
-        </button>
+        <FormInput
+          name="statusMessage"
+          label={t("status.customLabel")}
+          placeholder={t("status.customPlaceholder")}
+          className={INPUT_CLASSNAME}
+        />
       </div>
     </section>
   );

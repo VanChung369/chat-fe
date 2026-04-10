@@ -68,7 +68,6 @@ export function ProfileFormContent({
         <ProfileHeader
           fullName={fullName}
           username={form.username}
-          jobTitle={form.jobTitle}
           hasChanges={isDirty}
           isAvatarUploading={isAvatarUploading}
           isBannerUploading={isBannerUploading}
@@ -86,7 +85,7 @@ export function ProfileFormContent({
             </div>
 
             <div className={cn("flex flex-col gap-8 md:gap-10 xl:col-span-4")}>
-              <StatusSection form={form} onUpdateField={updateField} />
+              <StatusSection onUpdateField={updateField} />
               <PreferencesSection form={form} onUpdateField={updateField} />
             </div>
           </div>

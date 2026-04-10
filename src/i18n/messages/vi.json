@@ -255,7 +255,10 @@
       "lastNameRequired": "Vui lòng nhập họ.",
       "lastNameMin": "Họ phải có ít nhất 2 ký tự.",
       "lastNameMax": "Họ tối đa 32 ký tự.",
-      "aboutMax": "Giới thiệu tối đa 240 ký tự."
+      "aboutMax": "Giới thiệu tối đa 240 ký tự.",
+      "phoneMin": "Số điện thoại phải có ít nhất 7 ký tự.",
+      "phoneMax": "Số điện thoại tối đa 15 ký tự.",
+      "statusMessageMax": "Tin nhắn trạng thái tối đa 120 ký tự."
     },
     "status": {
       "title": "Trạng thái hiện tại",
@@ -265,6 +268,8 @@
       "awayDescription": "Quay lại sau 30 phút",
       "busyLabel": "Không làm phiền",
       "busyDescription": "Đang họp",
+      "customLabel": "Tin nhắn trạng thái",
+      "customPlaceholder": "Thêm tin nhắn trạng thái tùy chỉnh",
       "setCustom": "Đặt trạng thái tùy chỉnh..."
     },
     "defaults": {

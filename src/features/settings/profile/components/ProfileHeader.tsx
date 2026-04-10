@@ -10,7 +10,6 @@ import type { ProfileFormValues } from "../types/types";
 type ProfileHeaderProps = {
   fullName: string;
   username: string;
-  jobTitle: string;
   hasChanges: boolean;
   isAvatarUploading: boolean;
   isBannerUploading: boolean;
@@ -23,7 +22,6 @@ type ProfileHeaderProps = {
 export function ProfileHeader({
   fullName,
   username,
-  jobTitle,
   hasChanges,
   isAvatarUploading,
   isBannerUploading,
@@ -37,7 +35,7 @@ export function ProfileHeader({
   const avatarUrl = useWatch({ control, name: "avatarUrl" });
   const bannerUrl = useWatch({ control, name: "bannerUrl" });
   const displayUsername = username || t("placeholders.username");
-  const metaLine = [`@${displayUsername}`, jobTitle].filter(Boolean).join(" | ");
+  const metaLine = `@${displayUsername}`;
 
   return (
     <>

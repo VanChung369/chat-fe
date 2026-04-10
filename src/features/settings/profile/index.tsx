@@ -7,7 +7,6 @@ import { type SubmitHandler, type UseFormProps, type UseFormReturn } from "react
 import { toast } from "sonner";
 
 import { profileApi } from "@/features/settings/api";
-import { userApi } from "@/features/settings/api/user-api";
 import { useAuthCtx } from "@/providers/AuthProvider";
 import { Form } from "@/shared/components/form";
 import type { ErrorResponse } from "@/shared/types/errors";
@@ -45,15 +44,17 @@ export function SettingsProfileFeature() {
 
   const handleSubmit: SubmitHandler<ProfileFormValues> = async (values) => {
     try {
-      await userApi.updateMe({
+      const updatedUser = await profileApi.updateProfile({
         username: values.username,
         firstName: values.firstName,
         lastName: values.lastName,
-      });
-      const updatedUser = await profileApi.updateProfile({
         about: values.about,
+        phone: values.phone,
         avatarUrl: values.avatarUrl || undefined,
         bannerUrl: values.bannerUrl || undefined,
+        status: values.status,
+        statusMessage: values.statusMessage,
+        showOnlineStatus: values.showOnlineStatus,
       });
       const nextState = buildInitialProfileState(updatedUser);
 
