@@ -1,9 +1,21 @@
 import { useTranslations } from "next-intl";
-import type { ProfileSectionProps } from "../types/types";
+import { useFormContext, useWatch } from "react-hook-form";
+import type { ProfileFormValues, ProfileSectionProps } from "../types/types";
 import { PreferenceToggle } from "./PreferenceToggle";
 
-export function PreferencesSection({ form, onUpdateField }: ProfileSectionProps) {
+export function PreferencesSection({ onUpdateField }: ProfileSectionProps) {
   const t = useTranslations("SettingsProfile");
+  const { control } = useFormContext<ProfileFormValues>();
+  const showOnlineStatus = useWatch({
+    control,
+    name: "showOnlineStatus",
+    defaultValue: false,
+  });
+  const allowDirectMessages = useWatch({
+    control,
+    name: "allowDirectMessages",
+    defaultValue: false,
+  });
 
   return (
     <section>
@@ -14,14 +26,14 @@ export function PreferencesSection({ form, onUpdateField }: ProfileSectionProps)
         <PreferenceToggle
           title={t("sections.preferences.showOnlineStatus.title")}
           description={t("sections.preferences.showOnlineStatus.description")}
-          checked={form.showOnlineStatus}
+          checked={showOnlineStatus}
           onChange={(nextValue) => onUpdateField("showOnlineStatus", nextValue)}
         />
 
         <PreferenceToggle
           title={t("sections.preferences.directMessages.title")}
           description={t("sections.preferences.directMessages.description")}
-          checked={form.allowDirectMessages}
+          checked={allowDirectMessages}
           disabled
           onChange={() => {}}
         />

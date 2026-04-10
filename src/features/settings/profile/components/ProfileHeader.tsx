@@ -8,8 +8,6 @@ import { AVATAR_IMAGE_URL, BANNER_IMAGE_URL } from "../constants/constants";
 import type { ProfileFormValues } from "../types/types";
 
 type ProfileHeaderProps = {
-  fullName: string;
-  username: string;
   hasChanges: boolean;
   isAvatarUploading: boolean;
   isBannerUploading: boolean;
@@ -20,8 +18,6 @@ type ProfileHeaderProps = {
 };
 
 export function ProfileHeader({
-  fullName,
-  username,
   hasChanges,
   isAvatarUploading,
   isBannerUploading,
@@ -32,9 +28,17 @@ export function ProfileHeader({
 }: ProfileHeaderProps) {
   const t = useTranslations("SettingsProfile");
   const { control } = useFormContext<ProfileFormValues>();
+  const firstName = useWatch({ control, name: "firstName" });
+  const lastName = useWatch({ control, name: "lastName" });
+  const username = useWatch({ control, name: "username" });
   const avatarUrl = useWatch({ control, name: "avatarUrl" });
   const bannerUrl = useWatch({ control, name: "bannerUrl" });
-  const displayUsername = username || t("placeholders.username");
+  const fullName =
+    [firstName, lastName]
+      .map((value) => value.trim())
+      .filter(Boolean)
+      .join(" ") || t("placeholders.displayName");
+  const displayUsername = username.trim() || t("placeholders.username");
   const metaLine = `@${displayUsername}`;
 
   return (

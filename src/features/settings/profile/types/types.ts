@@ -22,6 +22,5 @@ export type UpdateProfileField = <K extends Path<ProfileFormValues>>(
 ) => void;
 
 export type ProfileSectionProps = {
-  form: ProfileFormValues;
   onUpdateField: UpdateProfileField;
 };

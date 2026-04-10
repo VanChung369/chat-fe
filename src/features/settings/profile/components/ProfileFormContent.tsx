@@ -33,17 +33,15 @@ export function ProfileFormContent({
   onBannerSelect,
   t,
 }: ProfileFormContentProps) {
-  const form = methods.getValues();
-
-  const { isDirty } = useFormState({
+  const { isDirty, isSubmitting } = useFormState({
     control: methods.control,
   });
-  const fullName = form.username.trim() || t("placeholders.displayName");
 
   const updateField: UpdateProfileField = (key, value) => {
     methods.setValue(key, value, {
       shouldDirty: true,
       shouldTouch: true,
+      shouldValidate: true,
     });
   };
 
@@ -66,12 +64,10 @@ export function ProfileFormContent({
         )}
       >
         <ProfileHeader
-          fullName={fullName}
-          username={form.username}
           hasChanges={isDirty}
           isAvatarUploading={isAvatarUploading}
           isBannerUploading={isBannerUploading}
-          isSaving={methods.formState.isSubmitting}
+          isSaving={isSubmitting}
           onCancel={handleCancel}
           onAvatarSelect={onAvatarSelect}
           onBannerSelect={onBannerSelect}
@@ -81,12 +77,12 @@ export function ProfileFormContent({
           <div className={cn("grid grid-cols-1 gap-10 md:gap-12 xl:grid-cols-12")}>
             <div className={cn("flex flex-col gap-8 md:gap-10 xl:col-span-8")}>
               <GeneralInfoSection onUpdateField={updateField} />
-              <ContactInfoSection form={form} onUpdateField={updateField} />
+              <ContactInfoSection />
             </div>
 
             <div className={cn("flex flex-col gap-8 md:gap-10 xl:col-span-4")}>
-              <StatusSection onUpdateField={updateField} />
-              <PreferencesSection form={form} onUpdateField={updateField} />
+              <StatusSection />
+              <PreferencesSection onUpdateField={updateField} />
             </div>
           </div>
         </div>
