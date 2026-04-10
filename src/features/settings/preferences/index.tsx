@@ -105,10 +105,7 @@ export function SettingsPreferencesFeature() {
     if (nextTheme === themePreference) {
       return;
     }
-
-    const nextThemeLabel = t(`appearance.options.${nextTheme}`);
     setTheme(nextTheme);
-    toast.success(t("toasts.appearanceUpdated", { appearance: nextThemeLabel }));
   };
 
   const handleAccentChange = (nextAccent: AccentTone) => {
