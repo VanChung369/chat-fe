@@ -12,6 +12,8 @@ export const createProfileSchema = (t: (key: string) => string) =>
     statusMessage: z.string(),
     showOnlineStatus: z.boolean(),
     allowDirectMessages: z.boolean(),
+    avatarUrl: z.string(),
+    bannerUrl: z.string(),
   });
 
 export type ProfileSchema = z.infer<ReturnType<typeof createProfileSchema>>;

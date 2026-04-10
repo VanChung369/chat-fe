@@ -3,3 +3,4 @@ export { FormInput } from "./FormInput";
 export { FormTextarea } from "./FormTextarea";
 export { FormInputPassword } from "./FormInputPassword";
 export { FormOtpInput } from "./FormOtpInput";
+export { FormImageUpload } from "./FormImageUpload";

@@ -2,11 +2,14 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
-import { type UseFormProps } from "react-hook-form";
+import { useEffect, useRef, useState } from "react";
+import { type SubmitHandler, type UseFormProps, type UseFormReturn } from "react-hook-form";
+import { toast } from "sonner";
 
+import { profileApi } from "@/features/settings/api";
 import { useAuthCtx } from "@/providers/AuthProvider";
 import { Form } from "@/shared/components/form";
+import type { ErrorResponse } from "@/shared/types/errors";
 import { cn } from "@/shared/utils";
 
 import { ProfileFormContent } from "./components";
@@ -23,14 +26,10 @@ export function SettingsProfileFeature() {
   const initialState = buildInitialProfileState(user);
   const [savedState, setSavedState] = useState<ProfileFormValues>(initialState);
   const profileMedia = useProfileMedia({
-    currentAvatarUrl: user?.profile?.avatar,
-    currentBannerUrl: user?.profile?.banner,
     fallbackErrorMessage: tCommon("unexpectedError"),
   });
 
-  useEffect(() => {
-    setSavedState(buildInitialProfileState(user));
-  }, [user]);
+  const resetRef = useRef<UseFormReturn<ProfileFormValues>["reset"] | null>(null);
 
   const options: UseFormProps<ProfileFormValues> = {
     mode: "onChange",
@@ -38,37 +37,63 @@ export function SettingsProfileFeature() {
     defaultValues: initialState,
   };
 
+  useEffect(() => {
+    const next = buildInitialProfileState(user);
+    setSavedState(next);
+    resetRef.current?.(next);
+  }, [user]);
+
+  const handleSubmit: SubmitHandler<ProfileFormValues> = async (values) => {
+    try {
+      const updatedUser = await profileApi.updateMe({
+        about: values.about,
+        avatarUrl: values.avatarUrl || undefined,
+        bannerUrl: values.bannerUrl || undefined,
+      });
+      const nextState = buildInitialProfileState(updatedUser);
+
+      updateAuthUser(updatedUser);
+      setSavedState(nextState);
+      resetRef.current?.(nextState);
+
+      toast.success(t("toasts.saved"));
+    } catch (error) {
+      const err = error as ErrorResponse;
+      toast.error(err.message || tCommon("unexpectedError"));
+    }
+  };
+
   return (
     <div className={cn("w-full flex-1 overflow-y-auto")}>
       <div className={cn("w-full px-4 py-6 md:px-6 lg:px-8")}>
         <Form<ProfileFormValues>
-          key={user?.id ?? "guest"}
-          onSubmit={() => {}}
+          key={user?.id}
+          onSubmit={handleSubmit}
           options={options}
           className="w-full"
         >
-          {(methods) => (
-            <ProfileFormContent
-              methods={methods}
-              savedState={savedState}
-              stagedAvatarUrl={profileMedia.stagedAvatarUrl}
-              stagedBannerUrl={profileMedia.stagedBannerUrl}
-              avatarImageUrl={profileMedia.avatarImageUrl}
-              bannerImageUrl={profileMedia.bannerImageUrl}
-              isAvatarUploading={profileMedia.isAvatarUploading}
-              isBannerUploading={profileMedia.isBannerUploading}
-              onAvatarSelect={profileMedia.selectAvatar}
-              onBannerSelect={profileMedia.selectBanner}
-              clearStagedImages={profileMedia.clearStagedImages}
-              onProfileSaved={(updatedUser, nextState) => {
-                updateAuthUser(updatedUser);
-                setSavedState(nextState);
-                profileMedia.clearStagedImages();
-              }}
-              t={t}
-              tCommon={tCommon}
-            />
-          )}
+          {(methods) => {
+            resetRef.current = methods.reset;
+
+            return (
+              <ProfileFormContent
+                methods={methods}
+                savedState={savedState}
+                isAvatarUploading={profileMedia.isAvatarUploading}
+                isBannerUploading={profileMedia.isBannerUploading}
+                onAvatarSelect={async (file) => {
+                  const url = await profileMedia.uploadAvatar(file);
+                  if (url) methods.setValue("avatarUrl", url, { shouldDirty: true });
+                }}
+                onBannerSelect={async (file) => {
+                  const url = await profileMedia.uploadBanner(file);
+                  if (url) methods.setValue("bannerUrl", url, { shouldDirty: true });
+                }}
+                t={t}
+                tCommon={tCommon}
+              />
+            );
+          }}
         </Form>
       </div>
     </div>

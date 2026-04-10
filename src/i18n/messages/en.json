@@ -287,5 +287,11 @@
     "toasts": {
       "unavailableSection": "This settings section is not available yet"
     }
+  },
+  "ImageUpload": {
+    "errors": {
+      "invalidType": "Invalid format. Only accepted: {types}",
+      "tooLarge": "File is too large. Maximum size: {maxMb}MB"
+    }
   }
 }

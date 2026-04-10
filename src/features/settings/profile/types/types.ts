@@ -13,6 +13,8 @@ export type ProfileFormValues = {
   statusMessage: string;
   showOnlineStatus: boolean;
   allowDirectMessages: boolean;
+  avatarUrl: string;
+  bannerUrl: string;
 };
 
 export type ProfileUpdatePayload = {

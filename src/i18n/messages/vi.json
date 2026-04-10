@@ -287,5 +287,11 @@
     "toasts": {
       "unavailableSection": "Mục cài đặt này hiện chưa khả dụng"
     }
+  },
+  "ImageUpload": {
+    "errors": {
+      "invalidType": "Định dạng không hợp lệ. Chỉ chấp nhận: {types}",
+      "tooLarge": "Tệp quá lớn. Kích thước tối đa: {maxMb}MB"
+    }
   }
 }

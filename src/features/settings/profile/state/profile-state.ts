@@ -15,5 +15,7 @@ export function buildInitialProfileState(user: User | null | undefined): Profile
     statusMessage: "",
     showOnlineStatus: false,
     allowDirectMessages: false,
+    avatarUrl: user?.profile?.avatar || "",
+    bannerUrl: user?.profile?.banner || "",
   };
 }

@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { useImageUpload } from "@/shared/hooks/useImageUpload";
 import { FormSubmitButton } from "@/shared/components/form";
-import { Input } from "@/shared/components/input";
+import { useImageUpload } from "@/shared/hooks/useImageUpload";
+import { useState } from "react";
+
+import { BaseImageUpload } from "./BaseImageUpload";
 
 export function ImageUploadExample() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -17,13 +18,6 @@ export function ImageUploadExample() {
     },
   });
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFile(file);
-    }
-  };
-
   const handleUpload = async () => {
     if (!selectedFile) return;
 
@@ -38,13 +32,19 @@ export function ImageUploadExample() {
         <label htmlFor="image-upload" className="block text-sm font-medium">
           Chọn ảnh:
         </label>
-        <Input
-          id="image-upload"
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          className="file:mr-4 file:rounded-lg file:border-0 file:bg-blue-50 file:px-4 file:py-2 file:text-blue-700 hover:file:bg-blue-100"
-        />
+        <BaseImageUpload onSelect={(file) => setSelectedFile(file)}>
+          {({ disabled, openPicker }) => (
+            <button
+              id="image-upload"
+              type="button"
+              onClick={openPicker}
+              disabled={disabled}
+              className="w-full rounded-lg border border-dashed border-slate-300 px-4 py-3 text-left text-sm text-slate-600 transition-colors hover:border-slate-400 hover:text-slate-900"
+            >
+              {selectedFile ? selectedFile.name : "Chọn file ảnh"}
+            </button>
+          )}
+        </BaseImageUpload>
       </div>
 
       <FormSubmitButton
