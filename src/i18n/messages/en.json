@@ -1,9 +1,434 @@
 {
+  "NotFound": {
+    "errorCode": "404",
+    "title": "Lost in the dark.",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home",
+    "login": "Login",
+    "copyright": "© {year} Chat App. All rights reserved."
+  },
   "HomePage": {
     "title": "Chat frontend is ready for i18n",
     "description": "next-intl has been configured with English and Vietnamese.",
     "languageLabel": "Language",
     "english": "English",
     "vietnamese": "Vietnamese"
+  },
+  "EmptyChatState": {
+    "welcomeTitle": "Welcome to Messenger",
+    "welcomeDescription": "Select a conversation from the sidebar to start chatting, or start a new connection instantly.",
+    "contacts": "Contacts",
+    "newGroup": "New Group",
+    "encryption": "End-to-end encrypted"
+  },
+  "AuthLayout": {
+    "chatApp": "ChatApp",
+    "title": "Connect with your team instantly.",
+    "description": "Secure, fast, and reliable messaging for the modern workplace. Join thousands of users relying on ChatApp.",
+    "copyright": "© {year} ChatApp Inc. All rights reserved."
+  },
+  "AuthSignup": {
+    "title": "Create your account",
+    "description": "Start chatting with your team in a few seconds.",
+    "fields": {
+      "username": "USER NAME",
+      "firstName": "FIRST NAME",
+      "lastName": "LAST NAME",
+      "email": "EMAIL ADDRESS",
+      "password": "PASSWORD",
+      "confirmPassword": "CONFIRM"
+    },
+    "placeholders": {
+      "username": "Enter your full name",
+      "firstName": "Enter your first name",
+      "lastName": "Enter your last name",
+      "email": "name@example.com",
+      "password": "••••••••",
+      "confirmPassword": "••••••••"
+    },
+    "errors": {
+      "usernameRequired": "Username is required.",
+      "usernameMin": "Username must have at least 3 characters.",
+      "usernameMax": "Username must have at most 16 characters.",
+      "firstNameRequired": "First name is required.",
+      "firstNameMin": "First name must have at least 2 characters.",
+      "firstNameMax": "First name must have at most 32 characters.",
+      "lastNameRequired": "Last name is required.",
+      "lastNameMin": "Last name must have at least 2 characters.",
+      "lastNameMax": "Last name must have at most 32 characters.",
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Please enter a valid email address.",
+      "passwordRequired": "Password is required.",
+      "passwordMin": "Password must have at least 6 characters.",
+      "passwordMax": "Password must have at most 128 characters.",
+      "passwordComplexity": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
+      "confirmPasswordRequired": "Confirm password is required.",
+      "confirmPasswordMin": "Confirm password must have at least 6 characters.",
+      "confirmPasswordMax": "Confirm password must have at most 128 characters.",
+      "confirmPasswordMismatch": "Passwords do not match."
+    },
+    "actions": {
+      "submit": "Create account",
+      "submitting": "Creating account..."
+    },
+    "feedback": {
+      "success": "Signup form submitted for {email}."
+    },
+    "loginPrompt": "Already have an account?",
+    "loginLink": "Log in"
+  },
+  "AuthLogin": {
+    "title": "Welcome back",
+    "description": "Log in to your account to continue chatting.",
+    "fields": {
+      "email": "EMAIL ADDRESS",
+      "password": "PASSWORD"
+    },
+    "placeholders": {
+      "email": "name@example.com",
+      "password": "••••••••"
+    },
+    "errors": {
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Please enter a valid email address.",
+      "passwordRequired": "Password is required."
+    },
+    "actions": {
+      "submit": "Log in",
+      "submitting": "Logging in...",
+      "forgotPassword": "Forgot password?",
+      "signupPrompt": "Don't have an account?",
+      "signupLink": "Sign up"
+    },
+    "feedback": {
+      "loginSuccess": "Logged in successfully!",
+      "unverified": "Your account is not verified. Redirecting to verification page...",
+      "invalidCredentials": "Invalid email or password. Please try again."
+    }
+  },
+  "AuthVerify": {
+    "title": "Email Verification",
+    "description": "We've sent a 6-digit verification code to {email}.",
+    "didntReceiveCode": "Didn't receive a code?",
+    "fields": {
+      "code": "VERIFICATION CODE"
+    },
+    "placeholders": {
+      "code": "123456"
+    },
+    "errors": {
+      "codeRequired": "Verification code is required.",
+      "codeLength": "Verification code must be 6 digits."
+    },
+    "actions": {
+      "submit": "Verify Account",
+      "submitting": "Verifying...",
+      "resend": "Resend code",
+      "backToForgotPassword": "Back to forgot password"
+    },
+    "feedback": {
+      "success": "Account verified successfully!",
+      "resendSuccess": "Code resent successfully!",
+      "error": "Invalid or expired code.",
+      "resendError": "Failed to resend code."
+    }
+  },
+  "AuthForgotPassword": {
+    "title": "Forgot Password",
+    "description": "Enter your email address and we'll send you a 6-digit code to reset your password.",
+    "fields": {
+      "email": "EMAIL ADDRESS"
+    },
+    "placeholders": {
+      "email": "name@example.com"
+    },
+    "actions": {
+      "submit": "Send Reset Code",
+      "submitting": "Sending..."
+    },
+    "feedback": {
+      "success": "Reset code sent! Redirecting to reset page...",
+      "error": "Could not send reset code. Please try again."
+    },
+    "errors": {
+      "emailRequired": "Please enter your email.",
+      "emailInvalid": "Invalid email address."
+    },
+    "backToLogin": "Back to login"
+  },
+  "AuthResetPassword": {
+    "title": "Reset Password",
+    "description": "Enter the 6-digit code sent to {email} and your new password.",
+    "fields": {
+      "code": "RESET CODE",
+      "password": "NEW PASSWORD",
+      "confirmPassword": "CONFIRM PASSWORD"
+    },
+    "placeholders": {
+      "code": "123456",
+      "password": "••••••••",
+      "confirmPassword": "••••••••"
+    },
+    "errors": {
+      "codeRequired": "Please enter the reset code.",
+      "codeLength": "Reset code must be 6 digits.",
+      "emailRequired": "Please enter your email.",
+      "emailInvalid": "Invalid email address.",
+      "passwordRequired": "Please enter a new password.",
+      "passwordMin": "Password must be at least 8 characters.",
+      "passwordMax": "Password must be at most 128 characters.",
+      "passwordComplexity": "Password must contain at least 1 uppercase, 1 lowercase, 1 number, and 1 special character.",
+      "confirmPasswordRequired": "Please confirm your password.",
+      "confirmPasswordMin": "Confirm password must be at least 8 characters.",
+      "confirmPasswordMax": "Confirm password must be at most 128 characters.",
+      "confirmPasswordMismatch": "Passwords do not match."
+    },
+    "actions": {
+      "submit": "Reset Password",
+      "submitting": "Resetting..."
+    },
+    "feedback": {
+      "success": "Password reset successfully! Redirecting to login...",
+      "error": "Invalid code or failed to reset password."
+    }
+  },
+  "SettingsProfile": {
+    "breadcrumb": {
+      "settings": "Settings",
+      "profile": "Profile"
+    },
+    "actions": {
+      "changeCover": "Change Cover",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes",
+      "savingChanges": "Saving...",
+      "uploading": "Uploading..."
+    },
+    "placeholders": {
+      "displayName": "No display name",
+      "firstName": "Enter your first name",
+      "lastName": "Enter your last name",
+      "username": "No username",
+      "about": "Write something about yourself",
+      "email": "No email address",
+      "phone": "No phone number"
+    },
+    "labels": {
+      "verified": "Verified"
+    },
+    "sections": {
+      "general": {
+        "title": "General Information",
+        "fields": {
+          "firstName": "First Name",
+          "lastName": "Last Name",
+          "username": "Username",
+          "about": "About Me"
+        }
+      },
+      "contact": {
+        "title": "Contact Information",
+        "fields": {
+          "email": "Email Address",
+          "phone": "Phone Number"
+        }
+      },
+      "preferences": {
+        "title": "Preferences",
+        "showOnlineStatus": {
+          "title": "Show Online Status",
+          "description": "Allow others to see when you're active"
+        },
+        "directMessages": {
+          "title": "Direct Messages",
+          "description": "Receive messages from non-contacts"
+        }
+      }
+    },
+    "errors": {
+      "usernameRequired": "Username is required.",
+      "usernameMin": "Username must have at least 3 characters.",
+      "usernameMax": "Username must have at most 16 characters.",
+      "firstNameRequired": "First name is required.",
+      "firstNameMin": "First name must have at least 2 characters.",
+      "firstNameMax": "First name must have at most 32 characters.",
+      "lastNameRequired": "Last name is required.",
+      "lastNameMin": "Last name must have at least 2 characters.",
+      "lastNameMax": "Last name must have at most 32 characters.",
+      "aboutMax": "About me must be at most 240 characters.",
+      "phoneMin": "Phone number must have at least 7 characters.",
+      "phoneMax": "Phone number must have at most 15 characters.",
+      "statusMessageMax": "Status message must be at most 120 characters."
+    },
+    "status": {
+      "title": "Current Status",
+      "onlineLabel": "Online",
+      "onlineDescription": "Focusing on deep work",
+      "awayLabel": "Away",
+      "awayDescription": "Back in 30 mins",
+      "busyLabel": "Do Not Disturb",
+      "busyDescription": "In a meeting",
+      "customLabel": "Status Message",
+      "customPlaceholder": "Add a custom status message",
+      "setCustom": "Set custom status..."
+    },
+    "defaults": {
+      "guestUser": "Guest User",
+      "fallbackName": "Sarah Jenkings",
+      "fallbackUsername": "sarah_j",
+      "fallbackJobTitle": "Product Designer",
+      "fallbackAbout": "Product Designer based in NYC. Love coffee and pixels.",
+      "fallbackEmail": "sarah.jenkings@example.com",
+      "fallbackPhone": "+1 (555) 000-0000"
+    },
+    "toasts": {
+      "saved": "Profile changes saved",
+      "discarded": "Profile changes discarded",
+      "bannerEditUnimplemented": "Banner edit unimplemented",
+      "avatarEditUnimplemented": "Avatar edit unimplemented",
+      "currentStatus": "Current status: {status}"
+    }
+  },
+  "SettingsPrivacySecurity": {
+    "eyebrow": "Account Protection",
+    "title": "Privacy & Security",
+    "description": "Change your password and keep your account protected. Updating your password will sign you out on all devices.",
+    "fields": {
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password"
+    },
+    "placeholders": {
+      "currentPassword": "Enter your current password",
+      "newPassword": "Create a strong new password",
+      "confirmPassword": "Confirm your new password"
+    },
+    "actions": {
+      "submit": "Change Password",
+      "submitting": "Updating password..."
+    },
+    "errors": {
+      "currentPasswordRequired": "Please enter your current password.",
+      "newPasswordRequired": "Please enter a new password.",
+      "newPasswordMin": "New password must be at least 8 characters.",
+      "newPasswordMax": "New password must be at most 128 characters.",
+      "newPasswordComplexity": "New password must contain at least 1 uppercase, 1 lowercase, 1 number, and 1 special character.",
+      "confirmPasswordRequired": "Please confirm your new password.",
+      "confirmPasswordMin": "Confirm password must be at least 8 characters.",
+      "confirmPasswordMax": "Confirm password must be at most 128 characters.",
+      "confirmPasswordMismatch": "Passwords do not match.",
+      "passwordSameAsCurrent": "New password must be different from your current password."
+    },
+    "securityCard": {
+      "title": "Before you continue",
+      "description": "A good password update should improve both security and recovery readiness.",
+      "items": {
+        "signOut": "You will be asked to log in again after the password changes.",
+        "length": "Use at least 8 characters with a strong mix of letters, numbers, and symbols.",
+        "reuse": "Avoid reusing passwords from email, banking, or social accounts."
+      }
+    },
+    "toasts": {
+      "passwordChanged": "Password updated. Please log in again."
+    }
+  },
+  "SettingsPreferences": {
+    "eyebrow": "Experience",
+    "title": "Preferences",
+    "description": "Shape the workspace around how you work. Theme and language update immediately, while the rest of the controls mirror the settings dashboard structure.",
+    "language": {
+      "title": "Language",
+      "description": "Choose your display language.",
+      "displayLanguageLabel": "Display language",
+      "timezoneLabel": "Timezone",
+      "timezoneValue": "Auto-detected: {timezone}",
+      "regionAction": "Change region",
+      "options": {
+        "en": "English",
+        "enDescription": "Use English across the workspace, menus, and settings.",
+        "vi": "Vietnamese",
+        "viDescription": "Use Vietnamese across the workspace, menus, and settings."
+      }
+    },
+    "appearance": {
+      "title": "Appearance",
+      "description": "Set the visual tone of the workspace and choose the accent color used for key actions.",
+      "badge": "Primary",
+      "accentTitle": "Accent color",
+      "accentDescription": "Used for active states, emphasis, and highlighted actions.",
+      "options": {
+        "system": "System",
+        "systemDescription": "Blend dark and light behavior based on your device.",
+        "light": "Light",
+        "lightDescription": "A cleaner bright canvas for daytime work and review.",
+        "dark": "Dark",
+        "darkDescription": "A dense indigo slate workspace with stronger contrast."
+      }
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "description": "Adjust reading comfort, contrast, and motion to fit the way you consume information.",
+      "fontSizeLabel": "Font size",
+      "fontSizeValue": "{size}px",
+      "fontSizeMinLabel": "Small",
+      "fontSizeMaxLabel": "Large",
+      "highContrast": {
+        "title": "High contrast mode",
+        "description": "Increase the visibility of text and interface edges."
+      },
+      "reduceMotion": {
+        "title": "Reduce motion",
+        "description": "Minimize non-essential animation in workspace transitions."
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Control which alerts stay immediate and which ones can wait until later.",
+      "desktop": {
+        "title": "Desktop notifications",
+        "description": "Show message and mention alerts while the app is open."
+      },
+      "sound": {
+        "title": "Sound effects",
+        "description": "Play feedback sounds for important activity and actions."
+      },
+      "email": {
+        "title": "Email summaries",
+        "description": "Receive recap emails when you are away from the workspace."
+      },
+      "quietHours": "Configure quiet hours"
+    },
+    "toasts": {
+      "languageUpdated": "Language changed to {language}.",
+      "appearanceUpdated": "Appearance changed to {appearance}.",
+      "accentUpdated": {
+        "indigo": "Accent color changed to Indigo.",
+        "emerald": "Accent color changed to Emerald.",
+        "rose": "Accent color changed to Rose.",
+        "amber": "Accent color changed to Amber."
+      }
+    }
+  },
+  "Common": {
+    "unexpectedError": "An unexpected error occurred. Please try again."
+  },
+  "SettingsSidebar": {
+    "title": "Settings",
+    "description": "Manage your account preferences",
+    "items": {
+      "profile": "Profile",
+      "privacySecurity": "Privacy & Security",
+      "notifications": "Notifications",
+      "preferences": "Preferences"
+    },
+    "toasts": {
+      "unavailableSection": "This settings section is not available yet"
+    }
+  },
+  "ImageUpload": {
+    "errors": {
+      "invalidType": "Invalid format. Only accepted: {types}",
+      "tooLarge": "File is too large. Maximum size: {maxMb}MB"
+    }
   }
 }

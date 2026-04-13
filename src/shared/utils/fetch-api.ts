@@ -1,0 +1,71 @@
+/**
+ * Fetch API wrapper with built-in Session/Cookie support.
+ * @module fetch-api
+ */
+
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
+
+export interface FetchOptions extends RequestInit {
+  data?: unknown;
+}
+
+/**
+ * Custom Fetch function that handles JSON parsing and HTTP errors.
+ * Includes credentials by default for session/cookie support.
+ */
+export async function fetchApi<T>(endpoint: string, options: FetchOptions = {}): Promise<T> {
+  const { data, headers, ...customConfig } = options;
+
+  // Handle FormData - don't set Content-Type header, let browser set it with boundary
+  const isFormData = data instanceof FormData;
+
+  const config: RequestInit = {
+    method: data ? "POST" : "GET",
+    body: isFormData ? data : data ? JSON.stringify(data) : undefined,
+    // CRITICAL: Always include credentials for session/cookie authentication
+    credentials: "include",
+    headers: {
+      ...(isFormData ? {} : { "Content-Type": "application/json" }),
+      ...headers,
+    },
+    ...customConfig,
+  };
+
+  const response = await fetch(`${BASE_URL}${endpoint}`, config);
+
+  if (!response.ok) {
+    // Attempt to parse error message if available
+    let errorData;
+    try {
+      errorData = await response.json();
+    } catch {
+      errorData = { message: response.statusText, status: response.status };
+    }
+
+    throw new Error(errorData?.message || `HTTP error! status: ${response.status}`, {
+      cause: errorData,
+    });
+  }
+
+  // Handle No Content (204)
+  if (response.status === 204) {
+    return {} as T;
+  }
+
+  return response.json();
+}
+
+/**
+ * Convenience methods for common HTTP verbs
+ */
+export const fetchClient = {
+  get: <T>(url: string, options?: FetchOptions) => fetchApi<T>(url, { ...options, method: "GET" }),
+  post: <T>(url: string, data: any, options?: FetchOptions) =>
+    fetchApi<T>(url, { ...options, method: "POST", data }),
+  put: <T>(url: string, data: any, options?: FetchOptions) =>
+    fetchApi<T>(url, { ...options, method: "PUT", data }),
+  patch: <T>(url: string, data: any, options?: FetchOptions) =>
+    fetchApi<T>(url, { ...options, method: "PATCH", data }),
+  delete: <T>(url: string, options?: FetchOptions) =>
+    fetchApi<T>(url, { ...options, method: "DELETE" }),
+};

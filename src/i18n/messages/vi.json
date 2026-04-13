@@ -1,9 +1,434 @@
 {
+  "NotFound": {
+    "errorCode": "404",
+    "title": "Lạc vào màn đêm.",
+    "description": "Trang bạn đang tìm không tồn tại hoặc đã được chuyển đi nơi khác.",
+    "backHome": "Về trang chủ",
+    "login": "Đăng nhập",
+    "copyright": "© {year} Chat App. All rights reserved."
+  },
   "HomePage": {
-    "title": "Chat frontend da san sang da ngon ngu",
-    "description": "next-intl da duoc cau hinh voi tieng Anh va tieng Viet.",
-    "languageLabel": "Ngon ngu",
+    "title": "Trang chủ ứng dụng chat đa ngôn ngữ",
+    "description": "next-intl đã được cấu hình với tiếng Anh và tiếng Việt.",
+    "languageLabel": "Ngôn ngữ",
     "english": "English",
-    "vietnamese": "Tieng Viet"
+    "vietnamese": "Tiếng Việt"
+  },
+  "EmptyChatState": {
+    "welcomeTitle": "Chào mừng đến Messenger",
+    "welcomeDescription": "Chọn một cuộc trò chuyện từ thanh bên để bắt đầu trò chuyện, hoặc bắt đầu kết nối mới ngay lập tức.",
+    "contacts": "Danh bạ",
+    "newGroup": "Nhóm mới",
+    "encryption": "Được mã hóa đầu cuối"
+  },
+  "AuthLayout": {
+    "chatApp": "ChatApp",
+    "title": "Kết nối với đội ngũ của bạn ngay lập tức.",
+    "description": "Dịch vụ nhắn tin bảo mật, nhanh chóng và đáng tin cậy cho nơi làm việc hiện đại. Gia nhập cùng hàng ngàn người dùng tin tưởng ChatApp.",
+    "copyright": "© {year} ChatApp Inc. Bảo lưu mọi quyền."
+  },
+  "AuthSignup": {
+    "title": "Tạo tài khoản",
+    "description": "Bắt đầu nhắn tin với đội nhóm chỉ trong vài giây.",
+    "fields": {
+      "username": "TÊN ĐĂNG NHẬP",
+      "firstName": "TÊN",
+      "lastName": "HỌ",
+      "email": "ĐỊA CHỈ EMAIL",
+      "password": "MẬT KHẨU",
+      "confirmPassword": "XÁC NHẬN MẬT KHẨU"
+    },
+    "placeholders": {
+      "username": "Nhập tên đăng nhập",
+      "firstName": "Nhập tên của bạn",
+      "lastName": "Nhập họ của bạn",
+      "email": "ten@example.com",
+      "password": "••••••••",
+      "confirmPassword": "••••••••"
+    },
+    "errors": {
+      "usernameRequired": "Vui lòng nhập tên đăng nhập.",
+      "usernameMin": "Tên đăng nhập phải có ít nhất 3 ký tự.",
+      "usernameMax": "Tên đăng nhập tối đa 16 ký tự.",
+      "firstNameRequired": "Vui lòng nhập tên.",
+      "firstNameMin": "Tên phải có ít nhất 2 ký tự.",
+      "firstNameMax": "Tên tối đa 32 ký tự.",
+      "lastNameRequired": "Vui lòng nhập họ.",
+      "lastNameMin": "Họ phải có ít nhất 2 ký tự.",
+      "lastNameMax": "Họ tối đa 32 ký tự.",
+      "emailRequired": "Vui lòng nhập email.",
+      "emailInvalid": "Địa chỉ email không hợp lệ.",
+      "passwordRequired": "Vui lòng nhập mật khẩu.",
+      "passwordMin": "Mật khẩu phải có ít nhất 6 ký tự.",
+      "passwordMax": "Mật khẩu tối đa 128 ký tự.",
+      "passwordComplexity": "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt.",
+      "confirmPasswordRequired": "Vui lòng xác nhận mật khẩu.",
+      "confirmPasswordMin": "Xác nhận mật khẩu phải có ít nhất 6 ký tự.",
+      "confirmPasswordMax": "Xác nhận mật khẩu tối đa 128 ký tự.",
+      "confirmPasswordMismatch": "Mật khẩu không khớp."
+    },
+    "actions": {
+      "submit": "Tạo tài khoản",
+      "submitting": "Đang tạo tài khoản..."
+    },
+    "feedback": {
+      "success": "Đã gửi form đăng ký cho {email}."
+    },
+    "loginPrompt": "Bạn đã có tài khoản?",
+    "loginLink": "Đăng nhập"
+  },
+  "AuthLogin": {
+    "title": "Chào mừng trở lại",
+    "description": "Đăng nhập vào tài khoản của bạn để tiếp tục trò chuyện.",
+    "fields": {
+      "email": "ĐỊA CHỈ EMAIL",
+      "password": "MẬT KHẨU"
+    },
+    "placeholders": {
+      "email": "ten@example.com",
+      "password": "••••••••"
+    },
+    "errors": {
+      "emailRequired": "Vui lòng nhập email.",
+      "emailInvalid": "Địa chỉ email không hợp lệ.",
+      "passwordRequired": "Vui lòng nhập mật khẩu."
+    },
+    "actions": {
+      "submit": "Đăng nhập",
+      "submitting": "Đang đăng nhập...",
+      "forgotPassword": "Quên mật khẩu?",
+      "signupPrompt": "Bạn chưa có tài khoản?",
+      "signupLink": "Đăng ký"
+    },
+    "feedback": {
+      "loginSuccess": "Đăng nhập thành công!",
+      "unverified": "Tài khoản của bạn chưa được xác thực. Đang chuyển sang trang xác thực...",
+      "invalidCredentials": "Email hoặc mật khẩu không chính xác. Vui lòng thử lại."
+    }
+  },
+  "AuthVerify": {
+    "title": "Xác thực email",
+    "description": "Chúng tôi đã gửi mã xác thực 6 chữ số đến {email}.",
+    "didntReceiveCode": "Bạn không nhận được mã?",
+    "fields": {
+      "code": "MÃ XÁC THỰC"
+    },
+    "placeholders": {
+      "code": "123456"
+    },
+    "errors": {
+      "codeRequired": "Vui lòng nhập mã xác thực.",
+      "codeLength": "Mã xác thực phải gồm 6 chữ số."
+    },
+    "actions": {
+      "submit": "Xác thực",
+      "submitting": "Đang xác thực...",
+      "resend": "Gửi lại mã",
+      "backToForgotPassword": "Quay lại quên mật khẩu"
+    },
+    "feedback": {
+      "success": "Tài khoản đã được xác thực thành công!",
+      "resendSuccess": "Mã xác thực đã được gửi lại thành công!",
+      "error": "Mã xác thực không hợp lệ hoặc đã hết hạn.",
+      "resendError": "Gửi lại mã thất bại."
+    }
+  },
+  "AuthForgotPassword": {
+    "title": "Quên mật khẩu",
+    "description": "Nhập địa chỉ email của bạn và chúng tôi sẽ gửi cho bạn mã gồm 6 chữ số để đặt lại mật khẩu.",
+    "fields": {
+      "email": "ĐỊA CHỈ EMAIL"
+    },
+    "placeholders": {
+      "email": "name@example.com"
+    },
+    "actions": {
+      "submit": "Gửi mã đặt lại",
+      "submitting": "Đang gửi..."
+    },
+    "feedback": {
+      "success": "Mã đặt lại mật khẩu đã được gửi! Đang chuyển hướng...",
+      "error": "Không thể gửi mã đặt lại mật khẩu. Vui lòng thử lại."
+    },
+    "errors": {
+      "emailRequired": "Vui lòng nhập email.",
+      "emailInvalid": "Địa chỉ email không hợp lệ."
+    },
+    "backToLogin": "Quay lại đăng nhập"
+  },
+  "AuthResetPassword": {
+    "title": "Đặt lại mật khẩu",
+    "description": "Nhập mã gồm 6 chữ số được gửi tới {email} và mật khẩu mới của bạn.",
+    "fields": {
+      "code": "MÃ ĐẶT LẠI",
+      "password": "MẬT KHẨU MỚI",
+      "confirmPassword": "XÁC NHẬN MẬT KHẨU MỚI"
+    },
+    "placeholders": {
+      "code": "123456",
+      "password": "••••••••",
+      "confirmPassword": "••••••••"
+    },
+    "errors": {
+      "codeRequired": "Vui lòng nhập mã đặt lại.",
+      "codeLength": "Mã đặt lại phải gồm 6 chữ số.",
+      "emailRequired": "Vui lòng nhập email.",
+      "emailInvalid": "Địa chỉ email không hợp lệ.",
+      "passwordRequired": "Vui lòng nhập mật khẩu mới.",
+      "passwordMin": "Mật khẩu phải có ít nhất 6 ký tự.",
+      "passwordMax": "Mật khẩu tối đa 128 ký tự.",
+      "passwordComplexity": "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt.",
+      "confirmPasswordRequired": "Vui lòng xác nhận mật khẩu.",
+      "confirmPasswordMin": "Xác nhận mật khẩu phải có ít nhất 6 ký tự.",
+      "confirmPasswordMax": "Xác nhận mật khẩu tối đa 128 ký tự.",
+      "confirmPasswordMismatch": "Mật khẩu không khớp."
+    },
+    "actions": {
+      "submit": "Đặt lại mật khẩu",
+      "submitting": "Đang đặt lại..."
+    },
+    "feedback": {
+      "success": "Đặt lại mật khẩu thành công! Đang chuyển đến đăng nhập...",
+      "error": "Mã không hợp lệ hoặc đặt lại mật khẩu thất bại."
+    }
+  },
+  "SettingsProfile": {
+    "breadcrumb": {
+      "settings": "Cài đặt",
+      "profile": "Hồ sơ"
+    },
+    "actions": {
+      "changeCover": "Đổi ảnh bìa",
+      "cancel": "Hủy",
+      "saveChanges": "Lưu thay đổi",
+      "savingChanges": "Đang lưu...",
+      "uploading": "Đang tải lên..."
+    },
+    "placeholders": {
+      "displayName": "Chưa có tên hiển thị",
+      "firstName": "Nhập tên của bạn",
+      "lastName": "Nhập họ của bạn",
+      "username": "Chưa có tên người dùng",
+      "about": "Viết vài dòng giới thiệu về bạn",
+      "email": "Chưa có địa chỉ email",
+      "phone": "Chưa có số điện thoại"
+    },
+    "labels": {
+      "verified": "Đã xác minh"
+    },
+    "sections": {
+      "general": {
+        "title": "Thông tin chung",
+        "fields": {
+          "firstName": "Tên",
+          "lastName": "Họ",
+          "username": "Tên người dùng",
+          "about": "Giới thiệu"
+        }
+      },
+      "contact": {
+        "title": "Thông tin liên hệ",
+        "fields": {
+          "email": "Địa chỉ email",
+          "phone": "Số điện thoại"
+        }
+      },
+      "preferences": {
+        "title": "Tùy chọn",
+        "showOnlineStatus": {
+          "title": "Hiện trạng thái hoạt động",
+          "description": "Cho phép người khác thấy khi bạn đang online"
+        },
+        "directMessages": {
+          "title": "Tin nhắn trực tiếp",
+          "description": "Nhận tin nhắn từ người chưa có trong danh bạ"
+        }
+      }
+    },
+    "errors": {
+      "usernameRequired": "Vui lòng nhập tên đăng nhập.",
+      "usernameMin": "Tên đăng nhập phải có ít nhất 3 ký tự.",
+      "usernameMax": "Tên đăng nhập tối đa 16 ký tự.",
+      "firstNameRequired": "Vui lòng nhập tên.",
+      "firstNameMin": "Tên phải có ít nhất 2 ký tự.",
+      "firstNameMax": "Tên tối đa 32 ký tự.",
+      "lastNameRequired": "Vui lòng nhập họ.",
+      "lastNameMin": "Họ phải có ít nhất 2 ký tự.",
+      "lastNameMax": "Họ tối đa 32 ký tự.",
+      "aboutMax": "Giới thiệu tối đa 240 ký tự.",
+      "phoneMin": "Số điện thoại phải có ít nhất 7 ký tự.",
+      "phoneMax": "Số điện thoại tối đa 15 ký tự.",
+      "statusMessageMax": "Tin nhắn trạng thái tối đa 120 ký tự."
+    },
+    "status": {
+      "title": "Trạng thái hiện tại",
+      "onlineLabel": "Đang online",
+      "onlineDescription": "Đang tập trung làm việc",
+      "awayLabel": "Tạm vắng",
+      "awayDescription": "Quay lại sau 30 phút",
+      "busyLabel": "Không làm phiền",
+      "busyDescription": "Đang họp",
+      "customLabel": "Tin nhắn trạng thái",
+      "customPlaceholder": "Thêm tin nhắn trạng thái tùy chỉnh",
+      "setCustom": "Đặt trạng thái tùy chỉnh..."
+    },
+    "defaults": {
+      "guestUser": "Khách",
+      "fallbackName": "Sarah Jenkings",
+      "fallbackUsername": "sarah_j",
+      "fallbackJobTitle": "Nhà thiết kế sản phẩm",
+      "fallbackAbout": "Nhà thiết kế sản phẩm tại NYC. Yêu cà phê và pixel.",
+      "fallbackEmail": "sarah.jenkings@example.com",
+      "fallbackPhone": "+1 (555) 000-0000"
+    },
+    "toasts": {
+      "saved": "Đã lưu thay đổi hồ sơ",
+      "discarded": "Đã hủy các thay đổi hồ sơ",
+      "bannerEditUnimplemented": "Chưa hỗ trợ chỉnh sửa ảnh bìa",
+      "avatarEditUnimplemented": "Chưa hỗ trợ chỉnh sửa avatar",
+      "currentStatus": "Trạng thái hiện tại: {status}"
+    }
+  },
+  "SettingsPrivacySecurity": {
+    "eyebrow": "Bảo vệ tài khoản",
+    "title": "Quyền riêng tư & Bảo mật",
+    "description": "Đổi mật khẩu để bảo vệ tài khoản tốt hơn. Sau khi cập nhật, bạn sẽ phải đăng nhập lại trên mọi thiết bị.",
+    "fields": {
+      "currentPassword": "Mật khẩu hiện tại",
+      "newPassword": "Mật khẩu mới",
+      "confirmPassword": "Xác nhận mật khẩu mới"
+    },
+    "placeholders": {
+      "currentPassword": "Nhập mật khẩu hiện tại",
+      "newPassword": "Tạo mật khẩu mới mạnh hơn",
+      "confirmPassword": "Nhập lại mật khẩu mới"
+    },
+    "actions": {
+      "submit": "Đổi mật khẩu",
+      "submitting": "Đang cập nhật mật khẩu..."
+    },
+    "errors": {
+      "currentPasswordRequired": "Vui lòng nhập mật khẩu hiện tại.",
+      "newPasswordRequired": "Vui lòng nhập mật khẩu mới.",
+      "newPasswordMin": "Mật khẩu mới phải có ít nhất 8 ký tự.",
+      "newPasswordMax": "Mật khẩu mới tối đa 128 ký tự.",
+      "newPasswordComplexity": "Mật khẩu mới phải chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt.",
+      "confirmPasswordRequired": "Vui lòng xác nhận mật khẩu mới.",
+      "confirmPasswordMin": "Xác nhận mật khẩu phải có ít nhất 8 ký tự.",
+      "confirmPasswordMax": "Xác nhận mật khẩu tối đa 128 ký tự.",
+      "confirmPasswordMismatch": "Mật khẩu không khớp.",
+      "passwordSameAsCurrent": "Mật khẩu mới phải khác mật khẩu hiện tại."
+    },
+    "securityCard": {
+      "title": "Lưu ý trước khi đổi",
+      "description": "Một lần cập nhật mật khẩu tốt nên vừa tăng bảo mật vừa giúp bạn dễ quản lý tài khoản hơn.",
+      "items": {
+        "signOut": "Bạn sẽ cần đăng nhập lại sau khi mật khẩu được thay đổi.",
+        "length": "Hãy dùng ít nhất 8 ký tự với chữ hoa, chữ thường, số và ký tự đặc biệt.",
+        "reuse": "Không nên dùng lại mật khẩu đang sử dụng cho email, ngân hàng hoặc mạng xã hội."
+      }
+    },
+    "toasts": {
+      "passwordChanged": "Đã cập nhật mật khẩu. Vui lòng đăng nhập lại."
+    }
+  },
+  "SettingsPreferences": {
+    "eyebrow": "Trải nghiệm",
+    "title": "Tùy chọn",
+    "description": "Tinh chỉnh không gian làm việc theo cách bạn vận hành. Giao diện và ngôn ngữ đổi ngay lập tức, còn các phần còn lại được trình bày theo bố cục dashboard settings.",
+    "language": {
+      "title": "Ngôn ngữ",
+      "description": "Chọn ngôn ngữ hiển thị.",
+      "displayLanguageLabel": "Ngôn ngữ hiển thị",
+      "timezoneLabel": "Múi giờ",
+      "timezoneValue": "Tự nhận diện: {timezone}",
+      "regionAction": "Đổi khu vực",
+      "options": {
+        "en": "Tiếng Anh",
+        "enDescription": "Dùng tiếng Anh cho toàn bộ workspace, menu và phần cài đặt.",
+        "vi": "Tiếng Việt",
+        "viDescription": "Dùng tiếng Việt cho toàn bộ workspace, menu và phần cài đặt."
+      }
+    },
+    "appearance": {
+      "title": "Giao diện",
+      "description": "Thiết lập tông nhìn của workspace và chọn màu nhấn cho các hành động quan trọng.",
+      "badge": "Chính",
+      "accentTitle": "Màu nhấn",
+      "accentDescription": "Dùng cho trạng thái active, điểm nhấn và hành động nổi bật.",
+      "options": {
+        "system": "Theo hệ thống",
+        "systemDescription": "Tự cân bằng giữa tối và sáng theo thiết bị của bạn.",
+        "light": "Sáng",
+        "lightDescription": "Canvas sáng hơn, phù hợp cho đọc và rà soát ban ngày.",
+        "dark": "Tối",
+        "darkDescription": "Không gian indigo slate đậm hơn với độ tương phản rõ hơn."
+      }
+    },
+    "accessibility": {
+      "title": "Trợ năng",
+      "description": "Điều chỉnh khả năng đọc, độ tương phản và chuyển động theo cách bạn tiếp nhận thông tin.",
+      "fontSizeLabel": "Cỡ chữ",
+      "fontSizeValue": "{size}px",
+      "fontSizeMinLabel": "Nhỏ",
+      "fontSizeMaxLabel": "Lớn",
+      "highContrast": {
+        "title": "Chế độ tương phản cao",
+        "description": "Tăng độ rõ cho chữ và ranh giới các thành phần giao diện."
+      },
+      "reduceMotion": {
+        "title": "Giảm chuyển động",
+        "description": "Giảm các animation không cần thiết trong quá trình chuyển cảnh."
+      }
+    },
+    "notifications": {
+      "title": "Thông báo",
+      "description": "Kiểm soát cảnh báo nào cần xuất hiện ngay và cảnh báo nào có thể chờ sau.",
+      "desktop": {
+        "title": "Thông báo trên máy tính",
+        "description": "Hiển thị cảnh báo tin nhắn và mention khi ứng dụng đang mở."
+      },
+      "sound": {
+        "title": "Âm thanh phản hồi",
+        "description": "Phát âm thanh cho các hoạt động và hành động quan trọng."
+      },
+      "email": {
+        "title": "Tóm tắt qua email",
+        "description": "Nhận email tổng hợp khi bạn rời khỏi workspace."
+      },
+      "quietHours": "Thiết lập giờ yên lặng"
+    },
+    "toasts": {
+      "languageUpdated": "Đã chuyển ngôn ngữ sang {language}.",
+      "appearanceUpdated": "Đã chuyển giao diện sang {appearance}.",
+      "accentUpdated": {
+        "indigo": "Đã chuyển màu nhấn sang Indigo.",
+        "emerald": "Đã chuyển màu nhấn sang Emerald.",
+        "rose": "Đã chuyển màu nhấn sang Rose.",
+        "amber": "Đã chuyển màu nhấn sang Amber."
+      }
+    }
+  },
+  "Common": {
+    "unexpectedError": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại."
+  },
+  "SettingsSidebar": {
+    "title": "Cài đặt",
+    "description": "Quản lý tùy chọn tài khoản của bạn",
+    "items": {
+      "profile": "Hồ sơ",
+      "privacySecurity": "Quyền riêng tư & Bảo mật",
+      "notifications": "Thông báo",
+      "preferences": "Tùy chọn"
+    },
+    "toasts": {
+      "unavailableSection": "Mục cài đặt này hiện chưa khả dụng"
+    }
+  },
+  "ImageUpload": {
+    "errors": {
+      "invalidType": "Định dạng không hợp lệ. Chỉ chấp nhận: {types}",
+      "tooLarge": "Tệp quá lớn. Kích thước tối đa: {maxMb}MB"
+    }
   }
 }

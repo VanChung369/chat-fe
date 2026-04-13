@@ -1,0 +1,88 @@
+.indigo-root {
+  position: relative;
+  min-height: 100dvh;
+  background: var(--gradient-main);
+  color: var(--text-strong);
+  overflow: hidden;
+}
+
+.indigo-root::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  background:
+    radial-gradient(circle at 22% 25%, rgb(79 70 229 / 28%) 0%, transparent 52%),
+    radial-gradient(circle at 78% 72%, rgb(16 185 129 / 14%) 0%, transparent 50%);
+  animation: indigo-pulse 14s ease-in-out infinite;
+}
+
+.indigo-container {
+  position: relative;
+  z-index: 1;
+  width: min(1200px, calc(100% - 2rem));
+  margin-inline: auto;
+  padding-block: 1.25rem;
+}
+
+.indigo-surface {
+  border-radius: 1rem;
+  background: var(--gradient-surface);
+  box-shadow: 0 16px 40px rgb(2 6 23 / 40%);
+}
+
+.indigo-surface-low {
+  background-color: rgb(30 41 59 / 76%);
+}
+
+.indigo-surface-high {
+  background-color: rgb(51 65 85 / 90%);
+}
+
+.indigo-glass-bar {
+  background: var(--surface-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.indigo-divider-soft {
+  outline: 1px solid var(--outline-variant);
+}
+
+.indigo-scroll-fade {
+  position: relative;
+}
+
+.indigo-scroll-fade::before,
+.indigo-scroll-fade::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 18px;
+  pointer-events: none;
+}
+
+.indigo-scroll-fade::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgb(15 23 42 / 88%), transparent);
+}
+
+.indigo-scroll-fade::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgb(15 23 42 / 88%), transparent);
+}
+
+@keyframes indigo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.48;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.65;
+  }
+}
