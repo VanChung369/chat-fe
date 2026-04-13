@@ -1,0 +1,64 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: deploy-frontend-main
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Ensure deploy folder exists
+        run: |
+          mkdir -p /home/vanchung/deploy/frontend
+
+      - name: Sync frontend source
+        run: |
+          rsync -av --delete \
+            --exclude ".git" \
+            --exclude "node_modules" \
+            --exclude ".next" \
+            ./ /home/vanchung/deploy/frontend/
+
+      - name: Write frontend env file
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > /home/vanchung/deploy/frontend/.env
+
+      - name: Remove old frontend container
+        run: |
+          docker rm -f chatfusion-frontend || true
+
+      # - name: Build frontend image
+      #   run: |
+      #     docker build -t chatfusion-frontend:latest /home/vanchung/deploy/frontend
+
+      - name: Run frontend container
+        run: |
+          docker run -d \
+            --name chatfusion-frontend \
+            --restart unless-stopped \
+            -p 3000:3000 \
+            -e NODE_ENV=production \
+            -e PORT=3000 \
+            -e HOSTNAME=0.0.0.0 \
+            -e NEXT_PUBLIC_API_URL=https://api.chatfusion.site/api \
+            -e NEXT_TELEMETRY_DISABLED=1 \
+            chatfusion-frontend:latest
+
+      - name: Health check frontend
+        run: |
+          sleep 8
+          curl -I http://localhost:3000
+
+      - name: Cleanup dangling images
+        run: |
+          docker image prune -f
