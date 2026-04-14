@@ -56,11 +56,8 @@ export function ProfileFormContent({
 
       <div
         className={cn(
-          "bg-surface-light",
-          "dark:bg-surface-dark",
-          "border-border-light",
-          "dark:border-border-dark",
-          "w-full overflow-hidden rounded-2xl border shadow-sm"
+          "bg-white/90 dark:bg-surface-dark border-border-light/60 dark:border-border-dark w-full overflow-hidden rounded-[2.5rem] border shadow-[0_8px_40px_rgba(0,0,0,0.04)] backdrop-blur-xl",
+          "md:rounded-3xl"
         )}
       >
         <ProfileHeader

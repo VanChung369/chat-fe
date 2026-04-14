@@ -4,7 +4,12 @@ import { Sidebar } from "./Sidebar";
 
 const PrivateLayout = ({ children, sidebar }: { children: ReactNode; sidebar: ReactNode }) => {
   return (
-    <div className={cn("flex h-screen overflow-hidden", "bg-surface-darkest text-zinc-100")}>
+    <div
+      className={cn(
+        "flex h-screen overflow-hidden",
+        "bg-gradient-main text-slate-900 dark:bg-none dark:bg-surface-darkest dark:text-zinc-100"
+      )}
+    >
       {/* Navigation Sidebar */}
       <Sidebar />
 
@@ -14,8 +19,8 @@ const PrivateLayout = ({ children, sidebar }: { children: ReactNode; sidebar: Re
         <aside
           className={cn(
             "z-20 flex h-full w-full max-w-85 shrink-0 flex-col border-r md:max-w-100",
-            "border-gray-200 bg-white",
-            "dark:border-gray-800 dark:bg-surface-sidebar"
+            "border-border-light/60 bg-white/75 backdrop-blur-xl",
+            "dark:border-border-dark/60 dark:bg-surface-sidebar/40"
           )}
         >
           {sidebar}
@@ -25,7 +30,7 @@ const PrivateLayout = ({ children, sidebar }: { children: ReactNode; sidebar: Re
         <main
           className={cn(
             "min-w-0 flex-1 overflow-x-hidden overflow-y-auto scroll-smooth",
-            "bg-surface-content/30 selection:bg-indigo-500/30"
+            "bg-surface-content/30 selection:bg-primary/30"
           )}
         >
           <div className="h-full w-full">{children}</div>

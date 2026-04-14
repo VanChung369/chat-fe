@@ -32,14 +32,23 @@ export const Sidebar = () => {
   };
 
   return (
-    <aside className="dark:bg-surface-sidebar z-50 flex h-full w-20 flex-col items-center border-r border-slate-800/50 bg-slate-900 py-6 font-['Inter'] tracking-tight antialiased shadow-2xl shadow-indigo-500/10">
+    <aside
+      className={cn(
+        "z-50 flex h-full w-20 flex-col items-center border-r py-6 tracking-tight antialiased backdrop-blur-md",
+        "border-border-light/60 bg-white/40 text-slate-900 shadow-[0_0_40px_rgba(0,0,0,0.02)]",
+        "dark:border-border-dark/30 dark:bg-surface-sidebar dark:text-white dark:shadow-2xl dark:shadow-indigo-500/10"
+      )}
+    >
       {/* Logo + Avatar */}
-      <div className="mb-10 flex flex-col items-center gap-3">
-        <div className="h-10 w-10 shadow-sm transition-transform hover:scale-105">
+      <div className="mb-10 flex flex-col items-center gap-4">
+        <div className="relative h-11 w-11 transition-all duration-300 hover:scale-110">
+          <div className="bg-primary/10 absolute -inset-2 rounded-full blur-lg" />
           <Avatar
-            name={`${user?.firstName || ""} ${user?.lastName || ""}`.trim() || user?.userName || "User"}
+            name={
+              `${user?.firstName || ""} ${user?.lastName || ""}`.trim() || user?.userName || "User"
+            }
             size="md"
-            className="h-full w-full"
+            className="relative h-full w-full ring-2 ring-white/50 dark:ring-slate-800/50"
             showStatus
             status="online"
           />
@@ -47,7 +56,7 @@ export const Sidebar = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="flex flex-1 flex-col items-center gap-6">
+      <nav className="flex flex-1 flex-col items-center gap-8">
         {sidebarNavigationItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
@@ -57,40 +66,50 @@ export const Sidebar = () => {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 active:scale-[0.98]",
+                "group relative flex h-12 w-12 items-center justify-center rounded-2xl transition-all duration-300",
                 isActive
-                  ? "border-indigo-400 bg-indigo-500/10 text-indigo-400 shadow-[0_0_20px_rgba(99,102,241,0.15)]"
-                  : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
+                  ? "bg-primary text-white shadow-[0_8px_20px_rgba(79,70,229,0.35)]"
+                  : "hover:bg-primary/10 hover:text-primary text-slate-400 dark:text-slate-500 dark:hover:bg-slate-800/50 dark:hover:text-slate-200"
               )}
               title={item.name}
             >
-              <Icon size={24} />
+              <Icon
+                size={24}
+                className={cn("transition-transform duration-300 group-hover:scale-110")}
+              />
+              {isActive && (
+                <div className="bg-primary absolute -left-5 h-6 w-1 rounded-r-full shadow-[0_0_12px_rgba(79,70,229,0.6)]" />
+              )}
             </Link>
           );
         })}
       </nav>
 
       {/* Bottom Actions */}
-      <div className="mt-6 flex flex-col items-center gap-4">
-        <button
-          onClick={handleLogout}
-          className="text-slate-400 transition-colors hover:text-rose-400"
-          title="Logout"
-        >
-          <LogOut size={20} />
-        </button>
+      <div className="mt-auto flex flex-col items-center gap-6">
         <Link
           href={AppRoutes.settings}
           className={cn(
-            "mt-auto flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 active:scale-[0.98]",
+            "group relative flex h-12 w-12 items-center justify-center rounded-2xl transition-all duration-300",
             pathname === AppRoutes.settings
-              ? "border-indigo-400 bg-indigo-500/10 text-indigo-400"
-              : "text-slate-400 hover:bg-slate-800/50 hover:text-slate-200"
+              ? "bg-primary text-white shadow-[0_8px_20px_rgba(79,70,229,0.35)]"
+              : "hover:bg-primary/10 hover:text-primary text-slate-400 dark:text-slate-500 dark:hover:bg-slate-800/50 dark:hover:text-slate-200"
           )}
           title="Settings"
         >
-          <Settings size={24} />
+          <Settings
+            size={24}
+            className={cn("transition-transform duration-300 group-hover:scale-110")}
+          />
         </Link>
+
+        <button
+          onClick={handleLogout}
+          className="text-slate-400 transition-all duration-200 hover:scale-110 hover:text-rose-500 dark:text-slate-600 dark:hover:text-rose-400"
+          title="Logout"
+        >
+          <LogOut size={22} strokeWidth={2.5} />
+        </button>
       </div>
     </aside>
   );

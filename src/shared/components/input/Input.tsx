@@ -29,9 +29,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     return (
-      <div className="relative">
+      <div className="group relative">
         {startIcon && (
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-zinc-400">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400 transition-colors group-focus-within:text-primary dark:text-slate-500">
             {startIcon}
           </div>
         )}
@@ -41,16 +41,23 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           aria-invalid={error}
           aria-describedby={error ? errorId : undefined}
           className={cn(
-            "border-outline-variant bg-surface-input focus-visible:ring-primary/50 flex h-12 w-full rounded-lg border py-2.5 text-base text-zinc-100 ring-offset-zinc-950 transition-all placeholder:text-zinc-500 hover:border-zinc-700 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
-            startIcon ? "pl-10" : "pl-4",
-            endIcon ? "pr-10" : "pr-4",
-            className,
-            error ? "border-red-500/50 hover:border-red-500/50 focus-visible:ring-red-400/50" : ""
+            "flex h-12 w-full rounded-2xl border bg-white/50 px-4 py-2.5 text-base transition-all duration-200 backdrop-blur-sm",
+            "border-border-light/60 text-slate-900 placeholder:text-slate-400",
+            "hover:border-primary/30 hover:bg-white",
+            "focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/10 focus-visible:outline-none",
+            "dark:border-border-dark dark:bg-slate-900/50 dark:text-white dark:placeholder:text-slate-500",
+            "dark:hover:border-primary/50 dark:hover:bg-slate-900/80",
+            "dark:focus-visible:ring-primary/20",
+            "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-border-light/60",
+            startIcon ? "pl-11" : "pl-4",
+            endIcon ? "pr-11" : "pr-4",
+            error && "border-red-500/50 hover:border-red-500/50 focus-visible:border-red-500 focus-visible:ring-red-500/10",
+            className
           )}
           {...props}
         />
         {endIcon && (
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400 transition-colors group-focus-within:text-primary dark:text-slate-500">
             {endIcon}
           </div>
         )}

@@ -29,8 +29,8 @@ export function PreferenceChoiceCard({
       className={cn(
         "border-border-light/80 dark:border-border-dark/80 overflow-hidden rounded-2xl border text-left transition-all duration-200",
         active
-          ? "dark:border-primary bg-primary/7 border-black"
-          : "hover:border-primary/40 bg-slate-50/80 hover:bg-white dark:bg-slate-950/45 dark:hover:bg-slate-950/65",
+          ? "border-primary bg-primary/[0.04] ring-primary/20 dark:border-primary dark:bg-primary/10 ring-1"
+          : "border-border-light/60 hover:border-primary/30 dark:border-border-dark/80 bg-slate-50/40 hover:bg-white dark:bg-slate-950/45 dark:hover:bg-slate-950/65",
         disabled ? "cursor-not-allowed opacity-60" : "active:scale-[0.99]",
         className
       )}

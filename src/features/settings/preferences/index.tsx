@@ -70,7 +70,7 @@ export function SettingsPreferencesFeature() {
       title: t("appearance.options.system"),
       description: t("appearance.options.systemDescription"),
       previewClassName:
-        "bg-[linear-gradient(145deg,rgba(15,23,42,0.92),rgba(71,85,105,0.82),rgba(248,250,252,0.85))]",
+        "bg-[linear-gradient(135deg,#f8faff_0%,#e2e8f0_40%,#0f172a_100%)]",
       swatchClassName: "bg-white/80",
     },
     {
@@ -78,15 +78,15 @@ export function SettingsPreferencesFeature() {
       title: t("appearance.options.light"),
       description: t("appearance.options.lightDescription"),
       previewClassName:
-        "bg-[linear-gradient(145deg,rgba(248,250,252,1),rgba(226,232,240,0.98),rgba(255,255,255,0.95))]",
-      swatchClassName: "bg-slate-100",
+        "bg-[linear-gradient(135deg,#ffffff_0%,#f1f5f9_50%,#e2e8f0_100%)]",
+      swatchClassName: "bg-indigo-50",
     },
     {
       value: "dark" as const satisfies ThemePreference,
       title: t("appearance.options.dark"),
       description: t("appearance.options.darkDescription"),
       previewClassName:
-        "bg-[linear-gradient(145deg,rgba(2,6,23,1),rgba(15,23,42,0.98),rgba(30,41,59,0.96))]",
+        "bg-[linear-gradient(135deg,#0f172a_0%,#1e293b_50%,#334155_100%)]",
       swatchClassName: "bg-indigo-500",
     },
   ];
@@ -127,7 +127,8 @@ export function SettingsPreferencesFeature() {
         <div className="mx-auto w-full">
           <div
             className={cn(
-              "bg-surface-light dark:bg-surface-dark border-border-light dark:border-border-dark w-full overflow-hidden rounded-2xl border shadow-sm"
+              "bg-white/90 dark:bg-surface-dark border-border-light/60 dark:border-border-dark w-full overflow-hidden rounded-[2.5rem] border shadow-[0_8px_40px_rgba(0,0,0,0.04)] backdrop-blur-xl",
+              "md:rounded-3xl"
             )}
           >
             <div className="border-border-light dark:border-border-dark border-b px-5 py-6 md:px-8 lg:px-10">

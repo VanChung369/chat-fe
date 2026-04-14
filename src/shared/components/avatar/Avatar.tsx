@@ -108,7 +108,8 @@ export const Avatar: React.FC<AvatarProps> = ({
       {showStatus && (
         <span
           className={cn(
-            "absolute right-1 bottom-0 h-[25%] w-[25%] rounded-full border border-slate-900 dark:border-white",
+            "absolute right-[2%] bottom-[2%] h-[28%] w-[28%] rounded-full border-2",
+            "border-white dark:border-slate-900",
             statusColors[status]
           )}
           aria-hidden="true"
@@ -119,9 +120,9 @@ export const Avatar: React.FC<AvatarProps> = ({
       {showUnread && unreadCount > 0 && (
         <span
           className={cn(
-            "absolute -top-1 -right-1 flex min-h-4.5 min-w-4.5 items-center justify-center rounded-full border-2 border-white text-[10px] font-bold text-white dark:border-slate-900",
-            "bg-indigo-500",
-            unreadCount > 99 ? "px-1" : "h-4.5 w-4.5"
+            "absolute -top-1 -right-1 flex min-h-5 min-w-5 items-center justify-center rounded-full border-2 text-[10px] font-black text-white",
+            "bg-primary border-white dark:border-slate-950",
+            unreadCount > 99 ? "px-1.5" : "h-5 w-5"
           )}
           aria-label={`${unreadCount} unread messages`}
         >

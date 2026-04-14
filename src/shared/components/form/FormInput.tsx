@@ -72,7 +72,7 @@ export function FormInput<T extends FieldValues>({
         <div className="flex items-center justify-between">
           <label
             className={cn(
-              "mb-1 text-sm leading-none font-semibold text-zinc-300 peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+              "mb-2 text-sm font-bold tracking-tight text-slate-700 dark:text-slate-300 peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
               labelClassName
             )}
             htmlFor={inputId}
