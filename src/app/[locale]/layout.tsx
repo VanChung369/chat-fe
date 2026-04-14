@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
+import Script from "next/script";
 import AppWithProviders from "@/providers/AppWithProviders";
 import { isValidLocale, routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
@@ -43,25 +44,6 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`${beVietnamPro.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('chat-theme');
-                  var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-                  if (theme === 'dark' || (!theme && supportDarkMode)) {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-      </head>
       <body className="font-display min-h-full antialiased" suppressHydrationWarning>
         <Suspense>
           <AppWithProviders>{children}</AppWithProviders>
