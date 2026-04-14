@@ -23,6 +23,7 @@ export interface SelectProps<T extends string = string> {
   className?: string;
   name?: string;
   id?: string;
+  restoreFocusOnSelect?: boolean;
 }
 
 export const Select = <T extends string = string>({
@@ -38,6 +39,7 @@ export const Select = <T extends string = string>({
   disabled = false,
   name,
   id,
+  restoreFocusOnSelect = true,
 }: SelectProps<T>) => {
   const isControlled = controlledValue !== undefined;
   const [internalValue, setInternalValue] = useState<T | "">(defaultValue ?? "");
@@ -65,7 +67,17 @@ export const Select = <T extends string = string>({
     if (!isControlled) setInternalValue(option.value);
     onChange?.(option.value);
     closeDropdown();
-    buttonRef.current?.focus();
+    if (!restoreFocusOnSelect) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      if (!buttonRef.current) {
+        return;
+      }
+
+      buttonRef.current.focus({ preventScroll: true });
+    });
   };
 
   // Close on outside click

@@ -1,4 +1,5 @@
 import { API_ROUTES } from "@/shared/constants";
+import { UploadDirectPayload, UploadDirectResponse } from "@/shared/types";
 import { PresenceStatus, type User } from "@/shared/types/user";
 import { optionalTrimmedString } from "@/shared/utils";
 import { fetchClient } from "@/shared/utils/fetch-api";
@@ -14,17 +15,6 @@ type UpdateProfilePayload = {
   status?: PresenceStatus;
   statusMessage?: string;
   showOnlineStatus?: boolean;
-};
-
-type UploadDirectPayload = {
-  file: File;
-  fileName: string;
-  folder: string;
-};
-
-type UploadDirectResponse = {
-  fileId: string;
-  url: string;
 };
 
 export const profileApi = {

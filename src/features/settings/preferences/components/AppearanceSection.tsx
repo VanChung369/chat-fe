@@ -1,5 +1,6 @@
 import { cn } from "@/shared/utils";
 import { Palette } from "lucide-react";
+import type { ThemePreference } from "@/shared/types";
 
 import type { AccentOption, AppearanceOption } from "../types/preferences";
 import { PreferenceChoiceCard } from "./PreferenceChoiceCard";
@@ -12,7 +13,7 @@ type AppearanceSectionProps = {
   badge: string;
   accentTitle: string;
   accentDescription: string;
-  selectedTheme: string;
+  selectedTheme?: ThemePreference;
   options: AppearanceOption[];
   accentOptions: AccentOption[];
   selectedAccent: AccentOption;

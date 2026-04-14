@@ -49,7 +49,7 @@ export function SettingsPreferencesFeature() {
     setIsMounted(true);
   }, []);
 
-  const themePreference = (theme ?? "dark") as ThemePreference;
+  const themePreference = theme as ThemePreference | undefined;
 
   const languageOptions: PreferenceOption<AppLocale>[] = [
     {
@@ -102,9 +102,10 @@ export function SettingsPreferencesFeature() {
   };
 
   const handleThemeChange = (nextTheme: ThemePreference) => {
-    if (nextTheme === themePreference) {
+    if (nextTheme === theme) {
       return;
     }
+
     setTheme(nextTheme);
   };
 
@@ -145,7 +146,7 @@ export function SettingsPreferencesFeature() {
                   badge={t("appearance.badge")}
                   accentTitle={t("appearance.accentTitle")}
                   accentDescription={t("appearance.accentDescription")}
-                  selectedTheme={isMounted ? themePreference : "dark"}
+                  selectedTheme={isMounted ? themePreference : undefined}
                   options={appearanceOptions}
                   accentOptions={ACCENT_OPTIONS}
                   selectedAccent={selectedAccentOption}
