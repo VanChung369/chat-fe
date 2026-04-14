@@ -29,9 +29,9 @@ jobs:
             --exclude ".next" \
             ./ /home/vanchung/deploy/frontend/
 
-      - name: Write frontend env file
-        run: |
-          echo "${{ secrets.ENV_FILE }}" > /home/vanchung/deploy/frontend/.env
+      # - name: Write frontend env file
+      #   run: |
+      #     echo "${{ secrets.ENV_FILE }}" > /home/vanchung/deploy/frontend/.env
 
       - name: Remove old frontend container
         run: |
@@ -39,14 +39,16 @@ jobs:
 
       - name: Build frontend image
         run: |
-          docker build -t chatfusion-frontend:latest /home/vanchung/deploy/frontend
+          docker build \
+            --build-arg NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} \
+            -t chatfusion-frontend:latest \
+            /home/vanchung/deploy/frontend
 
       - name: Run frontend container
         run: |
           docker run -d \
             --name chatfusion-frontend \
             --restart unless-stopped \
-            --env-file /home/vanchung/deploy/frontend/.env \
             -p 3000:3000 \
             chatfusion-frontend:latest
 
