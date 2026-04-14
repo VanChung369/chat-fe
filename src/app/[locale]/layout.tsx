@@ -43,7 +43,26 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`${beVietnamPro.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="font-display min-h-full antialiased">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('chat-theme');
+                  var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+                  if (theme === 'dark' || (!theme && supportDarkMode)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="font-display min-h-full antialiased" suppressHydrationWarning>
         <Suspense>
           <AppWithProviders>{children}</AppWithProviders>
         </Suspense>
