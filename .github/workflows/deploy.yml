@@ -29,9 +29,9 @@ jobs:
             --exclude ".next" \
             ./ /home/vanchung/deploy/frontend/
 
-      # - name: Write frontend env file
-      #   run: |
-      #     echo "${{ secrets.ENV_FILE }}" > /home/vanchung/deploy/frontend/.env
+      - name: Write frontend env file
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > /home/vanchung/deploy/frontend/.env
 
       - name: Remove old frontend container
         run: |
