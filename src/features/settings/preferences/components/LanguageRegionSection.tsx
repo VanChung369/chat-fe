@@ -43,6 +43,7 @@ export function LanguageRegionSection({
           <Select
             value={selectedLanguage}
             disabled={disabled}
+            restoreFocusOnSelect={false}
             options={options.map((option) => ({
               value: option.value,
               label: option.title,
