@@ -46,12 +46,8 @@ jobs:
           docker run -d \
             --name chatfusion-frontend \
             --restart unless-stopped \
+            --env-file /home/vanchung/deploy/frontend/.env \
             -p 3000:3000 \
-            -e NODE_ENV=production \
-            -e PORT=3000 \
-            -e HOSTNAME=0.0.0.0 \
-            -e NEXT_PUBLIC_API_URL=https://api.chatfusion.site/api \
-            -e NEXT_TELEMETRY_DISABLED=1 \
             chatfusion-frontend:latest
 
       - name: Health check frontend
