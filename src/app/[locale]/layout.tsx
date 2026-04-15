@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
-import Script from "next/script";
 import AppWithProviders from "@/providers/AppWithProviders";
 import { isValidLocale, routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
