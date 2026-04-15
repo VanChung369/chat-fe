@@ -291,8 +291,13 @@
   },
   "SettingsPrivacySecurity": {
     "eyebrow": "Account Protection",
+    "badge": "Workspace Defense",
     "title": "Privacy & Security",
-    "description": "Change your password and keep your account protected. Updating your password will sign you out on all devices.",
+    "description": "Secure your account settings, control who can see your activity, and review the devices that can still access your workspace.",
+    "password": {
+      "title": "Password Management",
+      "description": "Rotate your credentials when anything feels off and keep sign-ins under tighter control."
+    },
     "fields": {
       "currentPassword": "Current Password",
       "newPassword": "New Password",
@@ -304,8 +309,47 @@
       "confirmPassword": "Confirm your new password"
     },
     "actions": {
-      "submit": "Change Password",
-      "submitting": "Updating password..."
+      "submit": "Update Security Credentials",
+      "submitting": "Updating credentials...",
+      "revokeAll": "Revoke all others",
+      "delete": "Delete account"
+    },
+    "twoFactor": {
+      "title": "Two-factor Authentication",
+      "description": "Add an extra verification step so new devices need more than a password to get in.",
+      "status": {
+        "enabled": "Enabled",
+        "disabled": "Optional"
+      },
+      "methods": {
+        "email": {
+          "title": "Email Authentication"
+        },
+        "authenticator": {
+          "title": "Authenticator App"
+        }
+      }
+    },
+    "sessions": {
+      "title": "Active Sessions",
+      "description": "Review where your account is currently signed in and revoke devices you no longer trust.",
+      "currentBadge": "Current",
+      "items": {
+        "desktop": {
+          "title": "MacBook Pro 16\"",
+          "description": "San Francisco, USA • Chrome • IP: 192.168.1.1"
+        },
+        "mobile": {
+          "title": "iPhone 15 Pro",
+          "description": "London, UK • iOS app • 2 hours ago"
+        }
+      }
+    },
+    "dataManagement": {
+      "delete": {
+        "title": "Delete Account",
+        "description": "Permanently remove your account and close access to this workspace."
+      }
     },
     "errors": {
       "currentPasswordRequired": "Please enter your current password.",
@@ -318,15 +362,6 @@
       "confirmPasswordMax": "Confirm password must be at most 128 characters.",
       "confirmPasswordMismatch": "Passwords do not match.",
       "passwordSameAsCurrent": "New password must be different from your current password."
-    },
-    "securityCard": {
-      "title": "Before you continue",
-      "description": "A good password update should improve both security and recovery readiness.",
-      "items": {
-        "signOut": "You will be asked to log in again after the password changes.",
-        "length": "Use at least 8 characters with a strong mix of letters, numbers, and symbols.",
-        "reuse": "Avoid reusing passwords from email, banking, or social accounts."
-      }
     },
     "toasts": {
       "passwordChanged": "Password updated. Please log in again."

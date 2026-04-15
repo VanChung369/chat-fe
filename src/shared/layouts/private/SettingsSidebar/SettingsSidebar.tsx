@@ -86,8 +86,8 @@ export const SettingsSidebar = () => {
                 isActive
                   ? cn("bg-indigo-100 text-slate-950", "dark:bg-indigo-500/10 dark:text-white")
                   : cn(
-                      "text-slate-800 hover:bg-slate-100/90 hover:text-slate-950",
-                      "dark:hover:bg-surface-hover dark:text-slate-300"
+                      "text-slate-500 group-hover:bg-white group-hover:text-slate-200",
+                      "dark:hover:bg-surface-hover dark:text-slate-300 dark:group-hover:bg-slate-900"
                     )
               )}
             >
@@ -101,7 +101,7 @@ export const SettingsSidebar = () => {
                       )
                     : cn(
                         "bg-slate-100 text-slate-500 group-hover:bg-white group-hover:text-slate-800",
-                        "dark:bg-slate-900/70 dark:text-slate-400 dark:group-hover:bg-slate-900 dark:group-hover:text-slate-200"
+                        "dark:bg-indigo-500/15 dark:text-slate-400 dark:group-hover:bg-slate-900 dark:group-hover:text-slate-200"
                       )
                 )}
               >

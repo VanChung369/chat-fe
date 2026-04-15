@@ -291,8 +291,13 @@
   },
   "SettingsPrivacySecurity": {
     "eyebrow": "Bảo vệ tài khoản",
+    "badge": "Lớp phòng vệ",
     "title": "Quyền riêng tư & Bảo mật",
-    "description": "Đổi mật khẩu để bảo vệ tài khoản tốt hơn. Sau khi cập nhật, bạn sẽ phải đăng nhập lại trên mọi thiết bị.",
+    "description": "Kiểm soát cách tài khoản hiển thị, quản lý thiết bị còn đăng nhập và tăng cường bảo vệ cho workspace của bạn.",
+    "password": {
+      "title": "Quản lý mật khẩu",
+      "description": "Thay mới thông tin đăng nhập khi có dấu hiệu bất thường và siết chặt quyền truy cập vào tài khoản."
+    },
     "fields": {
       "currentPassword": "Mật khẩu hiện tại",
       "newPassword": "Mật khẩu mới",
@@ -304,8 +309,49 @@
       "confirmPassword": "Nhập lại mật khẩu mới"
     },
     "actions": {
-      "submit": "Đổi mật khẩu",
-      "submitting": "Đang cập nhật mật khẩu..."
+      "submit": "Cập nhật thông tin bảo mật",
+      "submitting": "Đang cập nhật thông tin...",
+      "revokeAll": "Thu hồi các phiên khác",
+      "delete": "Xóa tài khoản"
+    },
+    "twoFactor": {
+      "title": "Xác thực hai lớp",
+      "description": "Thêm một bước xác minh để thiết bị mới không thể đăng nhập chỉ với mật khẩu.",
+      "status": {
+        "enabled": "Đã bật",
+        "disabled": "Tùy chọn"
+      },
+      "methods": {
+        "email": {
+          "title": "Xác thực qua email",
+          "description": "Gửi mã dùng một lần đến email đã xác minh khi phát hiện đăng nhập có rủi ro."
+        },
+        "authenticator": {
+          "title": "Ứng dụng xác thực",
+          "description": "Dùng Google Authenticator, 1Password hoặc ứng dụng tương thích để lấy mã xoay vòng."
+        }
+      }
+    },
+    "sessions": {
+      "title": "Phiên hoạt động",
+      "description": "Kiểm tra những nơi tài khoản còn đăng nhập và thu hồi các thiết bị bạn không còn tin cậy.",
+      "currentBadge": "Hiện tại",
+      "items": {
+        "desktop": {
+          "title": "MacBook Pro 16\"",
+          "description": "San Francisco, USA • Chrome • IP: 192.168.1.1"
+        },
+        "mobile": {
+          "title": "iPhone 15 Pro",
+          "description": "London, UK • Ứng dụng iOS • 2 giờ trước"
+        }
+      }
+    },
+    "dataManagement": {
+      "delete": {
+        "title": "Xóa tài khoản",
+        "description": "Xóa vĩnh viễn tài khoản và đóng quyền truy cập vào workspace này."
+      }
     },
     "errors": {
       "currentPasswordRequired": "Vui lòng nhập mật khẩu hiện tại.",
@@ -318,15 +364,6 @@
       "confirmPasswordMax": "Xác nhận mật khẩu tối đa 128 ký tự.",
       "confirmPasswordMismatch": "Mật khẩu không khớp.",
       "passwordSameAsCurrent": "Mật khẩu mới phải khác mật khẩu hiện tại."
-    },
-    "securityCard": {
-      "title": "Lưu ý trước khi đổi",
-      "description": "Một lần cập nhật mật khẩu tốt nên vừa tăng bảo mật vừa giúp bạn dễ quản lý tài khoản hơn.",
-      "items": {
-        "signOut": "Bạn sẽ cần đăng nhập lại sau khi mật khẩu được thay đổi.",
-        "length": "Hãy dùng ít nhất 8 ký tự với chữ hoa, chữ thường, số và ký tự đặc biệt.",
-        "reuse": "Không nên dùng lại mật khẩu đang sử dụng cho email, ngân hàng hoặc mạng xã hội."
-      }
     },
     "toasts": {
       "passwordChanged": "Đã cập nhật mật khẩu. Vui lòng đăng nhập lại."

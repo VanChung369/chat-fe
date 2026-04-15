@@ -41,40 +41,40 @@
 }
 
 :root {
-  --background-light: #f8fafc;
-  --bg-darkest: #eef4ff;
-  --bg-content: #f4f7fb;
-  --bg-footer: #e5ecf6;
+  --background-light: #f6f8fa;
+  --bg-darkest: #f0f4f8;
+  --bg-content: #ffffff;
+  --bg-footer: #f8fafc;
   --bg-sidebar: #ffffff;
-  --bg-dark: #f8fbff;
+  --bg-dark: #f8faff;
   --surface-dark: #ffffff;
   --input-bg: #ffffff;
-  --surface-secondary: #eef2ff;
-  --surface-hover: #dbe5f1;
-  --surface-hover-deep: #c8d4e5;
-  --input-border: #cbd5e1;
+  --surface-secondary: #f1f5f9;
+  --surface-hover: #f1f5f9;
+  --surface-hover-deep: #e2e8f0;
+  --input-border: #e2e8f0;
 
   --text-strong: #0f172a;
-  --text-body: #334155;
-  --text-muted: #64748b;
+  --text-body: #475569;
+  --text-muted: #94a3b8;
   --text-inverse: #0f172a;
 
-  --primary: #135bec;
-  --primary-hover: #1e69ff;
-  --primary-pressed: #0d46bc;
-  --primary-glow: rgb(19 91 236 / 20%);
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-pressed: #3730a3;
+  --primary-glow: rgba(79, 70, 229, 0.15);
 
   --emerald-online: #10b981;
-  --emerald-online-ring: #34d399;
+  --emerald-online-ring: #d1fae5;
 
-  --gradient-main: linear-gradient(160deg, #f8fbff 0%, #eef4ff 46%, #dde9ff 100%);
+  --gradient-main: linear-gradient(160deg, #f8faff 0%, #f1f5f9 100%);
 
   --gradient-auth-overlay: linear-gradient(
     to bottom,
-    rgba(248, 251, 255, 0.25) 0%,
-    rgba(222, 233, 255, 0.9) 100%
+    rgba(248, 250, 252, 0.4) 0%,
+    rgba(241, 245, 249, 0.95) 100%
   );
-  --glow-primary: radial-gradient(circle at center, rgba(19, 91, 236, 0.12) 0%, transparent 70%);
+  --glow-primary: radial-gradient(circle at center, rgba(79, 70, 229, 0.08) 0%, transparent 70%);
 }
 
 html.dark {
