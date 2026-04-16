@@ -23,7 +23,7 @@ const AppWithProviders = ({ children }: AppWithProvidersProps) => {
             {children}
             <Toaster position="top-center" richColors />
           </AuthProvider>
-        </I18nProvider>{" "}
+        </I18nProvider>
       </ThemeProvider>
     </SWRConfig>
   );
